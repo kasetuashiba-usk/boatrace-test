@@ -69,7 +69,7 @@ jobs:
 
           print("\n【展示データ】")
           print("艇 | 選手 | 体重 | チルト | 展示 | 一周 | まわり足")
-                   if start is None:
+          if start is None:
               print("展示表が見つかりません")
           else:
               rows = {}
