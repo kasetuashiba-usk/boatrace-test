@@ -91,15 +91,13 @@ jobs:
 
           print("\n【今節スタートデータ】")
           print("艇 | 選手 | 平均ST | 平均スタート順位")
-          if st is None:
+                   if st is None:
               print("スタート表が見つかりません")
           else:
-             
-          for i in range(6):
-              row = p[st + i*5:st + (i+1)*5]
-              if len(row) == 5 and row[0] == row[1] == str(i + 1):
-                  print(" | ".join([row[0], row[2], row[3], row[4]]))
-              else:
-                  print(f"{i + 1} | データ確認が必要")
-
+              for i in range(6):
+                  row = p[st + i*5:st + (i+1)*5]
+                  if len(row) == 5 and row[0] == row[1] == str(i + 1):
+                      print(" | ".join([row[0], row[2], row[3], row[4]]))
+                  else:
+                      print(f"{i + 1} | データ確認が必要")
           PY
