@@ -95,4 +95,65 @@ $('load').addEventListener('click',async()=>{
  }catch(e){$('status').textContent='取得できませんでした：'+e.message}
 });
 })();
-</script></body></html>
+</script>
+<script>
+(async function () {
+  const panel = document.createElement('section');
+  panel.className = 'panel';
+  panel.innerHTML = `
+    <h3>住之江公式データ</h3>
+    <button type="button" id="suminoeLoad">住之江データを読み込む</button>
+    <div id="suminoeResult" style="margin-top:12px;overflow-x:auto"></div>
+  `;
+  document.body.appendChild(panel);
+
+  document.getElementById('suminoeLoad').addEventListener('click', async () => {
+    const result = document.getElementById('suminoeResult');
+    result.textContent = '取得中...';
+
+    try {
+      const race = document.querySelector('input[name="race"]:checked')?.value;
+      if (!race) throw new Error('レース番号を選択してください');
+
+      const url = `./data/suminoe-${String(race).padStart(2, '0')}.json`;
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) throw new Error('保存データがありません');
+
+      const data = await response.json();
+      if (data.venue !== 'suminoe' || Number(data.race) !== Number(race)) {
+        throw new Error('レース情報が一致しません');
+      }
+
+      const headers = ['艇', '選手', '展示', '一周', 'まわり足', '平均ST', '平均スタート順位'];
+      const keys = ['boat', 'name', 'exhibition', 'lap', 'turn', 'average_st', 'average_start_rank'];
+
+      const table = document.createElement('table');
+      const thead = table.createTHead();
+      const headRow = thead.insertRow();
+      headers.forEach(h => {
+        const th = document.createElement('th');
+        th.textContent = h;
+        headRow.appendChild(th);
+      });
+
+      const tbody = table.createTBody();
+      (data.boats || []).forEach(boat => {
+        const row = tbody.insertRow();
+        keys.forEach(key => {
+          const cell = row.insertCell();
+          cell.textContent = boat[key] ?? '—';
+        });
+      });
+
+      result.replaceChildren();
+      const info = document.createElement('p');
+      info.textContent = `取得日時：${data.fetched_at || '不明'}（保存済みデータ）`;
+      result.append(info, table);
+    } catch (error) {
+      result.textContent = `取得できませんでした：${error.message}`;
+    }
+  });
+})();
+</script>
+</body>
+</html>
