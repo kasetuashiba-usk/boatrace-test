@@ -8,27 +8,49 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - name: Check official website
+      - name: Extract official data
         shell: bash
         run: |
           python3 - <<'PY'
           import urllib.request
-          import urllib.error
+          from html.parser import HTMLParser
+
+          class TextReader(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.parts = []
+              def handle_data(self, data):
+                  s = " ".join(data.split())
+                  if s:
+                      self.parts.append(s)
 
           url = "https://www.boatrace-suminoe.jp/asp/kyogi/12/sp/yoso0505.htm"
           req = urllib.request.Request(
               url,
               headers={"User-Agent": "Mozilla/5.0"}
           )
+          with urllib.request.urlopen(req, timeout=20) as r:
+              html = r.read().decode("utf-8", errors="replace")
+              print("HTTP STATUS:", r.status)
 
-          try:
-              with urllib.request.urlopen(req, timeout=15) as r:
-                  body = r.read()
-                  print("HTTP STATUS:", r.status)
-                  print("BYTES:", len(body))
-                  print("CONTENT TYPE:", r.headers.get("Content-Type"))
-                  print("FIRST BYTES:", repr(body[:120]))
-          except Exception as e:
-              print("FETCH ERROR:", type(e).__name__, str(e))
-              raise
+          parser = TextReader()
+          parser.feed(html)
+          parts = parser.parts
+
+          keywords = [
+              "今節平均ST", "スタート順",
+              "オリジナル展示", "一周",
+              "まわり足", "展示タイム"
+          ]
+
+          found = []
+          for i, value in enumerate(parts):
+              if any(k in value for k in keywords):
+                  found.append(i)
+
+          print("MATCHES:", len(found))
+          for i in found[:15]:
+              print("\n--- MATCH ---")
+              for j in range(max(0, i-3), min(len(parts), i+35)):
+                  print(j, repr(parts[j])[:150])
           PY
