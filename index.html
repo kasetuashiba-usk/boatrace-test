@@ -1,6 +1,6 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>競艇展示データ v11</title><style>
 *{box-sizing:border-box}body{margin:0;background:#f4f6fa;color:#182238;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif}header{background:#202b4f;color:white;padding:20px 15px;font-size:22px;font-weight:750}main{padding:14px;max-width:700px;margin:auto}.section{font-size:19px;font-weight:750;margin:20px 0 12px}.venue-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;background:#dfe4ed;border:3px solid #dfe4ed}.venue{background:white;min-height:79px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:16px;font-weight:750;padding:8px 1px;position:relative}.venue input,.race input{position:absolute;opacity:0;pointer-events:none}.venue:has(input:checked),.race:has(input:checked){background:#294f9a;color:white}.race-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.race{position:relative;display:block;background:white;border:1px solid #d6dfea;border-radius:9px;padding:15px 4px;text-align:center;font-weight:750}.panel{background:white;border:1px solid #d6dfea;border-radius:12px;padding:15px;margin-top:18px}.small{font-size:13px;color:#53627a;line-height:1.6}.button{background:#294f9a;color:white;border:0;border-radius:10px;padding:16px;width:100%;font-size:17px;font-weight:700;cursor:pointer}.status{padding:12px;background:#eaf0fa;border-radius:8px;margin-top:12px;white-space:pre-wrap}.date{font-size:17px;padding:10px;border:1px solid #d6dfea;border-radius:8px;width:100%;max-width:230px}table{width:100%;border-collapse:collapse;font-size:13px;text-align:right}th,td{padding:11px 3px;border-bottom:1px solid #dce2ed}th:first-child,td:first-child{text-align:left} .best{background:#e4f2e9;font-weight:800}.warning{padding:12px;background:#fff7e8;border:1px solid #f0d3a2;border-radius:8px;font-size:13px;line-height:1.6}a{color:#294f9a}@media(max-width:360px){.venue{font-size:14px;min-height:70px}}
- .start-input{width:100%;min-width:110px;padding:9px;border:1px solid #ccd5e4;border-radius:7px;font-size:15px}.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.start-grid label{font-size:13px;font-weight:700}.start-grid label input{margin-top:5px}.secondary{background:#eef2fa;color:#294f9a;border:1px solid #cbd6ea;padding:12px;border-radius:8px;font-weight:700;cursor:pointer}</style></head><body><header>競艇 展示データ分析 v11</header><main><div class="warning">展示データの比較分析も表示します（予想の的中保証や期待値の判定ではありません）。iPhoneプレビューでも競艇場・レースを選べます。自動取得はSafariなどJavaScriptが動作する環境で試してください。取得失敗時は理由を表示します。</div><div class="section">開催日</div><input id="date" class="date" type="date" value="2026-10-13"><div class="section">競艇場を選択</div><div class="venue-grid"><label class="venue"><input type="radio" name="venue" value="01" ><span>桐生</span></label><label class="venue"><input type="radio" name="venue" value="02" ><span>戸田</span></label><label class="venue"><input type="radio" name="venue" value="03" ><span>江戸川</span></label><label class="venue"><input type="radio" name="venue" value="04" ><span>平和島</span></label><label class="venue"><input type="radio" name="venue" value="05" ><span>多摩川</span></label><label class="venue"><input type="radio" name="venue" value="06" ><span>浜名湖</span></label><label class="venue"><input type="radio" name="venue" value="07" ><span>蒲郡</span></label><label class="venue"><input type="radio" name="venue" value="08" ><span>常滑</span></label><label class="venue"><input type="radio" name="venue" value="09" ><span>津</span></label><label class="venue"><input type="radio" name="venue" value="10" ><span>三国</span></label><label class="venue"><input type="radio" name="venue" value="11" checked><span>びわこ</span></label><label class="venue"><input type="radio" name="venue" value="12" ><span>住之江</span></label><label class="venue"><input type="radio" name="venue" value="13" ><span>尼崎</span></label><label class="venue"><input type="radio" name="venue" value="14" ><span>鳴門</span></label><label class="venue"><input type="radio" name="venue" value="15" ><span>丸亀</span></label><label class="venue"><input type="radio" name="venue" value="16" ><span>児島</span></label><label class="venue"><input type="radio" name="venue" value="17" ><span>宮島</span></label><label class="venue"><input type="radio" name="venue" value="18" ><span>徳山</span></label><label class="venue"><input type="radio" name="venue" value="19" ><span>下関</span></label><label class="venue"><input type="radio" name="venue" value="20" ><span>若松</span></label><label class="venue"><input type="radio" name="venue" value="21" ><span>芦屋</span></label><label class="venue"><input type="radio" name="venue" value="22" ><span>福岡</span></label><label class="venue"><input type="radio" name="venue" value="23" ><span>唐津</span></label><label class="venue"><input type="radio" name="venue" value="24" ><span>大村</span></label></div><div class="section">レースを選択</div><div class="race-grid"><label class="race"><input type="radio" name="race" value="1" >1R</label><label class="race"><input type="radio" name="race" value="2" >2R</label><label class="race"><input type="radio" name="race" value="3" >3R</label><label class="race"><input type="radio" name="race" value="4" >4R</label><label class="race"><input type="radio" name="race" value="5" >5R</label><label class="race"><input type="radio" name="race" value="6" checked>6R</label><label class="race"><input type="radio" name="race" value="7" >7R</label><label class="race"><input type="radio" name="race" value="8" >8R</label><label class="race"><input type="radio" name="race" value="9" >9R</label><label class="race"><input type="radio" name="race" value="10" >10R</label><label class="race"><input type="radio" name="race" value="11" >11R</label><label class="race"><input type="radio" name="race" value="12" >12R</label></div><div class="panel"><button id="load" type="button" class="button">選択レースの展示・STをまとめて取得</button><div id="status" class="status" role="status">未取得。競艇場とレースを選んで取得してください。</div><p class="small">取得元：BoatraceCSV公開CSV。データ更新前・未開催・ネットワーク制限時は表示できません。</p><div id="result"><p class="small">取得後、ここに6艇の数値が表示されます。</p></div><div id="extra"></div><div id="analysis"></div></div><div class="panel"><b>表示確認用サンプル</b><p class="small">2026年10月13日 びわこ6R。実際の選択結果ではありません。</p><div id="sample"></div><button type="button" id="sampleBtn" class="button">保存済みサンプルを表示</button></div><div class="panel"><b>CSVを直接開く</b><p class="small">自動取得できない場合、元の公開CSVをSafariで開けます。</p><a id="csvLink" href="https://boatracecsv.github.io/data/previews/original_exhibition/2026/10/13.csv" target="_blank" rel="noopener">選択日のCSVを開く</a></div></main><div class="panel"><h3>今節スタート順位の分析（手入力・試験版）</h3><p class="small">今節の各走の<strong>スタート順位（1〜6）</strong>を古い順に半角カンマ区切りで入力してください。例：<code>2,1,3,2</code>。平均ST（0.14など）ではありません。現時点では公式データの自動取得には対応していません。</p><div id="startInputs" class="start-grid"></div><p><button id="startCalc" class="button" type="button">スタート順位を集計</button></p><button id="startClear" class="secondary" type="button">このレースの入力を消去</button><div id="startSummary" aria-live="polite"></div><p class="small">入力値はこのブラウザ内にだけ保存します。データ未入力の艇を推測して補いません。スタート順位は出走数や進入コースによって解釈が変わるため、展示評価点には合算しません。</p></div><script>
+ .start-input{width:100%;min-width:110px;padding:9px;border:1px solid #ccd5e4;border-radius:7px;font-size:15px}.start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.start-grid label{font-size:13px;font-weight:700}.start-grid label input{margin-top:5px}.secondary{background:#eef2fa;color:#294f9a;border:1px solid #cbd6ea;padding:12px;border-radius:8px;font-weight:700;cursor:pointer}</style></head><body><header>競艇 展示データ分析 v11＋公式比較</header><main><div class="warning">展示データの比較分析も表示します（予想の的中保証や期待値の判定ではありません）。iPhoneプレビューでも競艇場・レースを選べます。自動取得はSafariなどJavaScriptが動作する環境で試してください。取得失敗時は理由を表示します。</div><div class="section">開催日</div><input id="date" class="date" type="date" value="2026-10-13"><div class="section">競艇場を選択</div><div class="venue-grid"><label class="venue"><input type="radio" name="venue" value="01" ><span>桐生</span></label><label class="venue"><input type="radio" name="venue" value="02" ><span>戸田</span></label><label class="venue"><input type="radio" name="venue" value="03" ><span>江戸川</span></label><label class="venue"><input type="radio" name="venue" value="04" ><span>平和島</span></label><label class="venue"><input type="radio" name="venue" value="05" ><span>多摩川</span></label><label class="venue"><input type="radio" name="venue" value="06" ><span>浜名湖</span></label><label class="venue"><input type="radio" name="venue" value="07" ><span>蒲郡</span></label><label class="venue"><input type="radio" name="venue" value="08" ><span>常滑</span></label><label class="venue"><input type="radio" name="venue" value="09" ><span>津</span></label><label class="venue"><input type="radio" name="venue" value="10" ><span>三国</span></label><label class="venue"><input type="radio" name="venue" value="11" checked><span>びわこ</span></label><label class="venue"><input type="radio" name="venue" value="12" ><span>住之江</span></label><label class="venue"><input type="radio" name="venue" value="13" ><span>尼崎</span></label><label class="venue"><input type="radio" name="venue" value="14" ><span>鳴門</span></label><label class="venue"><input type="radio" name="venue" value="15" ><span>丸亀</span></label><label class="venue"><input type="radio" name="venue" value="16" ><span>児島</span></label><label class="venue"><input type="radio" name="venue" value="17" ><span>宮島</span></label><label class="venue"><input type="radio" name="venue" value="18" ><span>徳山</span></label><label class="venue"><input type="radio" name="venue" value="19" ><span>下関</span></label><label class="venue"><input type="radio" name="venue" value="20" ><span>若松</span></label><label class="venue"><input type="radio" name="venue" value="21" ><span>芦屋</span></label><label class="venue"><input type="radio" name="venue" value="22" ><span>福岡</span></label><label class="venue"><input type="radio" name="venue" value="23" ><span>唐津</span></label><label class="venue"><input type="radio" name="venue" value="24" ><span>大村</span></label></div><div class="section">レースを選択</div><div class="race-grid"><label class="race"><input type="radio" name="race" value="1" >1R</label><label class="race"><input type="radio" name="race" value="2" >2R</label><label class="race"><input type="radio" name="race" value="3" >3R</label><label class="race"><input type="radio" name="race" value="4" >4R</label><label class="race"><input type="radio" name="race" value="5" >5R</label><label class="race"><input type="radio" name="race" value="6" checked>6R</label><label class="race"><input type="radio" name="race" value="7" >7R</label><label class="race"><input type="radio" name="race" value="8" >8R</label><label class="race"><input type="radio" name="race" value="9" >9R</label><label class="race"><input type="radio" name="race" value="10" >10R</label><label class="race"><input type="radio" name="race" value="11" >11R</label><label class="race"><input type="radio" name="race" value="12" >12R</label></div><div class="panel"><button id="load" type="button" class="button">選択レースの展示・STをまとめて取得</button><div id="status" class="status" role="status">未取得。競艇場とレースを選んで取得してください。</div><p class="small">取得元：BoatraceCSV公開CSV。データ更新前・未開催・ネットワーク制限時は表示できません。</p><div id="result"><p class="small">取得後、ここに6艇の数値が表示されます。</p></div><div id="extra"></div><div id="analysis"></div></div><div class="panel"><b>表示確認用サンプル</b><p class="small">2026年10月13日 びわこ6R。実際の選択結果ではありません。</p><div id="sample"></div><button type="button" id="sampleBtn" class="button">保存済みサンプルを表示</button></div><div class="panel"><b>CSVを直接開く</b><p class="small">自動取得できない場合、元の公開CSVをSafariで開けます。</p><a id="csvLink" href="https://boatracecsv.github.io/data/previews/original_exhibition/2026/10/13.csv" target="_blank" rel="noopener">選択日のCSVを開く</a></div></main><div class="panel"><h3>今節スタート順位の分析（手入力・試験版）</h3><p class="small">今節の各走の<strong>スタート順位（1〜6）</strong>を古い順に半角カンマ区切りで入力してください。例：<code>2,1,3,2</code>。平均ST（0.14など）ではありません。現時点では公式データの自動取得には対応していません。</p><div id="startInputs" class="start-grid"></div><p><button id="startCalc" class="button" type="button">スタート順位を集計</button></p><button id="startClear" class="secondary" type="button">このレースの入力を消去</button><div id="startSummary" aria-live="polite"></div><p class="small">入力値はこのブラウザ内にだけ保存します。データ未入力の艇を推測して補いません。スタート順位は出走数や進入コースによって解釈が変わるため、展示評価点には合算しません。</p></div><script>
 (function(){'use strict';
 const $=id=>document.getElementById(id);
 const sample=['202610131106','2026-10-13','11','06R','12:33','2026-10-13T12:25:29.197147+09:00','3','一周','まわり足','直線','柘植 政浩','37.66','5.54','7.87','大塚 雅治','37.43','5.63','8.08','小池 礼乃','38.57','5.96','7.87','永嶋 裕一','38.9','5.93','8.08','森 陽多','38.9','6.17','7.97','小林 泰','38.03','6.06','7.93'];
@@ -96,62 +96,97 @@ $('load').addEventListener('click',async()=>{
 });
 })();
 </script>
+
 <script>
-(async function () {
+(() => {
+  'use strict';
   const panel = document.createElement('section');
   panel.className = 'panel';
-  panel.innerHTML = `
-    <h3>住之江公式データ</h3>
-    <button type="button" id="suminoeLoad">住之江データを読み込む</button>
-    <div id="suminoeResult" style="margin-top:12px;overflow-x:auto"></div>
-  `;
+  panel.style.maxWidth = '700px';
+  panel.style.margin = '18px auto';
+  panel.innerHTML = '<h3>住之江公式データ（保存済み）</h3>' +
+    '<p class="small">住之江を選択した場合のみ利用できます。選択日と取得日が一致するデータだけ表示します。取得時刻以降に公式サイトが更新されている可能性があります。</p>' +
+    '<button class="button" type="button" id="suminoeLoad">選択レースの公式データを表示</button>' +
+    '<div id="suminoeResult" role="status" style="margin-top:12px;overflow-x:auto"></div>';
   document.body.appendChild(panel);
-
-  document.getElementById('suminoeLoad').addEventListener('click', async () => {
-    const result = document.getElementById('suminoeResult');
-    result.textContent = '取得中...';
-
+  const result = document.getElementById('suminoeResult');
+  const button = document.getElementById('suminoeLoad');
+  button.addEventListener('click', async () => {
+    result.textContent = '確認中…';
     try {
-      const race = document.querySelector('input[name="race"]:checked')?.value;
-      if (!race) throw new Error('レース番号を選択してください');
-
-      const url = `./data/suminoe-${String(race).padStart(2, '0')}.json`;
-      const response = await fetch(url, { cache: 'no-store' });
-      if (!response.ok) throw new Error('保存データがありません');
-
+      const venue = document.querySelector('input[name="venue"]:checked')?.value;
+      const race = Number(document.querySelector('input[name="race"]:checked')?.value);
+      const selectedDate = document.getElementById('date')?.value;
+      if (venue !== '12') throw new Error('住之江を選択してください。ほかの場は未対応です。');
+      if (!Number.isInteger(race) || race < 1 || race > 12) throw new Error('レース番号を選択してください。');
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(selectedDate || '')) throw new Error('開催日を選択してください。');
+      const url = './data/suminoe-' + String(race).padStart(2, '0') + '.json';
+      const response = await fetch(url, {cache:'no-store'});
+      if (!response.ok) throw new Error('このレースの保存済みデータがありません（HTTP ' + response.status + '）。');
       const data = await response.json();
-      if (data.venue !== 'suminoe' || Number(data.race) !== Number(race)) {
-        throw new Error('レース情報が一致しません');
-      }
-
-      const headers = ['艇', '選手', '展示', '一周', 'まわり足', '平均ST', '平均スタート順位'];
-      const keys = ['boat', 'name', 'exhibition', 'lap', 'turn', 'average_st', 'average_start_rank'];
-
+      if (data.venue !== 'suminoe' || Number(data.race) !== race) throw new Error('保存データの競艇場またはレース番号が一致しません。');
+      const fetchedDate = String(data.fetched_at || '').slice(0,10);
+      if (fetchedDate !== selectedDate) throw new Error('古いデータのため表示しません。取得日：' + (fetchedDate || '不明') + '／選択日：' + selectedDate);
+      if (!Array.isArray(data.boats) || data.boats.length !== 6 ||
+          data.boats.some((b,i) => Number(b.boat) !== i+1)) throw new Error('6艇分のデータ形式が不正です。');
+      const headers = ['艇','選手','展示','一周','まわり足','今節平均ST','平均スタート順位'];
+      const keys = ['boat','name','exhibition','lap','turn','average_st','average_start_rank'];
       const table = document.createElement('table');
-      const thead = table.createTHead();
-      const headRow = thead.insertRow();
-      headers.forEach(h => {
-        const th = document.createElement('th');
-        th.textContent = h;
-        headRow.appendChild(th);
+      const head = table.createTHead().insertRow();
+      for (const h of headers) {const th=document.createElement('th');th.textContent=h;head.appendChild(th);}
+      const body=table.createTBody();
+      for (const boat of data.boats) {
+        const tr=body.insertRow();
+        for (const k of keys) tr.insertCell().textContent = boat[k] == null || boat[k] === '' ? '—' : String(boat[k]);
+      }
+      const info=document.createElement('p');info.className='small';
+      info.textContent='取得日時：'+data.fetched_at+'（保存済み・自動更新ではありません）';
+      // 公式データだけから計算する参考分析。買い目・的中率を推定しない。
+      const numeric = (v) => {
+        if (v === null || v === undefined || String(v).trim() === '' || String(v).trim() === '—') return null;
+        const n = Number(String(v).trim());
+        return Number.isFinite(n) ? n : null;
+      };
+      const rankBy = (field) => {
+        const values = data.boats.map(b => numeric(b[field]));
+        return values.map(v => v === null ? null : 1 + values.filter(x => x !== null && x < v).length);
+      };
+      const exhibitionRanks = ['exhibition','lap','turn'].map(rankBy);
+      const stRanks = rankBy('average_st');
+      const startRanks = rankBy('average_start_rank');
+      const analysis = document.createElement('div');
+      analysis.style.marginTop = '20px';
+      const heading = document.createElement('h4');
+      heading.textContent = '公式データによる比較分析（参考）';
+      analysis.appendChild(heading);
+      const expl = document.createElement('p');
+      expl.className = 'small';
+      expl.textContent = '展示3項目（展示タイム・一周・まわり足）の順位を合計した「展示順位合計」と、今節平均ST・平均スタート順位を別々に比較します。数値が小さいほど上位。直線タイム・各走のスタートばらつき・オッズは未反映です。';
+      analysis.appendChild(expl);
+      const comparison = document.createElement('table');
+      const headerRow = comparison.createTHead().insertRow();
+      ['艇','展示順位合計','平均ST','ST順位','平均スタート順位','順位評価'].forEach(label => {
+        const th = document.createElement('th'); th.textContent = label; headerRow.appendChild(th);
       });
-
-      const tbody = table.createTBody();
-      (data.boats || []).forEach(boat => {
-        const row = tbody.insertRow();
-        keys.forEach(key => {
-          const cell = row.insertCell();
-          cell.textContent = boat[key] ?? '—';
+      const tbody = comparison.createTBody();
+      const scores = data.boats.map((b,i) => {
+        const r = exhibitionRanks.map(a => a[i]);
+        return r.every(v => v !== null) ? r.reduce((a,b) => a+b,0) : null;
+      });
+      data.boats.forEach((b,i) => {
+        const tr = tbody.insertRow();
+        const sr = startRanks[i];
+        const comment = sr === null ? '順位データ不足' : sr <= 2 ? 'スタート順位上位' : sr <= 4 ? '中位' : 'スタート順位下位';
+        [b.boat, scores[i] === null ? '—' : scores[i], b.average_st || '—', stRanks[i] === null ? '—' : stRanks[i], b.average_start_rank || '—', comment].forEach(v => {
+          tr.insertCell().textContent = String(v);
         });
       });
-
-      result.replaceChildren();
-      const info = document.createElement('p');
-      info.textContent = `取得日時：${data.fetched_at || '不明'}（保存済みデータ）`;
-      result.append(info, table);
-    } catch (error) {
-      result.textContent = `取得できませんでした：${error.message}`;
-    }
+      analysis.appendChild(comparison);
+      const note = document.createElement('p'); note.className = 'small';
+      note.textContent = '注意：同順位は同じ順位として集計。今節平均STと平均スタート順位は過去走の傾向であり、今回のスタートを保証しません。外枠を順位だけで除外しません。買い目判断：保留（直線・モーター・各走のST・オッズ未確認）。';
+      analysis.appendChild(note);
+      result.replaceChildren(info,table,analysis);
+    } catch (e) { result.textContent = '表示できません：' + e.message; }
   });
 })();
 </script>
