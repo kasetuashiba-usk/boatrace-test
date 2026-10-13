@@ -9,6 +9,9 @@ on:
         required: true
         default: "11"
 
+permissions:
+  contents: write
+  
 jobs:
   fetch:
     runs-on: ubuntu-latest
