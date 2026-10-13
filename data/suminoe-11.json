@@ -1,0 +1,73 @@
+{
+  "venue": "suminoe",
+  "race": 11,
+  "fetched_at": "2026-10-13T20:32:27.067393+09:00",
+  "boats": [
+    {
+      "boat": 1,
+      "name": "鶴本",
+      "weight": "53.7",
+      "tilt": "-0.5",
+      "exhibition": "6.84",
+      "lap": "37.49",
+      "turn": "11.47",
+      "average_st": ".15",
+      "average_start_rank": "4.0"
+    },
+    {
+      "boat": 2,
+      "name": "高野",
+      "weight": "52.1",
+      "tilt": "-0.5",
+      "exhibition": "6.85",
+      "lap": "37.13",
+      "turn": "11.38",
+      "average_st": ".12",
+      "average_start_rank": "2.5"
+    },
+    {
+      "boat": 3,
+      "name": "鈴木",
+      "weight": "52.2",
+      "tilt": "-0.5",
+      "exhibition": "6.81",
+      "lap": "37.01",
+      "turn": "11.40",
+      "average_st": ".13",
+      "average_start_rank": "3.3"
+    },
+    {
+      "boat": 4,
+      "name": "野長瀬",
+      "weight": "52.0",
+      "tilt": "-0.5",
+      "exhibition": "6.85",
+      "lap": "37.00",
+      "turn": "11.43",
+      "average_st": ".10",
+      "average_start_rank": "2.7"
+    },
+    {
+      "boat": 5,
+      "name": "春園",
+      "weight": "52.1",
+      "tilt": "0.0",
+      "exhibition": "6.87",
+      "lap": "37.13",
+      "turn": "11.44",
+      "average_st": ".15",
+      "average_start_rank": "3.3"
+    },
+    {
+      "boat": 6,
+      "name": "森",
+      "weight": "52.6",
+      "tilt": "-0.5",
+      "exhibition": "6.85",
+      "lap": "37.33",
+      "turn": "11.46",
+      "average_st": ".11",
+      "average_start_rank": "3.2"
+    }
+  ]
+}
