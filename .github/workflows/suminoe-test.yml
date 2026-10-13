@@ -91,7 +91,7 @@ jobs:
 
           print("\n【今節スタートデータ】")
           print("艇 | 選手 | 平均ST | 平均スタート順位")
-                   if st is None:
+          if st is None:
               print("スタート表が見つかりません")
           else:
               for i in range(6):
