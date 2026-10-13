@@ -24,7 +24,7 @@ jobs:
                   if s:
                       self.parts.append(s)
 
-          url = "https://www.boatrace-suminoe.jp/asp/kyogi/12/sp/yoso0505.htm"
+          url = "https://www.boatrace-suminoe.jp/asp/kyogi/12/sp/yoso0511.htm"
           req = urllib.request.Request(
               url,
               headers={"User-Agent": "Mozilla/5.0"}
