@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Fetch and inspect Biwako exhibition and date clues
+      - name: Inspect Biwako race-date binding (read only)
         env:
           RACE: ${{ inputs.race }}
         run: |
@@ -24,92 +24,71 @@ jobs:
           import os, re, urllib.request
           from html.parser import HTMLParser
           from datetime import datetime, timezone, timedelta
+          from urllib.parse import urljoin
 
-          JST = timezone(timedelta(hours=9))
-          class Tables(HTMLParser):
+          class Inspector(HTMLParser):
               def __init__(self):
                   super().__init__()
                   self.tables=[]; self.stack=[]; self.row=None; self.cell=None
-                  self.visible=[]; self.capture_title=False; self.title=[]
-                  self.links=[]; self.meta=[]
-              def handle_starttag(self,tag,attrs):
+                  self.links=[]; self.current_link=None
+                  self.forms=[]; self.in_form=False
+                  self.fields=[]
+              def handle_starttag(self, tag, attrs):
                   a=dict(attrs)
-                  if tag=='title': self.capture_title=True
-                  if tag=='a' and a.get('href'): self.links.append(a['href'])
-                  if tag=='meta': self.meta.append(a)
                   if tag=='table': self.stack.append([])
                   elif self.stack and tag=='tr': self.row=[]
                   elif self.stack and tag in ('td','th') and self.row is not None: self.cell=[]
-              def handle_data(self,data):
-                  s=' '.join(data.split())
-                  if s: self.visible.append(s)
-                  if self.capture_title: self.title.append(data)
+                  if tag=='a': self.current_link=[a.get('href',''),[]]
+                  if tag=='form':
+                      self.in_form=True; self.forms.append({'action':a.get('action',''), 'method':a.get('method','GET')})
+                  if tag in ('input','select','option'):
+                      if self.in_form or any(k in str(a).lower() for k in ('date','race','day','hid','kaisai')):
+                          self.fields.append((tag,{k:v for k,v in a.items() if k in ('name','value','id','selected','type')}))
+              def handle_data(self, data):
                   if self.cell is not None: self.cell.append(data)
-              def handle_endtag(self,tag):
-                  if tag=='title': self.capture_title=False
+                  if self.current_link is not None: self.current_link[1].append(data)
+              def handle_endtag(self, tag):
                   if tag in ('td','th') and self.cell is not None and self.row is not None:
                       self.row.append(' '.join(''.join(self.cell).split())); self.cell=None
                   elif tag=='tr' and self.row is not None and self.stack:
                       self.stack[-1].append(self.row); self.row=None
                   elif tag=='table' and self.stack:
                       self.tables.append(self.stack.pop())
+                  if tag=='a' and self.current_link is not None:
+                      self.links.append((self.current_link[0],''.join(self.current_link[1]).strip()))
+                      self.current_link=None
+                  if tag=='form': self.in_form=False
 
           race=int(os.environ['RACE'])
-          if not 1<=race<=12: raise ValueError('race must be 1..12')
+          if not 1 <= race <= 12: raise ValueError('race must be 1..12')
           url=f'https://www.boatrace-biwako.jp/sp/index.php?page=yosou-cyokuzen&race={race}'
-          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (compatible; BoatraceResearch/1.0)'})
-          with urllib.request.urlopen(req,timeout=25) as resp:
-              raw=resp.read(); charset=resp.headers.get_content_charset() or 'utf-8'
-          html=raw.decode(charset,errors='replace')
-          p=Tables();p.feed(html)
-          now=datetime.now(JST)
-          print('JST fetched:',now.isoformat())
-          print('Source:',url)
-          print('HTML bytes:',len(raw),'tables:',len(p.tables))
-          print('Page title:', ''.join(p.title).strip())
-          print('First 45 visible text fragments:', repr(p.visible[:45]))
-          dateish=re.compile(r'20\d{2}[/.-]\d{1,2}[/.-]\d{1,2}|\d{1,2}月\d{1,2}日|\d{1,2}/\d{1,2}|target_day|resultday|kaisai|schedule|date',re.I)
-          print('Date-related visible fragments:',repr([x for x in p.visible if dateish.search(x)][:35]))
-          print('Date-related links:',repr([x for x in p.links if dateish.search(x)][:35]))
-          print('Relevant meta:',repr([x for x in p.meta if dateish.search(str(x))][:15]))
-          # Extract the highlighted day only from the schedule-area block.
-          schedule=re.search(r'<table\b[^>]*class=[\"\'][^\"\']*schedule-area[^\"\']*[\"\'][^>]*>.*?</table>', html, re.I|re.S)
-          schedule_html=schedule.group(0) if schedule else ''
-          months=re.findall(r'class=[\"\']schedule-area__month[\"\'][^>]*>\s*(\d{1,2})/',schedule_html,re.I)
-          current_days=re.findall(r'<dd\b[^>]*class=[\"\'][^\"\']*\bcurrent\b[^\"\']*[\"\'][^>]*>\s*<p\b[^>]*class=[\"\']item-day[\"\'][^>]*>\s*(\d{1,2})\s*</p>',schedule_html,re.I|re.S)
-          print('Schedule months:',months)
-          print('Schedule highlighted days:',current_days)
-          print('JST today month/day:',f'{now.month}/{now.day}')
-          print('NOTICE: highlighted day is only the website UI, NOT proof of exhibition record date.')
-          print('Race-labelled text:',repr([x for x in p.visible if re.search(r'(^|\s)'+str(race)+r'\s*R|'+str(race)+r'レース', x, re.I)][:12]))
-          print('HTML date token contexts:')
-          for m in list(dateish.finditer(html))[:20]:
-              snippet=re.sub(r'\s+',' ',html[max(0,m.start()-80):min(len(html),m.end()+80)])
-              print(' ',repr(snippet))
+          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'})
+          with urllib.request.urlopen(req,timeout=25) as response:
+              raw=response.read()
+              encoding=response.headers.get_content_charset() or 'utf-8'
+          html=raw.decode(encoding,errors='replace')
+          p=Inspector();p.feed(html)
+          now=datetime.now(timezone(timedelta(hours=9)))
+          print('Fetched JST:',now.isoformat(),'requested race:',race)
+          print('Source:',url,'HTML bytes:',len(raw))
+          print('Forms:',p.forms[:15])
+          print('Form/date/race fields:',p.fields[:40])
+          print('Race/date-relevant links:')
+          matched=[(h,t) for h,t in p.links if re.search(r'(race=|rno=|date=|day=|hid=|直前情報|出走表|結果)',h+' '+t,re.I)]
+          for href,txt in matched[:45]: print('LINK:',repr(txt[:40]),repr(href[:180]))
+          print('Potential date/race attributes:')
+          for m in list(re.finditer(r'(?:race|date|day|ymd|hid|kaisai)[^\n<>]{0,110}',html,re.I))[:35]:
+              print('HTML:',re.sub(r'\s+',' ',m.group(0))[:135])
 
-          candidates=[]
-          for table in p.tables:
-              heading=' '.join(' '.join(row) for row in table[:5])
-              if all(k in heading for k in ('一周','まわり足','直線')): candidates.append(table)
-          if not candidates: raise RuntimeError('Original-exhibition table not found')
-          table=candidates[-1]
-          print('Candidate table row count:',len(table))
+          tables=[t for t in p.tables if all(x in ' '.join(' '.join(r) for r in t[:5]) for x in ('一周','まわり足','直線'))]
+          if not tables: raise RuntimeError('Exhibition table not found')
           valid={}
-          for row in table:
-              if not row or row[0] not in [str(i) for i in range(1,7)]: continue
-              if len(row)<7: continue
-              try:
-                  # Fixed columns, not loose matching of decimals
-                  weight,tilt,exhibition,lap,turn,straight=map(float,row[1:7])
-              except ValueError:
-                  continue
-              if not (40<=weight<=80 and -1<=tilt<=3 and 5<=exhibition<=9 and
-                      25<=lap<=50 and 3<=turn<=8 and 6<=straight<=11): continue
-              valid[int(row[0])] = row[:7]
-          print('boat | weight | tilt | exhibition | lap | turn | straight')
-          for boat in sorted(valid): print(' | '.join(valid[boat]))
-          if len(valid)!=6: raise RuntimeError(f'Only {len(valid)}/6 valid exhibition rows. No JSON saved.')
-          print('PASS: 6/6 exhibition rows parsed.')
-          print('HOLD: No reliable binding between schedule highlighted day and exhibition record. No JSON saved.')
-          print('TEST ONLY: no app data overwritten or committed.')
+          for row in tables[-1]:
+              if row and row[0] in tuple(map(str,range(1,7))):
+                  if len(row)>=7 and all(re.fullmatch(r'\d{1,2}\.\d{1,2}',x) for x in row[1:7]):
+                      valid[int(row[0])]=row
+          for boat,row in sorted(valid.items()): print('BOAT:',boat,'VALUES:',row[1:7])
+          if len(valid)!=6: raise RuntimeError(f'Only {len(valid)}/6 boats validated')
+          print('PASS: 6/6 exhibition rows read.')
+          print('HOLD: displayed schedule date is not sufficient to prove record date. No JSON saved.')
           PY
