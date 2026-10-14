@@ -3,7 +3,7 @@ name: Biwako Scheduled Provisional Collector
 on:
   schedule:
     # Every 10 minutes 09:01-16:51 JST; execution can be delayed.
-    - cron: '7,17,27,37,47,57 0-7 * * *'
+    - cron: '1,11,21,31,41,51 0-7 * * *'
   workflow_dispatch:
     inputs:
       race:
@@ -12,13 +12,15 @@ on:
         default: '8'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   inspect:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
+      - name: Checkout repository for provisional JSON publishing
+        uses: actions/checkout@v4
       - name: Select race from today's official closing times
         id: select
         env:
@@ -456,3 +458,40 @@ jobs:
           path: test-output/biwako-auto-*-provisional.json
           if-no-files-found: error
           retention-days: 14
+
+      - name: Publish provisional snapshot for v13 (public, not prediction-approved)
+        if: ${{ steps.select.outputs.race != '' }}
+        env:
+          RACE: ${{ env.TARGET_RACE }}
+        run: |
+          python3 - <<'PY'
+          import json, os, shutil
+          from datetime import datetime, timezone, timedelta
+          from pathlib import Path
+          now = datetime.now(timezone(timedelta(hours=9)))
+          race = int(os.environ['RACE'])
+          day = now.strftime('%Y%m%d')
+          src = Path(f'test-output/biwako-auto-{day}-{race:02d}R-provisional.json')
+          data = json.loads(src.read_text(encoding='utf-8'))
+          if (data.get('venue') != 'biwako' or data.get('race') != race
+              or data.get('date_jst') != now.date().isoformat()
+              or data.get('production_approved') is not False
+              or len(data.get('boats', [])) != 6
+              or len(data.get('odds_3t', {})) + len(data.get('unavailable_combinations', [])) != 120):
+              raise RuntimeError('Provisional data validation failed, not publishing')
+          dest = Path(f'data/live/biwako-{day}-{race:02d}R.json')
+          dest.parent.mkdir(parents=True, exist_ok=True)
+          shutil.copyfile(src, dest)
+          print('Prepared PUBLIC provisional file:', dest)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/live/
+          if git diff --cached --quiet; then
+            echo 'No changes to publish'
+            exit 0
+          fi
+          git commit -m "Publish provisional Biwako data (NOT production-approved)"
+          # Rebase against concurrent updates, but never silently drop errors.
+          git pull --rebase origin main
+          git push origin HEAD:main
