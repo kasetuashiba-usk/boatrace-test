@@ -1,0 +1,177 @@
+name: Biwako Odds 120 Parse Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      race:
+        description: 'Race number (1-12); choose a race with published odds'
+        required: true
+        default: '8'
+      race_date:
+        description: 'Race date YYYYMMDD (JST)'
+        required: true
+        default: '20261014'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Parse 120 trifecta odds and validate
+        env:
+          RACE: ${{ inputs.race }}
+          RACE_DATE: ${{ inputs.race_date }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, urllib.request
+          from datetime import datetime, timezone, timedelta
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          JST = timezone(timedelta(hours=9))
+          now = datetime.now(JST)
+          race = int(os.environ['RACE'])
+          day = os.environ['RACE_DATE']
+          if not (1 <= race <= 12) or not re.fullmatch(r'\d{8}', day):
+              raise ValueError('Invalid race or YYYYMMDD date')
+          datetime.strptime(day, '%Y%m%d')
+          url = f'https://www.boatrace.jp/owpc/pc/race/odds3t?hd={day}&jcd=11&rno={race}'
+
+          class Tables(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.tables = []
+                  self.table = None
+                  self.row = None
+                  self.cell = None
+              def handle_starttag(self, tag, attrs):
+                  if tag == 'table':
+                      self.table = []
+                  elif tag == 'tr' and self.table is not None:
+                      self.row = []
+                  elif tag in ('td','th') and self.row is not None:
+                      self.cell = []
+              def handle_data(self, data):
+                  if self.cell is not None:
+                      self.cell.append(data)
+              def handle_endtag(self, tag):
+                  if tag in ('td','th') and self.cell is not None:
+                      self.row.append(' '.join(''.join(self.cell).split()))
+                      self.cell = None
+                  elif tag == 'tr' and self.row is not None:
+                      self.table.append(self.row)
+                      self.row = None
+                  elif tag == 'table' and self.table is not None:
+                      self.tables.append(self.table)
+                      self.table = None
+
+          req = urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0'})
+          with urllib.request.urlopen(req, timeout=25) as resp:
+              raw = resp.read()
+              charset = resp.headers.get_content_charset() or 'utf-8'
+          html = raw.decode(charset, errors='replace')
+          p = Tables(); p.feed(html)
+          print('SOURCE:', url)
+          print('FETCHED JST:', now.isoformat())
+          print('HTML bytes:',len(raw),'tables:',len(p.tables))
+          mt = re.search(r'オッズ更新時間\s*(\d{1,2}:\d{2})', re.sub(r'<[^>]*>', ' ',html))
+          odds_update_hhmm = mt.group(1) if mt else None
+          print('ODDS UPDATE TIME (site text):', odds_update_hhmm)
+
+          # Official HTML is a 6-column layout: each column has one first-place boat,
+          # five second-place sections, four third-place/odds rows per section.
+          candidates = [t for t in p.tables if len(t) == 21 and len(t[0]) >= 12]
+          if len(candidates) != 1:
+              raise RuntimeError(f'Expected exactly one 21-row odds table, got {len(candidates)}. Not saving.')
+          table = candidates[0]
+          header = table[0]
+          firsts = []
+          for col in range(6):
+              i = 2*col
+              if i >= len(header):
+                  raise RuntimeError('Unexpected header layout; no JSON saved')
+              first = header[i].strip()
+              if first not in '123456' or len(first) != 1:
+                  raise RuntimeError('Unexpected first-place boat header; no JSON saved')
+              firsts.append(int(first))
+          if sorted(firsts) != list(range(1,7)):
+              raise RuntimeError('First-place boat headers are not 1..6; no JSON saved')
+
+          odds = {}
+          unavailable = []
+          for col, first in enumerate(firsts):
+              for section in range(5):
+                  second = None
+                  for offset in range(4):
+                      row_index = 1 + section*4 + offset
+                      row = table[row_index]
+                      # First row of each group: second / third / odds for every column (18 cells).
+                      # Following rows: third / odds for every column (12 cells).
+                      start = col * (3 if offset == 0 else 2)
+                      expected = 18 if offset == 0 else 12
+                      if len(row) != expected:
+                          raise RuntimeError(f'Unexpected row {row_index}: {len(row)} cells, expected {expected}; no JSON saved')
+                      fields = row[start:start + (3 if offset == 0 else 2)]
+                      if offset == 0:
+                          second_text, third_text, value_text = fields
+                          if second_text not in '123456' or len(second_text) != 1:
+                              raise RuntimeError(f'Bad second-place boat in row {row_index}')
+                          second = int(second_text)
+                      else:
+                          third_text, value_text = fields
+                      if third_text not in '123456' or len(third_text) != 1:
+                          raise RuntimeError(f'Bad third-place boat in row {row_index}')
+                      third = int(third_text)
+                      if len({first,second,third}) != 3:
+                          raise RuntimeError(f'Duplicate boat in {first}-{second}-{third}')
+                      key = f'{first}-{second}-{third}'
+                      if key in odds or key in unavailable:
+                          raise RuntimeError(f'Duplicate combination: {key}')
+                      value_text = value_text.replace(',','').strip()
+                      if re.fullmatch(r'\d+(?:\.\d+)?', value_text):
+                          value = float(value_text)
+                          if value <= 0:
+                              raise RuntimeError(f'Non-positive odds: {key}')
+                          odds[key] = value
+                      elif value_text in ('-', '－', '—', '欠場', '発売なし', ''):
+                          unavailable.append(key)
+                      else:
+                          raise RuntimeError(f'Unexpected odds value for {key}: {value_text!r}')
+          all_combinations = {f'{a}-{b}-{c}' for a in range(1,7) for b in range(1,7) for c in range(1,7) if len({a,b,c}) == 3}
+          if set(odds).union(unavailable) != all_combinations:
+              missing = sorted(all_combinations - set(odds) - set(unavailable))
+              raise RuntimeError(f'Expected 120 combinations; missing: {missing[:12]}')
+          print('PASS: 120/120 unique combinations mapped; numeric:',len(odds),'unavailable:',len(unavailable))
+          print('SAMPLE:', dict(list(sorted(odds.items()))[:12]))
+          if unavailable: print('UNAVAILABLE EXAMPLES:', unavailable[:12])
+          # Deliberately unapproved: odds freshness, site date, and live-before-close
+          # status are not independently verified by this parser.
+          output = {
+              'venue':'biwako','venue_code':'11','race':race,
+              'requested_date_jst':f'{day[:4]}-{day[4:6]}-{day[6:]}',
+              'fetched_at_jst':now.isoformat(),
+              'odds_update_hhmm_site':odds_update_hhmm,
+              'source_url':url,
+              'bet_type':'trifecta',
+              'odds':odds,
+              'unavailable_combinations':sorted(unavailable),
+              'date_verified':False,
+              'pre_close_verified':False,
+              'production_approved':False,
+          }
+          Path('test-output').mkdir(exist_ok=True)
+          path = Path('test-output')/f'biwako-odds-{day}-{race:02}R-provisional.json'
+          path.write_text(json.dumps(output,ensure_ascii=False,indent=2),encoding='utf-8')
+          print('PROVISIONAL JSON:',path)
+          print('DO NOT USE IN PRODUCTION: exact record date and pre-close status unverified')
+          PY
+      - name: Upload test-only odds JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: biwako-odds-120-test
+          path: test-output/*.json
+          if-no-files-found: error
+          retention-days: 7
