@@ -1,0 +1,77 @@
+name: Biwako Official Trifecta Odds Diagnostic
+
+on:
+  workflow_dispatch:
+    inputs:
+      race:
+        description: 'Race number (1-12), preferably before cutoff'
+        required: true
+        default: '8'
+      race_date:
+        description: 'Race date YYYYMMDD (empty = today JST)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Inspect BOATRACE official trifecta odds page
+        env:
+          RACE: ${{ inputs.race }}
+          RACE_DATE: ${{ inputs.race_date }}
+        run: |
+          python3 - <<'PY'
+          import os, re, urllib.request
+          from html.parser import HTMLParser
+          from datetime import datetime, timezone, timedelta
+
+          class Page(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.tables=[]; self.stack=[]; self.row=None; self.cell=None; self.text=[]; self.skip=0
+              def handle_starttag(self,tag,attrs):
+                  if tag in ('script','style'): self.skip+=1
+                  if tag=='table': self.stack.append([])
+                  elif self.stack and tag=='tr': self.row=[]
+                  elif self.stack and tag in ('td','th') and self.row is not None: self.cell=[]
+              def handle_data(self,data):
+                  s=' '.join(data.split())
+                  if self.cell is not None: self.cell.append(data)
+                  if s and not self.skip: self.text.append(s)
+              def handle_endtag(self,tag):
+                  if tag in ('td','th') and self.cell is not None and self.row is not None:
+                      self.row.append(' '.join(''.join(self.cell).split())); self.cell=None
+                  elif tag=='tr' and self.row is not None and self.stack:
+                      self.stack[-1].append(self.row); self.row=None
+                  elif tag=='table' and self.stack: self.tables.append(self.stack.pop())
+                  if tag in ('script','style') and self.skip: self.skip-=1
+
+          jst=timezone(timedelta(hours=9))
+          now=datetime.now(jst)
+          race=int(os.environ['RACE'])
+          if not 1 <= race <= 12: raise ValueError('Race must be 1..12')
+          date=os.environ.get('RACE_DATE','').strip() or now.strftime('%Y%m%d')
+          if not re.fullmatch(r'\d{8}',date): raise ValueError('race_date must be YYYYMMDD')
+          datetime.strptime(date,'%Y%m%d')
+          # Biwako venue code: 11. Query parameters explicitly bind date and race.
+          url=f'https://www.boatrace.jp/owpc/pc/race/odds3t?hd={date}&jcd=11&rno={race}'
+          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'})
+          with urllib.request.urlopen(req,timeout=25) as resp:
+              raw=resp.read(); charset=resp.headers.get_content_charset() or 'utf-8'
+          html=raw.decode(charset,errors='replace'); p=Page(); p.feed(html)
+          print('FETCHED JST:',now.isoformat())
+          print('REQUESTED DATE:',date,'VENUE: 11 (Biwako)','RACE:',race)
+          print('URL:',url,'BYTES:',len(raw),'TABLES:',len(p.tables))
+          for term in ('3連単オッズ','オッズ更新時間','締切時オッズ','発売中','レースはありません'):
+              matches=[i for i,x in enumerate(p.text) if term in x]
+              print('TEXT TERM:',term,'MATCHES:',len(matches))
+              for i in matches[:2]: print('CONTEXT:',repr(p.text[max(0,i-3):i+8]))
+          for i,t in enumerate(p.tables):
+              print('TABLE',i,'ROWS',len(t))
+              for row in t[:8]: print('ROW:',repr(row[:16]))
+          print('DIAGNOSTIC ONLY: no 120-combination parsing, no JSON generated, no app changed.')
+          PY
