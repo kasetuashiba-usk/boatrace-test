@@ -3,7 +3,7 @@ name: Biwako Scheduled Provisional Collector
 on:
   schedule:
     # Every 10 minutes 09:01-16:51 JST; execution can be delayed.
-    - cron: '1,11,21,31,41,51 0-7 * * *'
+    - cron: '7,17,27,37,47,57 0-7 * * *'
   workflow_dispatch:
     inputs:
       race:
