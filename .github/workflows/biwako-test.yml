@@ -72,6 +72,16 @@ jobs:
           print('Date-related visible fragments:',repr([x for x in p.visible if dateish.search(x)][:35]))
           print('Date-related links:',repr([x for x in p.links if dateish.search(x)][:35]))
           print('Relevant meta:',repr([x for x in p.meta if dateish.search(str(x))][:15]))
+          # Extract the highlighted day only from the schedule-area block.
+          schedule=re.search(r'<table\b[^>]*class=[\"\'][^\"\']*schedule-area[^\"\']*[\"\'][^>]*>.*?</table>', html, re.I|re.S)
+          schedule_html=schedule.group(0) if schedule else ''
+          months=re.findall(r'class=[\"\']schedule-area__month[\"\'][^>]*>\s*(\d{1,2})/',schedule_html,re.I)
+          current_days=re.findall(r'<dd\b[^>]*class=[\"\'][^\"\']*\bcurrent\b[^\"\']*[\"\'][^>]*>\s*<p\b[^>]*class=[\"\']item-day[\"\'][^>]*>\s*(\d{1,2})\s*</p>',schedule_html,re.I|re.S)
+          print('Schedule months:',months)
+          print('Schedule highlighted days:',current_days)
+          print('JST today month/day:',f'{now.month}/{now.day}')
+          print('NOTICE: highlighted day is only the website UI, NOT proof of exhibition record date.')
+          print('Race-labelled text:',repr([x for x in p.visible if re.search(r'(^|\s)'+str(race)+r'\s*R|'+str(race)+r'レース', x, re.I)][:12]))
           print('HTML date token contexts:')
           for m in list(dateish.finditer(html))[:20]:
               snippet=re.sub(r'\s+',' ',html[max(0,m.start()-80):min(len(html),m.end()+80)])
@@ -100,6 +110,6 @@ jobs:
           for boat in sorted(valid): print(' | '.join(valid[boat]))
           if len(valid)!=6: raise RuntimeError(f'Only {len(valid)}/6 valid exhibition rows. No JSON saved.')
           print('PASS: 6/6 exhibition rows parsed.')
-          print('HOLD: Race date is not verified against exhibition data. No JSON saved.')
+          print('HOLD: No reliable binding between schedule highlighted day and exhibition record. No JSON saved.')
           print('TEST ONLY: no app data overwritten or committed.')
           PY
