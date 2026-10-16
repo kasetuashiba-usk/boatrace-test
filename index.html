@@ -1,3 +1,1910 @@
+a<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>競艇予想データ V96・スマホ整理版</title><style>body{font:15px system-ui,sans-serif;background:#f1f4f8;color:#182536;max-width:1150px;margin:15px auto;padding:0 12px}section{background:white;padding:16px;margin:12px 0;border-radius:12px}h1{font-size:22px}h2{font-size:18px}button,input,select,textarea{font:inherit;padding:9px;border-radius:6px;border:1px solid #ccd3dd}button{background:#1658a6;color:white;border:0;cursor:pointer}button:disabled{opacity:.5}textarea{width:96%;min-height:65px}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}.boat{padding:10px;border:1px solid #ddd;border-radius:8px}.boat strong{font-size:18px}.boat:nth-child(1){border-top:7px solid #c7c7c7}.boat:nth-child(2){border-top:7px solid #292929}.boat:nth-child(3){border-top:7px solid #d44}.boat:nth-child(4){border-top:7px solid #2878c8}.boat:nth-child(5){border-top:7px solid #d8bb1b}.boat:nth-child(6){border-top:7px solid #3eab69}small,.muted{color:#687586}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:280px;overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}td,th{border-bottom:1px solid #ddd;padding:6px;text-align:left}#status{font-weight:600}details{margin-top:12px} .ok{color:#137341}.warn{color:#ae6400} .scroll{overflow-x:auto}.comparison{min-width:880px}.comparison th{background:#edf2f9;white-space:nowrap}.comparison td{white-space:nowrap}.comparison td:first-child{font-weight:bold}.boat1{background:#e5e5e5;color:#222}.boat2{background:#292929;color:#fff}.boat3{background:#d94343;color:#fff}.boat4{background:#2878c8;color:#fff}.boat5{background:#e1c322;color:#222}.boat6{background:#319b60;color:#fff}.num{display:inline-block;padding:4px 9px;border-radius:5px}.tiny{font-size:11px}.pill{background:#edf3ff;padding:3px 6px;border-radius:5px}.note{font-size:12px;color:#5a6b7d} .venues{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:7px}.venueBtn{background:#e9eef6;color:#1c324a;border:1px solid #cbd5e1;text-align:left}.venueBtn.active{background:#1558a6;color:white}.races{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.raceBtn{background:#eaf0f8;color:#193b63}.raceBtn.active{background:#1558a6;color:white}.sticky{position:sticky;top:0;z-index:2;background:#f1f4f8;padding:6px 0}.info{background:#f3f7fd;border-left:4px solid #3974b8;padding:10px}.grid-note{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.chips{display:flex;flex-wrap:wrap;gap:5px}.chips button{font-size:12px;padding:6px;background:#e9eff7;color:#1c324a}.chips button.chosen{background:#225da0;color:white}@media(max-width:600px){.races{grid-template-columns:repeat(4,minmax(0,1fr))}section{padding:12px}}  .nexttime{display:block;font-size:12px;font-weight:700;margin-top:5px}.nexttime.unknown{font-size:10px;font-weight:400}.vstat{display:block;font-size:10px;opacity:.85;margin-top:3px}.venueBtn.has{border-color:#23744c;background:#e7f7ee}.venueBtn.none{opacity:.55}.venueBtn.active{background:#1558a6;color:#fff;opacity:1}.raceBtn.has{box-shadow:inset 0 -3px #299f64}.raceBtn.none{opacity:.5}.deadline{font-size:10px;display:block;margin-top:3px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.secondary{background:#e9eef6;color:#193b63}.warnbox{background:#fff8e8;padding:10px;border-radius:8px;border-left:3px solid #d9a044}  .venueBtn{min-height:77px;display:flex;flex-direction:column;justify-content:center;gap:2px}.venueBtn .nexttime{font-size:12px;line-height:1.3;margin-top:2px}.venueBtn .nexttime.unknown{font-size:10px}.venueBtn .vstat{margin-top:1px}.venueBtn.urgent{border:2px solid #dc463f;background:#fff0ed;color:#84251f}.venueBtn.soon{border:2px solid #e8a329;background:#fff5dd;color:#704800}.venueBtn.active.urgent,.venueBtn.active.soon{background:#1558a6;color:white}.venueBtn .remaining{font-weight:700;font-size:11px} .odds-wrap{overflow-x:auto;max-width:100%;padding-bottom:8px}.odds-grid{display:grid;grid-template-columns:repeat(6,minmax(112px,1fr));gap:5px;min-width:700px}.odds-col{border:1px solid #cdd3da;background:white}.odds-head{font-weight:800;text-align:center;padding:8px 2px;color:#172331}.odds-entry{display:grid;grid-template-columns:20px 20px minmax(0,1fr);height:27px;align-items:center;border-bottom:1px solid #e0e3e8;font-size:12px;font-variant-numeric:tabular-nums}.odds-entry.group-start{border-top:3px solid #aab3c0}.odds-entry .pos{height:100%;display:flex;align-items:center;justify-content:center;font-weight:700}.odds-entry .val{text-align:right;padding:0 5px;white-space:nowrap;font-weight:650}.odds-entry .val.high{color:#cb1c27}.odds-entry.selected{outline:2px solid #e69e12;outline-offset:-2px;background:#fff7d9}.odds-entry:not(.missing){cursor:pointer}.odds-entry.missing{opacity:.6}.odds-summary{font-size:13px;margin:8px 0}.odds-legend{font-size:12px;color:#576576;margin:6px 0 12px}@media(max-width:700px){.odds-grid{min-width:750px}.odds-entry{font-size:12px}} </style><style>
+.odds-grid{grid-template-columns:repeat(6,minmax(140px,1fr));gap:4px;min-width:880px}
+.odds-col{border:1px solid #cbd1d9}
+.odds-head{min-height:33px;padding:7px 3px;font-size:12px;display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.odds-entry{grid-template-columns:22px 26px minmax(0,1fr);height:29px;font-size:13px;border-bottom:1px solid #d9dee5}
+.odds-entry.group-start{border-top:1px solid #cbd1d9}
+.odds-entry .pos{font-weight:750}
+.odds-entry .val{padding:0 7px;font-size:13px;font-weight:650}
+.odds-entry .val.high{color:#b91c1c}
+.odds-entry.selected{outline:2px solid #d39c14;background:#fff5cc}
+.odds-second{grid-row:span 4;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;border-top:1px solid #cbd1d9}
+.odds-group{display:grid;grid-template-columns:22px minmax(0,1fr);grid-template-rows:repeat(4,29px);border-top:2px solid #e1e5eb}
+.odds-group .odds-entry{grid-column:2;grid-template-columns:26px minmax(0,1fr);height:29px}
+.odds-group .odds-entry.group-start{border-top:0}
+@media(max-width:700px){.odds-grid{min-width:900px}}
+</style><style>
+/* V12: Native table rowspan guarantees the second-place cell spans exactly four rows. */
+.odds-grid{grid-template-columns:repeat(6,minmax(145px,1fr));gap:5px;min-width:930px;align-items:start}
+.odds-col{min-width:0;overflow:hidden}
+.odds-head{height:36px;min-height:36px;box-sizing:border-box;line-height:1.2;font-size:12px}
+.odds-table{border-collapse:collapse;border-spacing:0;width:100%;table-layout:fixed;font-size:13px}
+.odds-table .second{width:23px;text-align:center;padding:0;font-size:14px;font-weight:800;vertical-align:middle;border:1px solid #cdd3dc}
+.odds-table .third{width:27px;text-align:center;padding:0;font-weight:750;border:1px solid #dce1e8}
+.odds-table .price{text-align:right;padding:0 6px;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600;border:1px solid #dce1e8}
+.odds-table .price.high{color:#bf1717}
+.odds-table .odds-row{height:29px;box-sizing:border-box}
+.odds-table .odds-row.group-start{border-top:2px solid #aeb7c5}
+.odds-table .odds-row:not(.missing){cursor:pointer}
+.odds-table .odds-row.selected .price{background:#fff0b9;box-shadow:inset 0 0 0 2px #c48a11}
+.odds-table .odds-row.missing .price{color:#9aa3af}
+</style><style>
+/* V12: screenshot-matched, true HTML table cells, four-row second-place groups */
+#odds .odds-grid{display:grid;grid-template-columns:repeat(6,minmax(150px,1fr));gap:3px;min-width:930px;align-items:start}
+#odds .odds-col{border:0;min-width:0;overflow:visible}
+#odds .odds-head{display:flex;align-items:center;justify-content:center;height:30px;min-height:30px;padding:0 2px;box-sizing:border-box;font-size:12px;font-weight:800;color:inherit}
+#odds .odds-head.boat2,#odds .odds-head.boat3,#odds .odds-head.boat4,#odds .odds-head.boat6{color:#fff}
+#odds table.odds-table{width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0;font-size:12px;margin:0}
+#odds table.odds-table tbody tr.odds-row{height:30px;max-height:30px;box-sizing:border-box}
+#odds table.odds-table tbody tr.odds-row.group-start{border-top:2px solid #c8d0d9}
+#odds table.odds-table th.second{width:24px;min-width:24px;max-width:24px;padding:0;text-align:center;vertical-align:middle;font-size:13px;font-weight:800;border:1px solid #d9dfe5;box-sizing:border-box}
+#odds table.odds-table td.third{width:26px;min-width:26px;max-width:26px;padding:0;text-align:center;vertical-align:middle;font-size:12px;font-weight:800;border:1px solid #d9dfe5;box-sizing:border-box}
+#odds table.odds-table td.price{padding:0 6px;text-align:right;vertical-align:middle;white-space:nowrap;font-size:12px;font-weight:600;border:1px solid #d9dfe5;font-variant-numeric:tabular-nums;box-sizing:border-box}
+#odds table.odds-table td.price.high{color:#bf1717}
+#odds table.odds-table tr.odds-row.selected td.price{background:#fff1b6;box-shadow:inset 0 0 0 2px #b77900}
+#odds .odds-wrap{overflow-x:auto;width:100%;padding-bottom:12px}
+</style><style>
+/* V14: time rankings, separate from boat-color semantics */
+.comparison td.time-first{background:#e53e3e!important;color:#fff!important;font-weight:800}
+.comparison td.time-second{background:#ffe15a!important;color:#171717!important;font-weight:800}
+.comparison td{white-space:nowrap}
+</style><style>
+/* V27: keep boat number and name visible during horizontal comparison scrolling */
+#compare.scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;position:relative}
+#compare .comparison{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%}
+#compare .comparison th:nth-child(1),#compare .comparison td:nth-child(1){position:sticky;left:0;z-index:3;min-width:34px;box-sizing:border-box;background:#fff}
+#compare .comparison th:nth-child(2),#compare .comparison td:nth-child(2){position:sticky;left:34px;z-index:3;min-width:100px;box-sizing:border-box;background:#fff;box-shadow:3px 0 5px -3px #64748b}
+#compare .comparison th:nth-child(1),#compare .comparison th:nth-child(2){z-index:4;background:#edf2f9}
+#compare .comparison td:nth-child(1){padding-left:5px;padding-right:5px;width:34px;min-width:34px;max-width:34px}
+#compare .comparison td:nth-child(2){padding-left:6px;padding-right:6px}
+@media(max-width:600px){#compare .comparison{font-size:11px}#compare .comparison td,#compare .comparison th{padding-top:7px;padding-bottom:7px}#compare .comparison td:nth-child(2),#compare .comparison th:nth-child(2){min-width:90px}}
+@media(max-width:600px){
+ body{margin:0;padding:0 7px;font-size:14px;overflow-x:hidden}
+ section{margin:8px 0;padding:10px;min-width:0}
+ .venues{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .venueBtn{min-width:0;min-height:70px;padding:8px 5px;font-size:13px;touch-action:manipulation;cursor:pointer}
+ .races{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .raceBtn{min-height:48px;touch-action:manipulation;cursor:pointer}
+ .row select,.row input{max-width:100%;min-height:44px;font-size:16px}
+ .row label{min-width:0}
+ .toolbar button{min-height:44px}
+}
+.venueBtn,.raceBtn{position:relative;pointer-events:auto;user-select:none;-webkit-tap-highlight-color:rgba(21,88,166,.15)}
+</style><style id="v63-style">
+#v63Dashboard{background:#fff;border:1px solid #d9e2ee;border-radius:12px;padding:16px;margin-bottom:12px}
+#v63Dashboard h2{margin:0 0 6px;font-size:19px}
+.v63metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:13px 0}
+.v63metric{background:#f2f6fb;border-radius:9px;padding:12px 9px;min-width:0}
+.v63metric .v63val{font-weight:800;font-size:27px;font-variant-numeric:tabular-nums;line-height:1.4}
+.v63metric .v63lab{font-size:12px;color:#526479}
+#v63toggle{width:100%;margin-top:10px;padding:12px;background:#e7eef8;color:#183957}
+body:not(.v63-expanded) #v47summary,body:not(.v63-expanded) #v54stages,body:not(.v63-expanded) #v60audit,body:not(.v63-expanded) #v61audit,
+body:not(.v63-expanded) #verificationV45,body:not(.v63-expanded) #validationV46{display:none!important}
+body:not(.v63-expanded) #v47export,body:not(.v63-expanded) #v60export{display:none!important}
+#v63Dashboard .v63note{font-size:12px;color:#5b6c7f;margin:6px 0}
+@media(max-width:600px){.v63metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.v63metric .v63val{font-size:24px}}
+</style><style id="v62-layout">
+#v62Nav{position:sticky;top:0;z-index:50;background:#f1f4f8;padding:8px 0 11px;border-bottom:1px solid #d7dfe8;margin-bottom:12px}
+#v62Nav .v62tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+#v62Nav button{padding:13px 7px;background:white;color:#213d61;border:1px solid #cbd6e3;font-weight:750;font-size:15px}
+#v62Nav button[aria-selected="true"]{background:#1558a6;color:white;border-color:#1558a6}
+#v62Nav p{font-size:12px;margin:6px 0 0;color:#687586}
+body[data-v62-mode="forecast"] section[data-v62-tab]:not([data-v62-tab="forecast"]),
+body[data-v62-mode="review"] section[data-v62-tab]:not([data-v62-tab="review"]),
+body[data-v62-mode="settings"] section[data-v62-tab]:not([data-v62-tab="settings"]){display:none!important}
+.v62details{background:#f4f7fb;border-radius:7px;padding:9px;margin-top:12px}
+.v62details>summary{cursor:pointer;color:#27476a;font-weight:700}
+.v62details pre{max-height:230px}
+#v62Intro{background:#fff;border-left:4px solid #1558a6;padding:12px;margin:9px 0 10px;border-radius:6px;font-size:13px}
+@media(max-width:600px){#v62Nav button{font-size:14px;padding:12px 4px}#v62Intro{font-size:12px}}
+</style><style>
+#v81Quick{position:sticky;top:0;z-index:40;background:#fff;border:1px solid #d5dfec;border-radius:10px;padding:10px 12px;box-shadow:0 3px 12px #1d3a5b15;margin:10px 0}
+#v81Quick .v81actions{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+#v81Quick button{font-size:13px;padding:9px 11px;background:#1558a6}
+#v81Quick button.secondary{background:#e8eff9;color:#164d90}
+#v81Quick button:disabled{background:#dce2e8;color:#687586;opacity:1}
+#v81Progress{font-size:12px;color:#37506b;margin-top:7px}
+#v81Guide{font-size:12px;color:#617084;margin:4px 0 8px}
+@media(max-width:600px){#v81Quick button{flex:1 1 43%}}
+</style><h1>競艇予想データ V96・一覧整理済み</h1><p id="v95-marker" style="font-size:12px;color:#53627a">スマホ版 V96｜一覧1つに整理済み</p><div id="v81Quick" role="region" aria-label="予想クイック操作"><strong>予想のかんたん操作</strong><div id="v81Guide">① レースを選択　② データ取得　③ 6艇を確認　④ ChatGPTへコピー</div><div class="v81actions"><button type="button" id="v81Select">① レース選択</button><button type="button" id="v81Load">② データ取得</button><button type="button" id="v81Compare" class="secondary">③ 6艇比較へ</button><button type="button" id="v81Copy" disabled>④ 予想用コピー</button></div><div id="v81Progress" aria-live="polite">レースを選び、データ取得してください。</div></div><section class="legacy-venue-section" data-v62-tab="forecast"><h2>全国24場から選択</h2><p class="note">場・レースを選ぶと下の選択欄に反映されます。開催の有無はデータ取得後に判定します。次の締切はCSVに時刻がある場合のみ表示し、残り時間は日本時間で計算します。</p><div class="toolbar"><button id="schedule">開催一覧を取得・更新</button><label><input type="checkbox" id="autoRefresh"> 5分ごとに一覧更新</label></div><p class="note" id="scheduleStatus">開催一覧は未取得です。下の「開催一覧を取得・更新」を押してください。</p><p class="note">スマホでは下の場名をタップしてください。選択できない場合は「競艇場」のプルダウンでも変更できます。</p><div id="venueGrid" class="venues"></div><h3>レース</h3><div id="raceGrid" class="races"></div><p class="note" id="raceInfo">一覧を取得すると、レースごとのデータ有無が分かります。</p></section><section data-v62-tab="settings"><div id="venueAtlasV42"></div></section><section data-v62-tab="forecast"><div class="row"><label>日付 <input type="date" id="day"></label><label>競艇場 <select id="venue"></select></label><label>レース <select id="race"></select></label><button id="load">データ取得</button></div><p id="status">日付・場・レースを選択してください。</p><small>公開CSVを直接読み込みます。データの鮮度は取得元の更新状況によります。未取得項目は推測しません。</small></section><section data-v62-tab="forecast"><h2>全国の注目レース候補</h2><p class="note">出走表・展示ST・3連単オッズの公開状況を一括確認し、分析しやすいレースを上位表示します。順位は的中率や期待値を意味しません。締切時刻が未取得のレースは購入可能と判定しません。</p><button id="scanCandidates">全国の候補を探す</button><p id="candidateStatus" class="note">未実行</p><div id="candidateResults" class="scroll"></div></section><section data-v62-tab="forecast"><div class="info"><b>データの鮮度について</b>：CSVの公開時点の情報です。直前の展示・オッズは更新遅延の可能性があります。次の締切時刻・残り時間は公開CSVに認識できる列がある場合のみ表示します。時刻がない場合は公式サイトで確認してください。</div><h2>6艇比較表</h2><p class="note">「―」はデータなし。タイムの1位は赤、2位は黄色（同タイムは同順位）。小さい数値を上位とします。今節平均STは出走表にある今節STの単純平均です（F・Lなど数値以外は除外）。今節ST幅は最大と最小の差で、小さいほどばらつきが少ないことを示します。今節成績は「節01走1_ST」等の実際の列名から抽出します。今節平均スタート順位は、過去の確定結果CSVで各走の6艇のSTを比較して算出します。取得できない走は推測せず対象外とし、件数を表示します。追加の「同枠過去10走 平均スタート順」は今節の順位ではなく、今回と同じ枠番での過去成績です。両者を混同しないでください。</p><p class="note">スマホでは表を左右にスワイプできます。艇番と選手名は左側に固定されます。</p><div class="scroll" id="compare">データ取得後に表示します</div><div id="v82Freshness" class="info" style="margin-top:12px">当日早見走の照合状況はデータ取得後に表示します。</div><div id="v85Delta" class="info" style="margin-top:12px">更新前後の比較は取得後に表示します。</div><div id="startSummary" class="info" style="margin-top:12px">データ取得後にスタート比較を表示します。</div><div id="startAttack" class="scroll" style="margin-top:12px"></div><p class="note">V58方針：全走照合済みの正式指数と部分照合の暫定指数を分け、暫定値は予想・自動検証の採点には使いません。同枠過去10走は別指標です。最終日なのに指数0艇の場合は診断欄で要調査と表示します。</p><div id="footComparison" class="scroll" style="margin-top:18px"></div><div id="v85Exhibition" class="info" style="margin-top:12px">展示取得状況はデータ取得後に表示します。</div><div id="v87Ready" class="info" style="margin-top:12px">コピー用データの取得状況はデータ取得後に表示します。</div><div id="raceScenarios" class="scroll" style="margin-top:18px"></div><div id="methodScenarios" style="margin-top:18px"></div><div id="waterConditions" style="margin-top:18px"></div><div id="rankAudit" class="scroll" style="margin-top:12px"></div><details style="margin-top:12px"><summary>今節STの取得診断（必要な場合のみ開く）</summary><div id="runDiagnostics" class="note"></div></details></section><section id="automationV47" data-v62-tab="review"><h2>自動保存・結果照合</h2><p class="note">ブラウザを開いている間だけ動作します。確認済みの締切前に読み込んだレースの評価を固定保存します。締切時刻不明、過去レース、出走表や比較可能な事前指標がすべて未取得の場合は自動記録しません。欠損した指標は欠損のまま固定します。予想買い目がなくても指標を検証できます。</p><div class="row"><label><input type="checkbox" id="v47auto" checked> データ取得時に事前指標を自動保存</label><label><input type="checkbox" id="v47watch"> 保存済みレースの結果を5分ごとに確認</label><button id="v47checkNow" class="secondary">比較待ち優先で結果を照合</button><button id="v47export" class="secondary">自動検証データをJSON保存</button></div><p class="note" id="v47status">未実行</p><div class="note" id="v48diagnostic" style="white-space:pre-wrap;margin:7px 0"></div><div id="v47summary" class="scroll"></div><div id="v54stages" class="scroll"></div><div id="v60audit" class="scroll" style="margin-top:14px"></div><div id="v61audit" class="scroll" style="margin-top:18px"></div><button id="v60export" class="secondary" type="button">V60検証記録をJSON保存</button></section><section id="v67manual" data-v62-tab="review"><h2>CSV未掲載レースの公式結果照合</h2><p class="note">自動照合で未掲載の場合のみ使用。公式ページで着順・艇番ごとの本番STを確認して入力します。結果だけを保存し、締切前に保存した評価は変更しません。ブラウザから公式サイトを自動取得する機能ではありません。</p><div class="row"><label>未照合レース <select id="v67code"></select></label><button class="secondary" id="v67official">公式結果を開く</button><button class="secondary" id="v67refresh">未照合一覧を更新</button></div><div class="row"><label>1着 <select id="v67first"></select></label><label>2着 <select id="v67second"></select></label><label>3着 <select id="v67third"></select></label><label>決まり手 <select id="v67method"><option value="">未入力</option><option>逃げ</option><option>差し</option><option>まくり</option><option>まくり差し</option><option>抜き</option><option>恵まれ</option></select></label></div><p class="note">本番ST（実際の進入コース順ではなく、艇番ごとに入力）。例：0.12。Fの場合は -0.02 のように数値を入力。欠測があれば比較に使わず、保存しません。</p><div class="row" id="v67st"></div><div class="row"><button id="v67save">公式結果を確認して保存</button><button class="secondary" id="v67backup">現在の記録をJSONでバックアップ</button></div><p class="note" id="v67status">未照合レースを選択してください。</p></section><section id="batchV49" data-v62-tab="review"><h2>全国レースの自動記録</h2><p class="note">締切前の出走表を第1段階で固定保存し、展示情報が取得できたら第2段階を別に固定保存します。展示CSVの未掲載を保存停止条件にしません。締切まで3〜30分の候補を最大6件ずつ確認します。締切時刻と出走表が確認できるレースは、取得した指標が欠損していても第1段階として保存します。初日や順位照合不足でも実測指標だけ記録できます。比較対象2艇未満の指標は集計対象外です。保存済みは上書きしません。通信状況によって時間がかかります。ブラウザを開いている間だけ動作します。</p><div class="row"><button id="v49scan">最大6レースを一括記録</button><label><input id="v49watch" type="checkbox"> 5分ごとに新しい候補を確認</label><button id="v49stop" class="secondary">連続記録を停止</button></div><p class="note">日付は今日（日本時間）だけ対象。実行中は対象レースに画面が切り替わります。通信中に画面を閉じると未処理の候補は保存されません。</p><pre id="v49status" style="max-height:170px">未実行</pre><details open style="margin-top:12px"><summary><b>V60：全走指数・暫定指数の照合診断</b></summary><p class="note">初日・途中日・最終日を区別し、今節順位と同枠過去10走の平均スタート順を別々に表示します。『最終日』の数値なし日次は、出走履歴を探索候補として利用します。今節の指数を過去成績で推測しません。最終日で0艇なら要調査として強調します。</p><div id="v55table" class="scroll">一括取得後に表示します。</div><button id="v55export" class="secondary" type="button">診断データをJSON保存</button></details></section><section id="verificationV45" data-v62-tab="review"><h2>予想と確定結果の検証（V45）</h2><p class="note">予想を先に記録し、確定結果と払戻を別途取得して照合します。過去レースに後から入力した予想は「事後入力」として表示し、事前予想の実績には含めません。検証記録はこのブラウザに保存します。</p><div class="row"><label>3連単の予想買い目 <input id="v45picks" placeholder="例：1-2-6, 1-6-2" style="min-width:265px"></label><label>1点の購入額（円） <input id="v45stake" type="number" min="100" step="100" value="100" style="width:95px"></label><button id="v45save">予想を記録</button></div><p class="note" id="v45log">レースを選んでデータ取得後、予想を記録してください。</p><div class="row"><button id="v45check">確定結果・払戻を取得して検証</button><button id="v45export" class="secondary">検証記録をJSON保存</button></div><p id="v45status" class="note">未取得。確定結果は手動で読み込みます。</p><div class="scroll" id="v45result"></div></section><section id="validationV46" data-v62-tab="review"><h2>予想時点と本番の指標検証（V46）</h2><p class="note">予想記録と同時にスタート指数・実測足順位を保存し、確定結果と比較します。事後入力は事前予測成績に含めません。過去版V45の保存記録に指標がない場合は欠損扱いです。</p><div id="v46audit" class="scroll">レース取得後に表示します。</div><h3>このブラウザの事前予想検証集計</h3><div id="v46summary" class="scroll">予想記録はまだありません。</div><button id="v46export" class="secondary">全検証データをJSON保存</button></section><section data-v62-tab="forecast"><h2>6艇の情報</h2><div class="grid" id="boats"><p class="muted">未取得</p></div></section><section data-v62-tab="forecast"><h2>展示の目視情報を追加</h2><p class="note">よく使う評価を押すか、自由入力してください。艇ごとの内容はブラウザに保存されます。</p><p class="muted">艇ごとにメモを保存できます（このブラウザ内の一時保存。ページを閉じると消えます）。</p><div class="grid" id="notes"></div></section><section data-v62-tab="forecast"><h2>3連単オッズ（選手名付き・6列表示）</h2><div id="odds" class="muted">未取得</div></section><section data-v62-tab="forecast"><button id="copy" disabled>ChatGPT予想用データをコピー</button> <button id="download" disabled>JSONを保存</button><p id="copystatus"></p><details><summary>取得詳細・項目名を表示</summary><pre id="debug"></pre></details></section><script>
+const $=id=>document.getElementById(id);const venues=['桐生','戸田','江戸川','平和島','多摩川','浜名湖','蒲郡','常滑','津','三国','びわこ','住之江','尼崎','鳴門','丸亀','児島','宮島','徳山','下関','若松','芦屋','福岡','唐津','大村'];venues.forEach((v,i)=>$('venue').add(new Option(`${String(i+1).padStart(2,'0')} ${v}`,String(i+1).padStart(2,'0'))));$('venue').value='13';for(let i=1;i<=12;i++)$('race').add(new Option(i+'R',String(i).padStart(2,'0')));$('race').value='10';$('day').value=new Date(Date.now()+9*3600000).toISOString().slice(0,10);
+const types=['programs/title','programs/race_cards','programs/waku10','programs/motor_stats','previews/tkz','previews/stt','previews/sui','previews/original_exhibition','previews/od3'];let data=null;let memo={};const choices=['直線が伸びる','ターンで暴れる','出足が良い','回り足が良い','ターンで流れる','起こしが悪い','展示より良い','展示より悪い'];const noteKey=()=>`boatrace_notes_${$('day').value}_${$('venue').value}_${$('race').value}`;function saveMemo(){try{localStorage.setItem(noteKey(),JSON.stringify(memo))}catch(e){}}function restoreMemo(){try{memo=JSON.parse(localStorage.getItem(noteKey())||'{}')}catch(e){memo={}}}let scheduleRows=null,scheduleHeader=[],scheduleDate='',scheduleTimer=null;const codeOf=(v,r)=>`${$('day').value.replaceAll('-','')}${v}${r}`;function findDeadline(rec){if(!rec)return '';for(const [k,v] of Object.entries(rec)){if(/(締切|投票締切|発売締切|deadline|close.?time)/i.test(k)&&v&&/^([01]?\d|2[0-3]):?[0-5]\d(?::[0-5]\d)?$/.test(String(v).trim())){let z=String(v).trim();return z.includes(':')?z:z.padStart(4,'0').replace(/^(..)(..)$/, '$1:$2')}}return ''}function raceRec(v,r){if(scheduleDate!==$('day').value||!scheduleRows)return null;return scheduleRows.get(codeOf(v,r))||null}async function loadSchedule(){let date=$('day').value;if(!date)return;let [y,m,d]=date.split('-');$('schedule').disabled=true;$('scheduleStatus').textContent='開催データを確認しています…';try{let url=`https://boatracecsv.github.io/data/programs/title/${y}/${m}/${d}.csv`;let res=await fetch(url,{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);let lines=parse(await res.text());scheduleHeader=lines[0]||[];scheduleRows=new Map();for(let row of lines.slice(1)){let code=row[0];if(/^\d{12}$/.test(code)&&code.startsWith(y+m+d)){scheduleRows.set(code,objects(scheduleHeader,[row])[0])}}scheduleDate=date;let active=venues.filter((_,i)=>Array.from({length:12},(_,j)=>raceRec(String(i+1).padStart(2,'0'),String(j+1).padStart(2,'0'))).some(Boolean)).length;$('scheduleStatus').textContent=`${date}：${active}場・${scheduleRows.size}レースの行を確認（取得：${new Date().toLocaleTimeString('ja-JP')}）。CSVにない場は未確認または非開催です。`;navRender()}catch(e){scheduleRows=null;scheduleDate='';$('scheduleStatus').textContent=`開催一覧の取得失敗：${e.message}。レース個別のデータ取得は引き続き使えます。`;navRender()}finally{$('schedule').disabled=false}}function currentJapanMinutes(){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());return Number(parts.find(x=>x.type==='hour').value)*60+Number(parts.find(x=>x.type==='minute').value)}
+function todayJapan(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/\//g,'-')}
+function nextRace(v){if(!scheduleRows||scheduleDate!==$('day').value)return null;let entries=[];for(let r=1;r<=12;r++){let rec=raceRec(v,String(r).padStart(2,'0'));if(!rec)continue;let tm=findDeadline(rec);if(tm){let match=tm.match(/^(\d{1,2}):(\d{2})/);if(match)entries.push({r,tm,mins:Number(match[1])*60+Number(match[2])})}}if(!entries.length)return {state:'unknown'};entries.sort((a,b)=>a.mins-b.mins);if($('day').value!==todayJapan())return {state:'dated',...entries[0]};let now=currentJapanMinutes();let next=entries.find(x=>x.mins>now);return next?{state:'next',...next,remain:next.mins-now}:{state:'ended'}}
+function nextLabel(v){let n=nextRace(v);if(!n)return '';if(n.state==='unknown')return '<span class="nexttime unknown">次の締切：時刻未取得</span>';if(n.state==='ended')return '<span class="nexttime">本日の締切終了</span>';if(n.state==='dated')return `<span class="nexttime">${n.r}R ${esc(n.tm)}（指定日）</span>`;return `<span class="nexttime">次 ${n.r}R　${esc(n.tm)}<span class="remaining">あと${n.remain}分</span></span>`}
+function navRender(){ $('venueGrid').innerHTML=venues.map((v,i)=>{let code=String(i+1).padStart(2,'0');let count=scheduleRows&&scheduleDate===$('day').value?Array.from({length:12},(_,j)=>raceRec(code,String(j+1).padStart(2,'0'))).filter(Boolean).length:null;let next=count?nextRace(code):null;let urgency=next?.state==='next'?(next.remain<=5?'urgent':next.remain<=10?'soon':''):'';return `<button class="venueBtn ${$('venue').value===code?'active':''} ${count===null?'':count?'has':'none'} ${urgency}" data-v="${code}">${code} ${esc(v)}${count===null?'':`<span class="vstat">${count?count+'R 掲載':'掲載なし'}</span>${count?nextLabel(code):''}`}</button>`}).join('');$('raceGrid').innerHTML=Array.from({length:12},(_,i)=>{let code=String(i+1).padStart(2,'0');let rec=raceRec($('venue').value,code),known=scheduleRows&&scheduleDate===$('day').value;let tm=findDeadline(rec);return `<button class="raceBtn ${$('race').value===code?'active':''} ${known?(rec?'has':'none'):''}" data-r="${code}">${i+1}R${tm?`<span class="deadline">締切 ${esc(tm)}</span>`:''}</button>`}).join('');$('raceInfo').textContent=scheduleRows&&scheduleDate===$('day').value?'下線あり：対象レースの行あり。薄い表示：掲載なし。締切時刻が出ない場合は未取得です。':'開催一覧を取得するとレースごとの掲載状況が分かります。';}// V28: event delegation handles rebuilt venue/race buttons on mobile browsers.
+$('venueGrid').addEventListener('click',e=>{const b=e.target.closest('button[data-v]');if(!b)return;selectVenue(b.dataset.v)});
+$('raceGrid').addEventListener('click',e=>{const b=e.target.closest('button[data-r]');if(!b)return;$('race').value=b.dataset.r;navRender();restoreMemo();if(data)clearView()});
+function selectVenue(v){
+ $('venue').value=v;
+ const n=nextRace(v);
+ if($('day').value===todayJapan() && n?.state==='next'){
+   $('race').value=String(n.r).padStart(2,'0');
+   $('status').textContent=`${venues[Number(v)-1]}：次の締切 ${n.r}R ${n.tm}（あと${n.remain}分）。データ取得を押してください。`;
+ }else if($('day').value===todayJapan() && n?.state==='ended'){
+   $('status').textContent='本日の締切はすべて終了しています。レースは手動で選べます。';
+ }else if($('day').value===todayJapan()){
+   $('status').textContent='締切時刻を確認できません。購入可能なレースは公式サイトで確認してください。';
+ }
+ restoreMemo();clearView();navRender();
+ if($('day').value===todayJapan()){if(n?.state==='next')$('status').textContent=`${venues[Number(v)-1]}：${n.r}R 締切 ${n.tm}（あと${n.remain}分）。データ取得を押してください。`;else if(n?.state==='ended')$('status').textContent='本日の締切はすべて終了しています。';else $('status').textContent='締切時刻未確認。購入可能なレースは公式サイトで確認してください。'}
+}
+function clearView(){data=null;v45Outcome=null;if($('v45result'))$('v45result').innerHTML='';if($('v45status'))$('v45status').textContent='未取得。';if($('v45log'))$('v45log').textContent='データ取得後に予想を記録してください。';if($('v46audit'))$('v46audit').textContent='レース取得後に表示します。';if($('v46summary'))v46Render();$('runDiagnostics').innerHTML='';if($('v85Delta'))$('v85Delta').textContent='更新前後の比較は取得後に表示します。';if($('v85Exhibition'))$('v85Exhibition').textContent='展示取得状況はデータ取得後に表示します。';$('startAttack').innerHTML='';$('footComparison').innerHTML='';$('raceScenarios').innerHTML='';$('methodScenarios').innerHTML='';$('waterConditions').innerHTML='';$('rankAudit').innerHTML='';$('rankAudit').innerHTML='';$('startAttack').innerHTML='';$('startSummary').textContent='データ取得後にスタート比較を表示します。';if($('v82Freshness'))$('v82Freshness').textContent='当日早見走の照合状況はデータ取得後に表示します。';$('compare').textContent='レースを変更しました。「データ取得」を押してください。';$('boats').textContent='未取得';$('odds').textContent='未取得';$('copy').disabled=true;$('download').disabled=true;$('status').textContent='レースを選択しました。データ取得を押してください。';renderNotes()}$('venue').onchange=()=>selectVenue($('venue').value);$('race').onchange=()=>{navRender();restoreMemo();clearView()};$('day').onchange=()=>{scheduleRows=null;scheduleDate='';$('scheduleStatus').textContent='日付が変わりました。開催一覧を再取得してください。';restoreMemo();clearView();navRender()};$('schedule').onclick=loadSchedule;setInterval(()=>{if(scheduleRows&&scheduleDate===$('day').value)navRender()},60000);$('autoRefresh').onchange=()=>{if(scheduleTimer){clearInterval(scheduleTimer);scheduleTimer=null}if($('autoRefresh').checked)scheduleTimer=setInterval(()=>{if(!document.hidden)loadSchedule()},300000)};function parse(t){let rows=[],row=[],v='',q=false;for(let i=0;i<t.length;i++){let c=t[i];if(c==='"'){if(q&&t[i+1]==='"'){v+='"';i++}else q=!q}else if(c===','&&!q){row.push(v);v=''}else if((c==='\r'||c==='\n')&&!q){if(c==='\r'&&t[i+1]==='\n')i++;row.push(v);if(row.length>1)rows.push(row);row=[];v=''}else v+=c}if(row.length||v){row.push(v);rows.push(row)}return rows}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function objects(h,rs){return rs.map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]??''])))}
+function compact(o){return Object.fromEntries(Object.entries(o||{}).filter(([k,v])=>v!==''&&v!=null))}
+function groupBoatFields(o){const out=Array.from({length:6},(_,i)=>({boat:i+1,fields:{}}));for(const [key,value] of Object.entries(o||{})){if(value==='')continue;let m=key.match(/^(?:([1-6])[_\-. ]|(?:艇|枠|boat|waku|teiban|racer)[_\-. ]?([1-6])[_\-. ]?)/i)||key.match(/(?:_|\.|-)([1-6])$/);if(m){let n=Number(m[1]||m[2]);out[n-1].fields[key]=value}}return out}
+function boatFields(record,n){const out={};for(const [k,v] of Object.entries(record||{})){const m=k.match(/^艇([1-6])[_ ](.+)$/)||k.match(/^([1-6])号艇[_ ](.+)$/);if(m&&Number(m[1])===n)out[m[2]]=v}return out}
+function get(o,...names){for(const name of names){if(o&&o[name]!==undefined&&o[name]!==''&&o[name]!==null)return String(o[name])}return '―'}
+function previewBoat(record,n){return boatFields(record,n)}
+function currentRaceEntries(fields){
+ const entries=new Map();
+ for(const [rawKey,rawValue] of Object.entries(fields||{})){
+  // Match actual race-card fields without assuming an exact separator or prefix.
+  const key=String(rawKey).normalize('NFKC').replace(/[\s\u200b-\u200d\ufeff]/g,'');
+  if(!key.includes('節')||!key.includes('走'))continue;
+  const dm=key.match(/節[^0-9]*0*([0-9]+).*?走[^0-9]*0*([0-9]+)/);
+  if(!dm)continue;
+  const suffix=key.slice(dm.index+dm[0].length).replace(/^[_＿:：]+/,'');
+  let kind=null;
+  if(/(?:^|_)ST$/i.test(suffix)||suffix==='ST'||suffix==='スタートタイミング')kind='st';
+  else if(suffix==='着順')kind='finish';
+  else if(['R番号','レース番号'].includes(suffix))kind='race';
+  else if(suffix==='枠')kind='frame';
+  else if(['スタート順位','スタート順','ST順位','ST順'].includes(suffix))kind='rank';
+  if(!kind)continue;
+  const day=Number(dm[1]),slot=Number(dm[2]);
+  if(!Number.isInteger(day)||!Number.isInteger(slot))continue;
+  const id=day+'-'+slot;
+  if(!entries.has(id))entries.set(id,{day,slot});
+  entries.get(id)[kind]=String(rawValue??'').trim();
+ }
+ return [...entries.values()].sort((x,y)=>x.day-y.day||x.slot-y.slot);
+}
+function showRunDiagnostics(){
+ const record=data?.datasets['programs/race_cards']?.record;
+ if(!record)return '<p>出走表の対象レース行がありません。</p>';
+ let html='<h3>今節STの取得診断</h3><p class="note">出走表にある各艇の今節関連列のうち、先頭12件を表示します。空欄もそのまま示します。</p>';
+ for(let n=1;n<=6;n++){
+  const fields=boatFields(record,n);
+  const keys=Object.entries(fields).filter(([k])=>/節|ST順位|スタート順位/.test(k));
+  const runs=currentRaceEntries(fields);
+  html+=`<details><summary>${n}号艇：今節関連${keys.length}列・認識${runs.length}走・有効ST${currentSTStats(fields).count}走・抽出例${esc(runs[0]?.st||"なし")}・列名例${esc(keys.find(([k])=>k.includes("_ST"))?.[0]||"なし")}</summary><pre>${esc(JSON.stringify(keys.slice(0,12),null,2))}</pre></details>`;
+ }
+ return html;
+}
+
+function currentRuns(fields){
+ const a=currentRaceEntries(fields).filter(x=>x.st||x.finish);
+ return a.length?a.map(x=>`${x.day}日目${x.slot}走:${x.st||'―'}${x.finish?`(${x.finish}着)`:''}`).join(' / '):'―';
+}
+function currentSTStats(fields){
+ const values=currentRaceEntries(fields).map(x=>numericTime(x.st)).filter(x=>x!==null&&x>=0&&x<1);
+ if(!values.length)return {mean:'―',count:'0',range:'―'};
+ return {mean:(values.reduce((a,b)=>a+b,0)/values.length).toFixed(3),count:String(values.length),range:(Math.max(...values)-Math.min(...values)).toFixed(2)};
+}
+function currentStartRankStats(fields,n){
+ const external=data?.calculatedStartRanks?.[n];
+ if(external)return external;
+ const values=currentRaceEntries(fields).map(x=>x.rank).filter(x=>/^[1-6]$/.test(x||'')).map(Number);
+ return {mean:values.length?(values.reduce((a,b)=>a+b,0)/values.length).toFixed(2):'―',count:values.length};
+}
+// V34: use inferred calendar days only as candidates, still require racer ID and ST verification.
+const v50CsvCache=new Map();
+async function calculateMeetStartRanks(){
+ const card=data?.datasets['programs/race_cards']?.record;
+ const title=data?.datasets['programs/title']?.record;
+ if(!card||!title)return {note:'出走表または開催情報がありません。',ranks:{}};
+ // V57: '最終日' has no numeral. Infer a search anchor from the race-card
+ // history, but never infer a rank: each match still requires a registered racer
+ // number and a matching confirmed ST from the actual race result.
+ const dayLabel=String(title['日次']||'').normalize('NFKC');
+ const explicitDay=Number(dayLabel.match(/(\d+)日目/)?.[1]||0);
+ const observedDays=Array.from({length:6},(_,i)=>currentRaceEntries(boatFields(card,i+1)).map(e=>e.day)).flat().filter(x=>Number.isInteger(x)&&x>0);
+ const maxObservedDay=observedDays.length?Math.max(...observedDays):0;
+ const isFinal=/最終日|優勝戦日/.test(dayLabel);
+ const dayNum=explicitDay||(isFinal&&maxObservedDay?maxObservedDay+1:0);
+ const daySource=explicitDay?'開催情報の日次':isFinal&&maxObservedDay?'今節出走履歴の最大日次+1（照合用推定）':'確認不可';
+ if(!dayNum||dayNum<2)return {note:`日次=${dayLabel||'なし'}。${isFinal?'今節出走履歴から開催日数を推定できません。':'初日、または日次が確認できません。'} 今節順位は未算出。`,ranks:{}};
+ const venue=$('venue').value;
+ const targetDate=data.date;
+ const shortDate=d=>d.replaceAll('-','');
+ // V59: a calendar day is not necessarily a held meet day (休催・順延).
+ // Read a wider, bounded window, and reconstruct only the CURRENT meeting's dated rows.
+ const dates=Array.from({length:Math.min(24,dayNum+15)},(_,i)=>{let d=new Date(targetDate+'T12:00:00Z');d.setUTCDate(d.getUTCDate()-i);return d.toISOString().slice(0,10)});
+ const readCSV=async(type,date)=>{const key=type+'|'+date,hit=v50CsvCache.get(key);if(hit&&Date.now()-hit.at<240000)return hit.payload;
+ let [y,m,d]=date.split('-');try{const r=await fetch(`https://boatracecsv.github.io/data/${type}/${y}/${m}/${d}.csv`,{cache:'no-store'});if(!r.ok)return {rows:[],error:'HTTP '+r.status};const rows=parse(await r.text());const payload={rows:objects(rows[0]||[],rows.slice(1)),error:''};v50CsvCache.set(key,{at:Date.now(),payload});return payload}catch(e){return {rows:[],error:String(e.message)}}};
+ const normalizeEvent=x=>String(x||'').normalize('NFKC').replace(/[\s　・･「」『』]/g,'').trim();
+ const eventName=normalizeEvent(title['タイトル']);
+ // Fetch schedule titles first; do not fetch three full daily CSVs for every date.
+ const days=await Promise.all(dates.map(async date=>{
+  const titles=await readCSV('programs/title',date);
+  const relevant=titles.rows.filter(r=>String(r['レースコード']||'').slice(8,10)===venue);
+  const nums=[...new Set(relevant.map(r=>Number(String(r['日次']||'').normalize('NFKC').match(/(\d+)日目/)?.[1])).filter(n=>Number.isInteger(n)&&n>=1))];
+  const names=[...new Set(relevant.map(r=>normalizeEvent(r['タイトル'])).filter(Boolean))];
+  return {date,nums,names,sameEvent:!!eventName&&names.includes(eventName),published:relevant.length>0,results:[],cards:[],errors:titles.error?[titles.error]:[]};
+ }));
+ const eventDays=days.filter(d=>d.sameEvent||d.date===targetDate).sort((a,b)=>a.date.localeCompare(b.date));
+ const ordinal=new Map(eventDays.map((d,i)=>[d.date,i+1]));
+ const candidateDays=days.map((d,i)=>({...d,inferredDay:dayNum-i,meetOrdinal:ordinal.get(d.date)||0}));
+ const hasEventHistory=eventDays.length>=2;
+ const valid=candidateDays.filter(d=>d.date===targetDate ||
+   (hasEventHistory?d.sameEvent:(d.nums.some(n=>n>=1&&n<=dayNum)||d.inferredDay>=1&&d.inferredDay<=dayNum)));
+ // Only verified candidate dates need result and race-card downloads.
+ await Promise.all(valid.filter(d=>d.date!==targetDate).map(async d=>{
+  const [results,cards]=await Promise.all([readCSV('results/realtime',d.date),readCSV('programs/race_cards',d.date)]);
+  d.results=results.rows;d.cards=cards.rows;
+  d.errors.push(...[results.error,cards.error].filter(Boolean));
+ }));
+ const out={},notes=[],audit=[];
+ for(let n=1;n<=6;n++){
+  const fields=boatFields(card,n),reg=String(fields['登録番号']||'').trim();
+  const entries=currentRaceEntries(fields).filter(x=>x.st||x.finish);
+  const ranks=[],reasons=[],details=[];
+  for(const entry of entries){
+   const tag=`${entry.day}日目${entry.slot}走`;
+   if(!entry.race||!entry.st){reasons.push(`${tag}: レース番号/STなし`);continue}
+   const raceNo=Number(String(entry.race).replace(/R$/i,''));
+   const expectedST=numericTime(entry.st);
+   if(!reg||!Number.isInteger(raceNo)||raceNo<1||raceNo>12||expectedST===null){reasons.push(`${tag}: 選手ID/レース/STが不正`);continue}
+   const possible=valid.filter(d=>(d.nums.includes(entry.day)|| (d.meetOrdinal===entry.day && hasEventHistory) || (!d.nums.length && !hasEventHistory && d.inferredDay===entry.day)) && (d.date!==targetDate||raceNo<Number(data.race.match(/\d+/)?.[0]||'0')));
+   if(!possible.length){reasons.push(`${tag}: 照合候補日なし（開催日一覧/日次不一致）`);audit.push({boat:n,name:fields['選手名']||'',tag,status:'候補日なし',st:entry.st||'―'});continue}
+   let matched=false,why='対象レース/選手が一致しない';
+   for(const day of possible){
+    const code=`${shortDate(day.date)}${venue}${String(raceNo).padStart(2,'0')}`;
+    const oldCard=day.cards.find(r=>r['レースコード']===code);
+    const result=day.results.find(r=>r['レースコード']===code);
+    if(!oldCard){why=`過去の出走表が未公開${day.errors.length?'('+day.errors.join(',')+')':''}`;continue}
+    if(!result){why=`確定結果が未公開${day.errors.length?'('+day.errors.join(',')+')':''}`;continue}
+    let oldBoat=0;
+    for(let j=1;j<=6;j++)if(String(oldCard[`艇${j}_登録番号`]||'').trim()===reg){oldBoat=j;break}
+    if(!oldBoat){why='登録番号が過去出走表にない';continue}
+    const competitors=[];
+    for(let c=1;c<=6;c++){
+     const boat=Number(result[`${c}コース_艇番`]);
+     const st=numericTime(result[`${c}コース_スタートタイミング`]);
+     if(boat>=1&&boat<=6&&st!==null)competitors.push({boat,st});
+    }
+    const thisBoat=competitors.find(x=>x.boat===oldBoat);
+    if(!thisBoat||competitors.length<2){why='結果のST/艇番が不足';continue}
+    if(Math.abs(thisBoat.st-expectedST)>0.011){why=`ST照合不一致(出走表${expectedST},結果${thisBoat.st})`;continue}
+    const rank=1+competitors.filter(x=>x.st<thisBoat.st-0.0001).length;
+    ranks.push(rank);details.push(`${tag}:${rank}位`);audit.push({boat:n,name:fields['選手名']||'',tag,date:day.date,race:raceNo,rank,st:thisBoat.st.toFixed(2),all:competitors.slice().sort((a,b)=>a.st-b.st).map(x=>`${x.boat}号艇:${x.st.toFixed(2)}`).join(' / '),status:'照合済',url:`https://www.boatrace.jp/owpc/pc/race/raceresult?hd=${shortDate(day.date)}&jcd=${venue}&rno=${String(raceNo).padStart(2,'0')}`});matched=true;break;
+   }
+   if(!matched){reasons.push(`${tag}: ${why}`);audit.push({boat:n,name:fields['選手名']||'',tag,status:why,st:entry.st||'―'});}
+  }
+  out[n]={mean:ranks.length?(ranks.reduce((a,b)=>a+b,0)/ranks.length).toFixed(2):'―',count:ranks.length,missing:reasons.length,positions:ranks};
+  notes.push(`${n}号艇 ${ranks.length}/${entries.length}走 [${details.join('、')||'なし'}]${reasons.length?' 未確認='+reasons.join(' / '):''}`);
+ }
+ const examined=valid.map(d=>`${d.date}(${d.nums.length?d.nums.join('/')+'日目':d.meetOrdinal?'開催実績順'+d.meetOrdinal+'日目':'推定'+d.inferredDay+'日目'})${d.errors.length?'[取得注意:'+d.errors.join(',')+']':''}`).join('、');
+ return {ranks:out,audit,note:`V59軽量版照合: 日次=${dayLabel||'なし'}・探索基準=${dayNum}日目（${daySource}）・履歴最大日次=${maxObservedDay||'なし'}。候補開催日=${examined||'未検出'}。同一開催名の確認日数=${eventDays.length}日・復元方式=${hasEventHistory?'同一開催名＋実開催日順':'従来の日次推定（要確認）'}。日付推定は照合候補にのみ使用。登録番号・ST一致時のみ集計。${notes.join('。')}`};
+}
+function numericTime(v){
+ const x=String(v??'').trim();if(!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(x))return null;
+ const n=Number(x);return Number.isFinite(n)?n:null;
+}
+function timeRankings(rows,indices){
+ const ranks={};for(const col of indices){
+  const sorted=[...new Set(rows.map(r=>numericTime(r[col])).filter(v=>v!==null))].sort((a,b)=>a-b);
+  ranks[col]=rows.map(r=>{const v=numericTime(r[col]);return v===null?0:sorted.indexOf(v)+1});
+ }return ranks;
+}
+function compareRender(){
+ let ds=data.datasets;let card=ds['programs/race_cards']?.record;
+ let tk=ds['previews/tkz']?.record;let st=ds['previews/stt']?.record;
+ let orig=ds['previews/original_exhibition']?.record;
+ let waku=ds['programs/waku10']?.record;
+ // Original exhibition items are mapped by their published names, not assumed column positions.
+ const originalItems=[1,2,3].map(i=>({name:get(orig,`計測項目${i}`),index:i})).filter(x=>x.name!=='―');
+ const desired=['一周','まわり足','直線'];
+ const normalized=s=>String(s).replace(/\s+/g,'').replace(/周り足/g,'まわり足');
+ const orderedOriginal=[...originalItems].sort((a,b)=>{
+  const rank=x=>{let i=desired.findIndex(d=>normalized(x.name).includes(d));return i<0?99:i};
+  return rank(a)-rank(b)||a.index-b.index;
+ });
+ let headers=['艇','選手名','級別','モーター','モーター2連率','全国ST','今節平均ST','今節平均スタート順位','順位取得走数','同枠過去10走 平均スタート順','今節ST数','今節ST幅','今節ST(着順)','チルト','展示ST','展示タイム',...orderedOriginal.map(x=>x.name)];
+ const rows=Array.from({length:6},(_,i)=>{
+  const n=i+1,f=boatFields(card,n),t=previewBoat(tk,n),ss=previewBoat(st,n),oo=previewBoat(orig,n),w=boatFields(waku,n),stats=currentSTStats(f);
+  return [String(n),get(f,'選手名'),get(f,'級別'),get(f,'モーター番号'),get(f,'モーター2連対率'),get(f,'全国平均ST'),stats.mean,currentStartRankStats(f,n).mean,String(currentStartRankStats(f,n).count||0),get(w,'枠番別平均スタート順'),stats.count,stats.range,currentRuns(f),get(t,'チルト','チルト角度'),get(ss,'スタート展示'),get(t,'展示タイム'),...orderedOriginal.map(x=>get(oo,`値${x.index}`))];
+ });
+ // Format measured time columns consistently to two decimal places (6.8 -> 6.80).
+ const rankColumns=[14,15,...orderedOriginal.map((_,i)=>16+i)];
+ for(const vals of rows){for(const j of rankColumns){const n=numericTime(vals[j]);if(n!==null)vals[j]=n.toFixed(2)}}
+ const ranks=timeRankings(rows,rankColumns);const startRankRanks=timeRankings(rows,[7,9]);Object.assign(ranks,startRankRanks);
+ let html=`<table class="comparison"><thead><tr>${headers.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>`;
+ rows.forEach((vals,i)=>{html+='<tr>'+vals.map((v,j)=>{
+  const rank=ranks[j]?.[i]||0;const cls=rank===1?' class="time-first"':rank===2?' class="time-second"':'';
+  return `<td${cls}>${j===0?`<span class="num boat${i+1}">${i+1}</span>`:esc(v)}</td>`;
+ }).join('')+'</tr>'});
+ html+='</tbody></table>';
+ if(!card)html='<p>出走表が見つかりませんでした。</p>';
+ $('compare').innerHTML=html; renderStartAttack(); renderFootComparison(); renderRankAudit(); $('runDiagnostics').innerHTML=showRunDiagnostics()+'<p>'+esc(data.startRankDiagnostics||'')+'</p>';
+ // A compact descriptive comparison, not a probability model or fabricated meet-start rank.
+ const valid=(j)=>rows.map((r,i)=>({boat:i+1,v:numericTime(r[j]),count:Number(r[10])})).filter(x=>x.v!==null);
+ const formatBoats=(arr,digits)=>arr.map(x=>`${x.boat}号艇 ${x.v.toFixed(digits)}`).join('、');
+ const mean=valid(6).filter(x=>x.count>=3).sort((a,b)=>a.v-b.v);
+ const stable=valid(11).filter(x=>x.count>=3).sort((a,b)=>a.v-b.v);
+ const same=valid(9).sort((a,b)=>a.v-b.v);
+ let parts=[];
+ const sessionRank=valid(7).filter(x=>Number(rows[x.boat-1][8])>=2).sort((a,b)=>a.v-b.v);
+ if(sessionRank.length)parts.push(`<b>今節平均スタート順位が良い艇</b>：${esc(sessionRank.slice(0,3).map(x=>`${x.boat}号艇 ${x.v.toFixed(2)}位（${rows[x.boat-1][8]}走）`).join('、'))}`);
+ if(mean.length)parts.push(`<b>今節平均STが速い艇</b>：${esc(formatBoats(mean.slice(0,3),3))}（3走以上のみ）`);
+ if(stable.length)parts.push(`<b>今節ST幅が小さい艇</b>：${esc(formatBoats(stable.slice(0,3),2))}（3走以上のみ）`);
+ if(same.length)parts.push(`<b>同枠過去10走の平均スタート順が良い艇</b>：${esc(formatBoats(same.slice(0,3),1))}`);
+ parts.push('<small>数値の小さい順に表示。今節ST幅は小さいほどばらつきが小さいことを示します。今節平均スタート順位は実際の確定結果に基づき、未取得走は集計に入れません。展示STやレース展開を加味した予想・的中確率ではありません。</small>');
+ $('startSummary').innerHTML='<b>スタート比較の要点</b><div style="margin-top:8px;line-height:1.9">'+parts.join('<br>')+'</div>';
+
+}
+function buildStartAttack(){
+ const card=data?.datasets['programs/race_cards']?.record;
+ const waku=data?.datasets['programs/waku10']?.record;
+ if(!card)return [];
+ return Array.from({length:6},(_,i)=>{
+  const boat=i+1, fields=boatFields(card,boat);
+  const listedRuns=currentRaceEntries(fields).filter(x=>x.st||x.finish).length;
+  const positions=(data?.calculatedStartRanks?.[boat]?.positions||[]).filter(x=>Number.isInteger(x)&&x>=1&&x<=6);
+  // A verified same-day result may not yet appear in the race-card history.
+  // Confirmed additions must not invalidate an otherwise fully verified index.
+  const n=positions.length,full=Math.max(listedRuns,n),coverage=full?n/full:0;
+  // waku10 contains the historical average start ORDER for the same lane, not individual ranks.
+  const priorRaw=get(boatFields(waku,boat),'枠番別平均スタート順');
+  const prior=numericTime(priorRaw);
+  const priorValid=prior!==null&&prior>=1&&prior<=6;
+  const eligible=n>=2&&full>0&&n===full;
+  const provisional=n>=2&&full>n;
+  if(!n)return {boat,name:fields['選手名']||'',n,full,coverage,eligible:false,provisional:false,prior:priorValid?prior:null,priorValid,weight:0};
+  const mean=positions.reduce((a,b)=>a+b,0)/n;
+  const wins=positions.filter(x=>x===1).length,top2=positions.filter(x=>x<=2).length;
+  const sd=Math.sqrt(positions.reduce((a,b)=>a+(b-mean)**2,0)/n);
+  const currentScore=Math.max(0,Math.min(100,100*(.50*(6-mean)/5+.25*top2/n+.15*(1-sd/2.5)+.10*wins/n)));
+  // The prior has only a mean rank; do not impute top-two counts, wins or variance.
+  // Shrink JUST the mean-rank component towards the prior as n grows.
+  const weight=priorValid?n/(n+3):1;
+  const adjustedMean=priorValid?weight*mean+(1-weight)*prior:mean;
+  const adjustedScore=Math.max(0,Math.min(100,currentScore+10*(mean-adjustedMean)));
+  return {boat,name:fields['選手名']||'',n,full,coverage,mean,wins,top2,sd,currentScore,prior:priorValid?prior:null,priorValid,weight,adjustedMean,adjustedScore,eligible,provisional};
+ });
+}
+function renderStartAttack(){
+ const rows=buildStartAttack();
+ if(!rows.length){$('startAttack').innerHTML='';return}
+ const comparable=rows.filter(x=>x.eligible).sort((a,b)=>b.adjustedScore-a.adjustedScore||a.adjustedMean-b.adjustedMean);
+ const others=rows.filter(x=>!x.eligible).sort((a,b)=>(Number(b.provisional)-Number(a.provisional))||(b.adjustedScore??0)-(a.adjustedScore??0)||a.boat-b.boat);
+ const cells=[...comparable,...others].map(x=>{
+  const state=!x.eligible?(x.provisional?'暫定（未照合あり）':x.n?'算出不可（1走・照合不足）':'今節順位なし'):x.n<4?'参考（少数走）':x.priorValid?'補正済み':'今節のみ';
+  return `<tr><td><span class="num boat${x.boat}">${x.boat}</span> ${esc(x.name)}</td><td>${x.n?x.mean.toFixed(2):'―'}</td><td>${x.priorValid?x.prior.toFixed(2):'―'}</td><td>${x.n&&x.priorValid?x.adjustedMean.toFixed(2):'―'}</td><td>${x.n?x.wins+'/'+x.n:'―'}</td><td>${x.n?x.top2+'/'+x.n:'―'}</td><td>${x.n?x.sd.toFixed(2):'―'}</td><td>${x.n}/${x.full}</td><td>${x.eligible?x.currentScore.toFixed(1):'―'}</td><td><b>${x.eligible?x.adjustedScore.toFixed(1):'―'}</b></td><td>${x.provisional?x.adjustedScore.toFixed(1):'―'}</td><td>${x.full?((x.n/x.full)*100).toFixed(1)+'%':'―'}</td><td>${esc(state)}</td></tr>`;
+ }).join('');
+ $('startAttack').innerHTML=`<h3>スタート攻撃力・今節＋同枠過去10走（V35）</h3><p class="note">今節指数はV34の「平均順位50%・2位以内率25%・安定性15%・1位率10%」を維持。全走照合かつ2走以上を正式指数とし、2走以上の一部照合は暫定指数を別欄に出します。暫定指数は自動判定や検証集計には使いません。同枠過去10走には<b>平均順位しかないため</b>、平均順位の配点部分だけ補正します。展示STは不使用です。</p><table style="min-width:1050px"><thead><tr><th>艇・選手</th><th>今節平均</th><th>同枠過去10走平均</th><th>補正平均順位</th><th>1位回数</th><th>2位以内</th><th>ばらつき</th><th>照合/今節</th><th>今節指数</th><th>補正指数（全走）</th><th>暫定指数（部分照合）</th><th>照合率</th><th>判定</th></tr></thead><tbody>${cells}</tbody></table><p class="note">補正平均順位＝今節平均×n/(n+3)＋同枠過去平均×3/(n+3)（n＝確認できた今節走数）。過去データがない場合は今節のみを表示。過去平均から1位率や安定性を創作しません。初期係数3は仮設定で、予測的中率を検証して調整します。指数は勝率・的中率・期待値ではなく、進入変化・足・風・水面・オッズは別評価です。</p>`;
+ data.startAttackMetrics=rows.map(x=>({boat:x.boat,name:x.name,verifiedRuns:x.n,totalRuns:x.full,meanRank:x.mean??null,historicalSameLaneMeanRank:x.prior,adjustedMeanRank:x.n&&x.priorValid?Number(x.adjustedMean.toFixed(3)):null,firstCount:x.wins??null,top2Count:x.top2??null,rankStdDev:x.sd??null,currentAttackIndex:x.eligible?Number(x.currentScore.toFixed(1)):null,adjustedAttackIndex:x.eligible?Number(x.adjustedScore.toFixed(1)):null,priorWeight:x.priorValid&&x.n?Number((1-x.weight).toFixed(3)):null,eligible:x.eligible,provisional:!!x.provisional,provisionalAttackIndex:x.provisional?Number(x.adjustedScore.toFixed(1)):null,coverageRate:x.full?Number((x.n/x.full).toFixed(3)):null}));
+}
+function renderFootComparison(){
+ const root=$('footComparison');
+ const card=data?.datasets['programs/race_cards']?.record;
+ if(!card){root.innerHTML='<h3>足の比較（V36）</h3><p>出走表未取得のため比較できません。</p>';data.footComparisonMetrics=[];return}
+ const tk=data.datasets['previews/tkz']?.record;
+ const orig=data.datasets['previews/original_exhibition']?.record;
+ const rawNames=[1,2,3].map(i=>({index:i,name:get(orig,'計測項目'+i)})).filter(x=>x.name!=='―');
+ const measured=rawNames.filter(x=>/^(?:一周|１周|1周|まわり足|周り足|直線)/.test(x.name.normalize('NFKC').trim()));
+ const columns=[{key:'展示タイム',label:'展示タイム',source:'tk',numeric:true},
+  ...measured.map(x=>({key:'値'+x.index,label:x.name,source:'orig',numeric:true}))];
+ const boats=Array.from({length:6},(_,i)=>{
+  const n=i+1,fields=boatFields(card,n),t=previewBoat(tk,n),o=previewBoat(orig,n);
+  const motorRaw=get(fields,'モーター2連対率');
+  const motor=numericTime(motorRaw);
+  const vals=columns.map(c=>{
+   const raw=c.source==='tk'?get(t,'展示タイム'):get(o,c.key);
+   const value=numericTime(raw);
+   return value!==null&&value>=0&&value<100?value:null;
+  });
+  const tags=memo[n]?.tags||[];
+  return {boat:n,name:fields['選手名']||'',motor2Rate:motor!==null&&motor>=0&&motor<=100?motor:null,values:vals,tags,freeText:memo[n]?.text||''};
+ });
+ // Rank actual times against other boats only; do not invent a model score or combine unlike measures.
+ const ranks=columns.map((c,j)=>{
+  const sorted=[...new Set(boats.map(b=>b.values[j]).filter(v=>v!==null))].sort((a,b)=>a-b);
+  return boats.map(b=>b.values[j]===null?null:sorted.indexOf(b.values[j])+1);
+ });
+ const allCols=columns.length;
+ const good=boats.map((b,i)=>({boat:b.boat,name:b.name,first:ranks.reduce((n,r)=>n+(r[i]===1?1:0),0),second:ranks.reduce((n,r)=>n+(r[i]===2?1:0),0),available:b.values.filter(v=>v!==null).length,motor2Rate:b.motor2Rate}));
+ const html=boats.map((b,i)=>{
+  const values=columns.map((c,j)=>{const v=b.values[j],rank=ranks[j][i];return `<td class="${rank===1?'time-first':rank===2?'time-second':''}">${v===null?'―':v.toFixed(2)+(rank?' <small>('+rank+'位)</small>':'')}</td>`}).join('');
+  const foot=[...b.tags.filter(x=>/直線|出足|回り足|ターン|起こし|展示/.test(x)),...(b.freeText?[b.freeText]:[])].join(' / ');
+  return `<tr><td><span class="num boat${b.boat}">${b.boat}</span></td><td>${esc(b.name)}</td>${values}<td>${b.motor2Rate===null?'―':b.motor2Rate.toFixed(1)+'%'}</td><td>${good[i].first}</td><td>${good[i].second}</td><td>${good[i].available}/${allCols}</td><td style="max-width:220px;white-space:normal">${esc(foot||'―')}</td></tr>`;
+ }).join('');
+ const head=columns.map(c=>`<th>${esc(c.label)}<div class="tiny">小さいほど上位</div></th>`).join('');
+ root.innerHTML=`<h3>足の比較・実測データ（V36）</h3><p class="note">スタート攻撃力とは別評価。展示タイム・オリジナル展示の実測タイムを6艇内で順位付け（同タイムは同順位）。赤＝1位、黄＝2位。モーター2連対率は実測の足ではなく参考データです。目視メモも採点しません。</p><table style="min-width:820px"><thead><tr><th>艇</th><th>選手</th>${head}<th>モーター2連対率<br><span class="tiny">参考</span></th><th>計測1位数</th><th>計測2位数</th><th>取得数</th><th>目視メモ</th></tr></thead><tbody>${html}</tbody></table><p class="note">表示された1位・2位は計測項目ごとの相対順位で、出足・伸び・回り足の総合優劣を保証しません。展示が未公開の場合は欠損表示。オリジナル展示の項目名が確認できない場合、その列は表示しません。</p>`;
+ data.footComparisonMetrics=boats.map((b,i)=>({boat:b.boat,name:b.name,motor2Rate:b.motor2Rate,measurements:Object.fromEntries(columns.map((c,j)=>[c.label,{time:b.values[j],rank:ranks[j][i]}])),firstCount:good[i].first,secondCount:good[i].second,available:good[i].available,totalMeasures:allCols,observations:b.tags,observationText:b.freeText}));
+}
+function renderRaceScenarios(){
+ const root=$('raceScenarios');
+ if(!data){root.innerHTML='';return}
+ const starts=data.startAttackMetrics||[];
+ const feet=data.footComparisonMetrics||[];
+ const card=data.datasets['programs/race_cards']?.record;
+ const present=feet.length===6;
+ if(!card||!present){root.innerHTML='<h3>展開材料の整理（V37）</h3><p class="note">出走表または足の比較データが不足しています。</p>';data.raceScenarioMetrics=[];return}
+ const getFoot=(f,name)=>{const p=Object.entries(f?.measurements||{}).find(([k])=>k.normalize('NFKC').includes(name));return p?p[1]?.rank:null};
+ const records=Array.from({length:6},(_,i)=>{
+  const n=i+1,s=starts.find(x=>x.boat===n)||{},f=feet.find(x=>x.boat===n)||{};
+  const st=s.eligible&&typeof s.adjustedAttackIndex==='number'?s.adjustedAttackIndex:null;
+  const lap=getFoot(f,'一周')??getFoot(f,'1周');
+  const turn=getFoot(f,'まわり足')??getFoot(f,'周り足');
+  const straight=getFoot(f,'直線');
+  const exhibition=getFoot(f,'展示タイム');
+  const goodTurn=[lap,turn].filter(x=>x!==null&&x<=2).length;
+  const weakTurn=[lap,turn].filter(x=>x!==null&&x>=5).length;
+  const strengths=[];const concerns=[];
+  if(st===null)concerns.push('今節スタート指数の照合不足');
+  else if(st>=65)strengths.push('スタート先行傾向');
+  else if(st<40)concerns.push('今節の先行実績は弱め');
+  if(straight!==null&&straight<=2)strengths.push('直線計測が上位');
+  if(goodTurn>=1)strengths.push('周回・まわり足計測が上位');
+  if(weakTurn>=2)concerns.push('周回・まわり足計測が下位');
+  if(straight!==null&&straight>=5)concerns.push('直線計測が下位');
+  const lane=n<=3?'内側の先マイ・差し対応を検討':'外側からのまくり・まくり差しを検討';
+  const confidence=s.eligible?(s.verifiedRuns>=4?'今節4走以上':'少数走（2〜3走）'):'今節順位不足';
+  return {boat:n,name:s.name||f.name||'',startIndex:st,verifiedRuns:s.verifiedRuns??0,totalRuns:s.totalRuns??0,lapRank:lap,turnRank:turn,straightRank:straight,exhibitionRank:exhibition,strengths,concerns,lane,confidence};
+ });
+ const rows=records.map(r=>`<tr><td><span class="num boat${r.boat}">${r.boat}</span> ${esc(r.name)}</td><td>${r.startIndex===null?'―':r.startIndex.toFixed(1)}</td><td>${r.lapRank??'―'}</td><td>${r.turnRank??'―'}</td><td>${r.straightRank??'―'}</td><td>${esc(r.strengths.join('／')||'判断材料不足')}</td><td>${esc(r.concerns.join('／')||'顕著な弱材料なし')}</td><td>${esc(r.lane)}</td><td>${esc(r.confidence)}</td></tr>`).join('');
+ const inside=records.slice(0,3),outside=records.slice(3);
+ const fast=records.filter(x=>x.startIndex!==null).sort((a,b)=>b.startIndex-a.startIndex);
+ const topFast=fast.length?fast.slice(0,3).map(x=>x.boat+'号艇').join('・'):'今節照合不足';
+ const insideTurns=inside.filter(x=>x.lapRank!==null&&x.lapRank<=2||x.turnRank!==null&&x.turnRank<=2).map(x=>x.boat+'号艇');
+ const outsideStraight=outside.filter(x=>x.straightRank!==null&&x.straightRank<=2).map(x=>x.boat+'号艇');
+ const sc=[{title:'先手を取る候補',summary:`スタート指数上位：${topFast}。これは枠を問わない先行傾向で、攻め成功の予測ではありません。`},
+ {title:'内側の旋回・残し',summary:`内側で周回またはまわり足が計測上位：${insideTurns.length?insideTurns.join('・'):'該当なし'}。イン有利・差し場の形成は進入・風・実戦気配で変化します。`},
+ {title:'外からの伸び・攻め',summary:`外側で直線計測上位：${outsideStraight.length?outsideStraight.join('・'):'該当なし'}。実際のまくり／まくり差しにはスタート隊形と内側の抵抗が必要です。`}];
+ root.innerHTML=`<h3>展開分析の材料（V37）</h3><p class="note">スタート（V35補正指数）、足（V36の実測順位）、艇番を<b>別々に</b>整理。進入コースが艇番どおりとは限りません。気象の実測値は下のV38欄で別表示し、展開スコアには未反映です。潮流・進入隊形・展示の目視評価も未反映です。買い目や的中確率は算出しません。</p><table style="min-width:1160px"><thead><tr><th>艇・選手</th><th>開始指数</th><th>一周順位</th><th>まわり足順位</th><th>直線順位</th><th>好材料</th><th>懸念材料</th><th>検討する役割</th><th>データ信頼度</th></tr></thead><tbody>${rows}</tbody></table><div class="grid-note" style="margin-top:12px">${sc.map(a=>`<div class="info"><b>${esc(a.title)}</b><p class="note">${esc(a.summary)}</p></div>`).join('')}</div><p class="note">指数65以上・40未満などの分類境界は暫定の整理基準です。過去データでの検証前であり、得点差を勝率差と解釈しないでください。実際の進入・気象条件が判明したら展開の読み直しが必要です。</p>`;
+ data.raceScenarioMetrics=records;
+}
+// V39: all 24 venue profiles are explicit research slots, NOT invented race biases.
+const venueWaterProfiles=Object.freeze(Object.fromEntries(venues.map((name,i)=>[String(i+1).padStart(2,'0'),Object.freeze({name,courseDirection:null,tideRelation:null,currentRelation:null,windRaceRelation:null,firstCourseRate:null,decisionMethodTrend:null,verified:false,source:null})])));
+const weatherNames=Object.freeze({'1':'晴','2':'曇','3':'雨','4':'雪','5':'霧'});
+// V40: venue headings and observational wind directions are user-verified inputs, never decoded from raw CSV codes.
+const compassV40={北:0,北東:45,東:90,南東:135,南:180,南西:225,西:270,北西:315};
+const compassOptionsV40=Object.keys(compassV40);
+function safeStoreV40(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function safeLoadV40(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}}
+function venueSettingsV40(code){const x=safeLoadV40('br_v40_venue_'+code);return x&&typeof x==='object'?x:{heading:'',memo:''}}
+function raceWindV40(code){const x=safeLoadV40('br_v40_wind_'+code);return x&&typeof x==='object'?x:{from:''}}
+function windRelativeV40(from,heading,speed){if(!(from in compassV40)||!(heading in compassV40))return '未判定';let diff=Math.abs(((compassV40[from]-compassV40[heading]+540)%360)-180);const category=diff<=45?'向かい風':diff>=135?'追い風':'横風';return category+'（方向関係のみ／風速'+(speed??'―')+'m/s）'}
+function v40Controls(code,windRaw){const settings=venueSettingsV40(code),wind=raceWindV40(data?.code||'');let options=(v,defaultText)=>'<option value="">'+defaultText+'</option>'+compassOptionsV40.map(o=>'<option value="'+o+'" '+(v===o?'selected':'')+'>'+o+'</option>').join('');
+return `<div class="info" style="margin-top:12px"><b>場別の風向照合（V40／手動検証）</b><p class="note">CSV風向コード：${esc(windRaw??'未取得')}。コードの方位変換は未検証のため使用しません。公式画面の風向を確認して選択してください。スタート進行方位はスタート地点から第1ターンマークへ向かう方向（風が吹いてくる方向ではありません）。設定はこのブラウザに保存されます。</p><div class="row"><label>公式表示で確認した風向 <select id="v40Wind">${options(wind.from,'未確認')}</select></label><label>スタート進行方位 <select id="v40Heading">${options(settings.heading,'未登録')}</select></label><button type="button" id="v40Save" class="secondary">確認値を保存・再判定</button></div><p id="v40Relative" style="font-weight:700">相対風向：${esc(windRelativeV40(wind.from,settings.heading,data?.waterConditions?.windSpeedMps||'―'))}</p><p class="note">8方位での概略判定です。斜め風を含み、コース特性による有利不利や勝率は算出しません。未確認項目がある場合は未判定です。</p><label>場の水面特性メモ（根拠を確認して入力）<textarea id="v40Memo" rows="2" placeholder="例：公式水面情報のURL、潮汐の特徴など">${esc(settings.memo||'')}</textarea></label><p class="note">全国24場ごとに独立保存。登録内容は利用者入力であり、公式検証済みデータとは区別してください。</p></div>`}
+function initV40Controls(){const btn=$('v40Save');if(!btn||!data)return;btn.onclick=()=>{const venue=String($('venue').value||''),race=data.code;safeStoreV40('br_v40_venue_'+venue,{heading:$('v40Heading').value,memo:$('v40Memo').value});safeStoreV40('br_v40_wind_'+race,{from:$('v40Wind').value});renderWaterConditions()}}
+// V41: Only source-checked venue facts are populated. Other venue profiles remain unverified.
+const verifiedVenueFactsV41=Object.freeze({
+ '01':Object.freeze({name:'桐生',water:'未検証（公式レース場ページには記載なし）',tide:'未検証',race:'標高が高くモーターの出足は弱め。通年ナイター開催',wind:'冬～春の赤城おろしで荒れることがある。夏は比較的穏やかでまくりが効く',source:'https://www.boatrace.jp/owpc/pc/site/place/stadium/br01/',verified:true}),
+ '24':Object.freeze({name:'大村',water:'未検証（公式レース場ページには記載なし）',tide:'満潮時は2マークが荒れる傾向',race:'インが強い傾向。風向変化でスタートが難しく、外から攻めにくい',wind:'大村湾の海風。時間帯によって風向が変化しやすい',source:'https://www.boatrace.jp/owpc/pc/site/place/stadium/br24/',verified:true}),
+ "02":Object.freeze({"name": "戸田", "water": "未確認", "tide": "未確認", "race": "狭いコース幅と振られたターンマークによりカドまくり・ダッシュ勢が活躍しやすい", "wind": "未確認", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br02/", "verified": true}),
+ "03":Object.freeze({"name": "江戸川", "water": "河川水面（水質区分未確認）", "tide": "上げ潮・下げ潮で流れが発生", "race": "枠なり進入が多く、波・流れへの対応力が重要", "wind": "風向きにより水面が荒れる", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br03/", "verified": true}),
+ "05":Object.freeze({"name": "多摩川", "water": "未確認", "tide": "未確認", "race": "静かな水面でパワーとスピードが重要。逃げとまくりの競り合いもある", "wind": "風の影響は比較的小さい", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br05/", "verified": true}),
+ "06":Object.freeze({"name": "浜名湖", "water": "未確認", "tide": "未確認", "race": "広大な水面でスピード重視。まくり差しが入りやすい", "wind": "冬は追い風、夏は向かい風", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br06/", "verified": true}),
+ "07":Object.freeze({"name": "蒲郡", "water": "未確認", "tide": "未確認", "race": "1マークのバック側が非常に広い高速水面。イン優勢だがセンターまくりもある", "wind": "風の影響が少なく穏やか", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br07/", "verified": true}),
+ "08":Object.freeze({"name": "常滑", "water": "未確認", "tide": "自動水位制御で潮位変化なし", "race": "イン逃げ傾向。短期決戦はモーター性能も重要", "wind": "未確認", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br08/", "verified": true}),
+ "09":Object.freeze({"name": "津", "water": "未確認", "tide": "未確認", "race": "弱風時はインが強い。冬はダッシュ勢も活躍", "wind": "春～夏は追い風、冬は鈴鹿おろしの強い向かい風", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br09/", "verified": true}),
+ "10":Object.freeze({"name": "三国", "water": "プール型（水質区分未確認）", "tide": "未確認", "race": "広いバック側とホーム側、イン有利。強い追い風では差しも決まる", "wind": "通年追い風傾向", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br10/", "verified": true}),
+ "11":Object.freeze({"name": "びわこ", "water": "淡水", "tide": "未確認", "race": "標高が高く水が硬いとされ、ダッシュ勢やまくりに出番", "wind": "春～夏は沖から風が吹いて荒れる", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br11/", "verified": true}),
+ "12":Object.freeze({"name": "住之江", "water": "工業用水（水が硬い）", "tide": "プール型（潮汐影響未確認）", "race": "イン有利だが2マークの引き波で逆転もある", "wind": "未確認", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br12/", "verified": true}),
+ "13":Object.freeze({"name": "尼崎", "water": "未確認", "tide": "未確認", "race": "静水面でクセが小さい。近年はイン先攻めが目立つ", "wind": "夏は浜風、冬は六甲おろしによる向かい風が多い", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br13/", "verified": true}),
+ "14":Object.freeze({"name": "鳴門", "water": "未確認", "tide": "未確認", "race": "1マーク付近の構造がまくりを誘い、イン小回りだけでは残しにくい", "wind": "冬は強い追い風で荒れる", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br14/", "verified": true}),
+ "15":Object.freeze({"name": "丸亀", "water": "未確認", "tide": "満潮・干潮で展開が変化。満潮時は2マークが荒れやすい", "race": "干潮・向かい風時にまくり、満潮時に差しの傾向", "wind": "冬は強い向かい風", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br15/", "verified": true}),
+ "16":Object.freeze({"name": "児島", "water": "未確認", "tide": "瀬戸内に面し潮位差が大きい", "race": "満潮と干潮で展開が変わり、満潮・追い風時は差しに注目", "wind": "風の影響は比較的小さい", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br16/", "verified": true}),
+ "17":Object.freeze({"name": "宮島", "water": "未確認", "tide": "潮位差は最大4m超。満潮時はうねりやすい", "race": "干潮時は防波堤が風除けになり走りやすい", "wind": "午前・午後で風向が変わりやすい", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br17/", "verified": true}),
+ "18":Object.freeze({"name": "徳山", "water": "未確認", "tide": "潮位差3m超。干潮はパワー、満潮はさばき勝負の傾向", "race": "潮位で決まり手や展開が変化", "wind": "斜め追い風が多く、冬の季節風は山が遮る", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br18/", "verified": true}),
+ "19":Object.freeze({"name": "下関", "water": "海水", "tide": "一定水位以上で1マーク手前から海水が流入", "race": "広い水面でピット離れに差が出やすく、外からの1着もある", "wind": "未確認", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br19/", "verified": true}),
+ "20":Object.freeze({"name": "若松", "water": "未確認", "tide": "2マーク後方で潮が出入り。満潮時に1マークへ潮が溜まる", "race": "満潮時はイン、干潮へ向かう時間帯はまくり傾向", "wind": "冬場の追い風では差しにも注目", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br20/", "verified": true}),
+ "21":Object.freeze({"name": "芦屋", "water": "プール型（水質区分未確認）", "tide": "未確認", "race": "1マークのバック側の葦が消波に寄与。スピード・パワー勝負", "wind": "未確認", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br21/", "verified": true}),
+ "22":Object.freeze({"name": "福岡", "water": "海水に近い汽水", "tide": "満潮時はやや難水面", "race": "1マークのイン占有域が狭くセンターまくりが効きやすい", "wind": "未確認", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br22/", "verified": true}),
+ "23":Object.freeze({"name": "唐津", "water": "未確認", "tide": "未確認", "race": "広い水面でスピードとピット離れが重要。向かい風の強さで決まり手が変わる", "wind": "年間を通じて追い風が多い", "source": "https://www.boatrace.jp/owpc/pc/site/place/stadium/br23/", "verified": true}),
+ '04':Object.freeze({name:'平和島',water:'海水',tide:'干満差あり（当日の潮位・潮流数値は未取得）',race:'センターからのまくりと差しが目立ち、2マークの抜きも多い',wind:'春～夏は追い風、冬は向かい風の傾向。ただし当日の方向は未判定',courseRates:{period:'2026/6/1～2026/8/31',first:[40.3,20.7,18.5,11.4,7.5,2.7]},source:'https://www1.heiwajima.gr.jp/01suimen/01suimen.htm',verified:true})
+});
+function venueResearchV41(code){
+ const official=`https://www.boatrace.jp/owpc/pc/site/place/stadium/br${encodeURIComponent(code)}/`;
+ const x=verifiedVenueFactsV41[code];
+ if(!x)return `<div class="info" style="margin-top:12px"><b>公式水面特性（V41）</b><p class="note">${esc(venues[Number(code)-1]||code)}：場別の公式記載内容は未登録です。未確認の水質・潮汐・有利コースを推測で補完しません。</p><p class="note"><a href="${official}" target="_blank" rel="noopener noreferrer">BOAT RACE公式・競艇場情報を確認</a></p></div>`;
+ const rates=x.courseRates;
+ return `<div class="info" style="margin-top:12px"><b>公式水面特性（V41／出典確認済み：${esc(x.name)}）</b><p class="note">水質：${esc(x.water)}／潮汐：${esc(x.tide)}</p><p class="note">レース特性：${esc(x.race)}。風：${esc(x.wind)}</p><p class="note">過去のコース別1着率（${esc(rates?.period||"未登録")}、実際の進入コース別）：${rates?rates.first.map((n,i)=>`${i+1}コース ${n.toFixed(1)}%`).join(' ／ '):'未登録'}</p><p class="note"><a href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">出典：公式の水面・レース情報</a> ／ <a href="${official}" target="_blank" rel="noopener noreferrer">BOAT RACE公式場情報</a></p><p class="note">統計は過去の期間に限ります。枠番別の現在の勝率ではなく、当日の艇ごとの有利不利にも直接変換しません。</p></div>`;
+}
+
+// V42: Verified venue characteristics are separate from unverified / user-entered information.
+const venueAtlasResearchStateV42={filter:'all'};
+function renderVenueAtlasV42(){
+ const root=$('venueAtlasV42');if(!root)return;
+ const current=$('venue')?.value||'01';
+ const statuses=venues.map((name,i)=>{const code=String(i+1).padStart(2,'0');return {name,code,fact:verifiedVenueFactsV41[code]||null,settings:venueSettingsV40(code)}});
+ const verified=statuses.filter(x=>x.fact).length;
+ const select='<select id="v42Filter"><option value="all">全24場</option><option value="verified">公式特徴確認済み</option><option value="pending">未調査</option></select>';
+ const rows=statuses.map(x=>{
+   const f=x.fact;const official=`https://www.boatrace.jp/owpc/pc/site/place/stadium/br${x.code}/`;
+   const note=x.settings?.memo?`<span title="利用者メモあり">手動メモあり</span>`:'―';
+   return `<tr data-v42-status="${f?'verified':'pending'}" ${x.code===current?'style="background:#f0f6ff"':''}><td>${x.code} ${esc(x.name)}</td><td>${f?'公式特徴確認済み':'未調査'}</td><td>${f?esc(f.water):'―'}</td><td>${f?esc(f.tide):'―'}</td><td>${f?esc(f.race):'―'}</td><td>${f?esc(f.wind):'―'}</td><td>${note}</td><td><a href="${esc(f?.source||official)}" target="_blank" rel="noopener noreferrer">公式資料</a></td><td><button class="secondary" data-v42-venue="${x.code}" type="button" style="font-size:12px;padding:5px 8px">選択</button></td></tr>`;
+ }).join('');
+ root.innerHTML=`<h2>全国24場・水面特性一覧（V43）</h2><p class="note">全国24場のBOAT RACE公式記述から、水面・レース特性を登録。水質・潮汐など公式ページに書かれていない項目は未確認。数値化した場別補正は未適用です。未調査は特性なしを意味しません。</p><div class="row" style="margin-bottom:10px"><strong>公式特徴確認 ${verified}/24場</strong><label>表示 ${select}</label><button id="v42Export" class="secondary" type="button">場別データをJSON保存</button></div><div class="scroll"><table style="min-width:1250px"><thead><tr><th>場</th><th>確認状況</th><th>水質</th><th>潮汐</th><th>レース特性</th><th>風の特徴</th><th>手動メモ</th><th>出典</th><th>操作</th></tr></thead><tbody>${rows}</tbody></table></div><p class="note">出典に記載がない項目は「未検証」とし、場の特徴の説明は傾向であって当該レースの勝率ではありません。潮位・潮流の実測値、風向コードの方位、開始方向は引き続き未確認です。</p>`;
+ const filter=$('v42Filter'); filter.value=venueAtlasResearchStateV42.filter;
+ function applyFilter(){venueAtlasResearchStateV42.filter=filter.value;root.querySelectorAll('tr[data-v42-status]').forEach(tr=>{tr.hidden=filter.value!=='all'&&tr.dataset.v42Status!==filter.value})}
+ filter.addEventListener('change',applyFilter);applyFilter();
+ root.addEventListener('click',e=>{
+  const b=e.target.closest('[data-v42-venue]');if(b){selectVenue(b.dataset.v42Venue);renderVenueAtlasV42();return}
+  if(e.target.closest('#v42Export')){
+    const profiles=statuses.map(x=>({venue_code:x.code,venue_name:x.name,status:x.fact?'official_text_verified':'unresearched',verified_characteristics:x.fact,official_url:`https://www.boatrace.jp/owpc/pc/site/place/stadium/br${x.code}/`,user_note:x.settings?.memo||null,user_start_heading:x.settings?.heading||null}));
+    const blob=new Blob([JSON.stringify({version:'V43',exported_at:new Date().toISOString(),warning:'Official venue text is qualitative, not a validated predictive coefficient.',profiles},null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='boatrace_24venues_v43.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+ });
+}
+renderVenueAtlasV42();
+$('venue').addEventListener('change',()=>renderVenueAtlasV42());
+// Wind codes intentionally remain raw until BoatraceCSV's exact code convention is verified.
+// V38: Water observations, display-only until venue-specific coefficients are validated.
+// V44: Qualitative scenario checklist. This is not a probability model.
+function renderMethodScenariosV44(){
+ const root=$('methodScenarios');if(!root)return;
+ if(!data){root.innerHTML='';return}
+ const code=String(data.venue||$('venue').value).match(/\d{2}/)?.[0]||$('venue').value;
+ const venue=verifiedVenueFactsV41[code];
+ const rs=data.raceScenarioMetrics||[];
+ if(rs.length!==6){root.innerHTML='<h3>展開・決まり手の検討（V44）</h3><p class="note">6艇の展開比較データが不足しています。</p>';data.methodScenarioChecklist=null;return}
+ const r=n=>rs.find(x=>x.boat===n)||{};
+ const idx=n=>r(n).startIndex;
+ const rank=(n,key)=>r(n)[key];
+ const show=n=>`${n}号艇${r(n).name?' '+r(n).name:''}`;
+ const fast=rs.filter(x=>typeof x.startIndex==='number').sort((a,b)=>b.startIndex-a.startIndex).slice(0,3);
+ const early=fast.map(x=>x.boat);
+ const turnGood=n=>[rank(n,'lapRank'),rank(n,'turnRank')].some(x=>typeof x==='number'&&x<=2);
+ const straightGood=n=>typeof rank(n,'straightRank')==='number'&&rank(n,'straightRank')<=2;
+ const inner=[1,2,3].filter(turnGood);
+ const outer=[4,5,6].filter(n=>straightGood(n)||early.includes(n));
+ const intro=venue?`${venue.name}の公式特徴：${venue.race}。潮汐：${venue.tide}。`:'公式特性が未登録です。';
+ const wind=data.waterConditions||{};
+ const wSpeed=wind.windSpeedMps;
+ const hasObserved= wSpeed!==null && wSpeed!==undefined && wSpeed!=='' && Number.isFinite(Number(wSpeed));
+ const relative=windRelativeV40(raceWindV40(data.code).from,venueSettingsV40(code).heading,hasObserved?Number(wSpeed):'―');
+ const conditions=[`進入コース確定：未確認（以下は枠番基準）`,`相対風向：${relative}`,`潮位・潮流の当日数値：未取得`,`実戦の伸び・出足・ターン気配：展示計測値だけでは確定できない`];
+ const methods=[
+ {method:'逃げ',boats:[1],evidence:[`${show(1)}：一周${rank(1,'lapRank')??'―'}位・まわり足${rank(1,'turnRank')??'―'}位`,typeof idx(1)==='number'?`スタート指数 ${idx(1).toFixed(1)}（他艇との比較用）`:'スタート指数不足'],checks:['1コースを確保できるか','2・3コースのスタート先行と差し足','1マークの旋回と風・波の影響']},
+ {method:'差し',boats:[2,3],evidence:[`内側の周回・まわり足計測上位：${inner.length?inner.map(n=>n+'号艇').join('・'):'該当なし'}`,`スタート先行指数上位：${early.length?early.map(n=>n+'号艇').join('・'):'未取得'}`],checks:['1号艇が先マイするか','2・3号艇の実際の進入と差し場','差し足（出足・回り足）の実戦気配']},
+ {method:'まくり',boats:[3,4,5,6],evidence:[`外枠の先行・直線計測上位候補：${outer.length?outer.map(n=>show(n)).join('・'):'計測上の候補なし'}`,`内側のスタート抵抗：${[1,2,3].map(n=>n+'号艇 '+(typeof idx(n)==='number'?idx(n).toFixed(1):'不明')).join('／')}`],checks:['実際のカド位置・進入','内艇に対するスタート優位','外から握って届く伸びと回り足']},
+ {method:'まくり差し',boats:[3,4,5,6],evidence:[`外の先行・直線計測上位候補：${outer.length?outer.map(n=>n+'号艇').join('・'):'計測上の候補なし'}`,`内側の旋回計測上位：${inner.length?inner.map(n=>n+'号艇').join('・'):'該当なし'}`],checks:['内側に攻め艇がいて差す空間が生まれるか','センター・外枠のターン精度','隊形と1マークの引き波・潮流']}
+ ];
+ const cards=methods.map(m=>`<div class="info" style="margin:0"><b>${esc(m.method)}：検討材料</b><p class="note">${m.evidence.map(esc).join(' ／ ')}</p><b class="tiny">確かめる条件</b><p class="note">${m.checks.map(esc).join(' ／ ')}</p></div>`).join('');
+ root.innerHTML=`<h3>展開・決まり手の検討（V44）</h3><p class="note">実際の決まり手を予測・順位付けする機能ではありません。既存のスタート指数、実測足順位と公式の場別特性から、確認すべき展開の条件を整理しています。</p><div class="info"><b>場別の背景：${esc(venue?.name||code)}</b><p class="note">${esc(intro)}</p><p class="note">水質：${esc(venue?.water||'未確認')}／風速：${hasObserved?esc(Number(wSpeed).toFixed(1)+'m/s'):'未取得'}／${esc(relative)}</p></div><div class="grid-note" style="margin-top:12px">${cards}</div><p class="note"><b>未確定条件：</b>${conditions.map(esc).join(' ／ ')}。公式の場別傾向は当該レースの勝率や有利艇を直接示すものではありません。展示ST単発値による加点は行いません。</p>`;
+ data.methodScenarioChecklist={version:'V44',venue:venue?.name||code,venueContext:venue?{race:venue.race,tide:venue.tide,wind:venue.wind,source:venue.source}:null,relativeWind:relative,methods,unconfirmed:conditions,warning:'定性的な検討リスト。勝率・買い目・決まり手予測ではない。進入・実戦気配・潮位潮流は未反映。'};
+}
+function renderWaterConditions(){
+ const root=$('waterConditions');if(!root)return;
+ const ds=data?.datasets?.['previews/sui']; const rec=ds?.record;
+ const label={ '気象観測時刻':'観測時刻','風速(m)':'風速','風向':'風向','波の高さ(cm)':'波高','天候':'天候','気温(℃)':'気温','水温(℃)':'水温' };
+ const keys=Object.keys(label);
+ const readings=Object.fromEntries(keys.map(k=>[k,rec?.[k]===undefined||rec?.[k]===null||String(rec[k]).trim()===''?null:String(rec[k]).trim()]));
+ const values=keys.map(k=>{const v=readings[k];const suffix=k==='風速(m)'?' m/s':k==='波の高さ(cm)'?' cm':k==='気温(℃)'||k==='水温(℃)'?' ℃':'';
+ const shown=k==='天候'&&v!==null?(weatherNames[v]?`${weatherNames[v]}（コード${v}）`:`未解読（コード${v}）`):k==='風向'&&v!==null?`コード${v}（方位未確認）`:v===null?'―':`${v}${suffix}`;
+ return `<div class="boat" style="padding:9px"><small>${esc(label[k])}</small><div style="font-size:17px;font-weight:700">${esc(shown)}</div></div>`}).join('');
+ const code=String($('venue').value||'');const name=venues[Number(code)-1]||'不明';
+ const profile=venueWaterProfiles[code];
+ const populated=keys.filter(k=>readings[k]!==null).length;
+ const latest=rec?.['取得日時']||null;
+ const state=rec?`対象レースの観測行あり（${populated}/${keys.length}項目）`:`観測行なし（${esc(ds?.status||'未取得')}）`;
+ const source=rec?'BoatraceCSV previews/sui（直前スナップショット）':'BoatraceCSV previews/sui';
+ const intro=rec?`<p class="note">${esc(state)}。${latest?'取得日時：'+esc(latest)+'。':''}天候は対応が確認できたコードだけ名称化しています。風向はコード体系の検証が終わるまで方位に変換せず、向かい風・追い風も断定しません。</p>`:`<p class="warnbox">${state}。対象レースの気象はまだ確認できません。過去の天気や他レースの観測値で代用しません。</p>`;
+ root.innerHTML=`<h3>水面・気象の確認（V43）</h3><p class="note">対象：${esc(code)} ${esc(name)}／${esc(data?.race||'')}。全24場の気象CSVに対応。観測値は実測ですが、潮位・潮流はこのCSVに含まれません。</p>${intro}<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(125px,1fr))">${values}</div><div class="info" style="margin-top:12px"><b>場別評価：${esc(name)}</b><p class="note">24場の場別特性を管理する枠組みを追加（現在この場の実証データは未登録）。場別補正係数は未検証のため未適用。風向・風速・波高を「イン有利」「まくり有利」等へ機械的には変換しません。水面構造、潮汐、当日の進入と組み合わせて判断します。</p><p class="note">場別補正：未適用 ／ 潮位：未取得 ／ 潮流：未取得 ／ データ源：${esc(source)}</p></div>${venueResearchV41(code)}${v40Controls(code,readings['風向'])}`;
+ initV40Controls();
+ data.waterConditions={venueVerifiedFacts:verifiedVenueFactsV41[code]||null,officialVenueInformationUrl:`https://www.boatrace.jp/owpc/pc/site/place/stadium/br${code}/`,venueCode:code,venueName:name,source,status:ds?.status||'未取得',observedAt:readings['気象観測時刻'],retrievedAt:latest,windSpeedMps:readings['風速(m)'],windDirectionRaw:readings['風向'],waveHeightCm:readings['波の高さ(cm)'],weatherRaw:readings['天候'],weatherLabel:weatherNames[readings['天候']]||null,windDirectionLabel:null,venueProfile:profile,airTempC:readings['気温(℃)'],waterTempC:readings['水温(℃)'],tideLevel:null,current:null,venueAdjustmentApplied:false,manualWindDirection:raceWindV40(data.code).from||null,manualStartHeading:venueSettingsV40(code).heading||null,relativeWind:windRelativeV40(raceWindV40(data.code).from,venueSettingsV40(code).heading,readings['風速(m)']),venueResearchMemo:venueSettingsV40(code).memo||null,manualDirectionSource:'user-entered; unverified'};
+}
+function renderRankAudit(){
+ const entries=data?.startRankAudit||[];
+ if(!entries.length){$('rankAudit').innerHTML='<p class="note">照合明細なし。取得診断を確認してください。</p>';return}
+ const cells=entries.map(x=>`<tr><td>${esc(x.boat)}号艇 ${esc(x.name)}</td><td>${esc(x.tag)}</td><td>${esc(x.date||'―')} ${x.race?esc(x.race)+'R':''}</td><td>${esc(x.st)}</td><td>${x.rank?esc(x.rank)+'位':'―'}</td><td>${esc(x.all||x.status)}</td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">公式結果</a>`:'―'}</td></tr>`).join('');
+ $('rankAudit').innerHTML=`<h3>今節スタート順位・全走照合表（V34）</h3><p class="note">日付・レース・選手登録番号・STが一致した走だけを「照合済」とします。順位は同タイムを同順位とする競技順位です。「公式結果」から各走を目視確認できます。公式との全件照合を保証するものではありません。</p><table style="min-width:850px"><thead><tr><th>艇・選手</th><th>今節</th><th>日付/R</th><th>ST</th><th>順位</th><th>各艇ST/未確認理由</th><th>確認</th></tr></thead><tbody>${cells}</tbody></table>`;
+}
+function renderNotes(){ $('notes').innerHTML=Array.from({length:6},(_,i)=>{let n=i+1;return `<div class="boat"><strong>${n}号艇</strong><div class="chips">${choices.map((c,j)=>`<button type="button" data-n="${n}" data-choice="${j}" class="${(memo[n]?.tags||[]).includes(c)?'chosen':''}">${esc(c)}</button>`).join('')}</div><textarea data-boat="${n}" placeholder="その他の気配・気になる点">${esc(memo[n]?.text||'')}</textarea></div>`}).join('');document.querySelectorAll('[data-boat]').forEach(el=>el.addEventListener('input',()=>{let n=el.dataset.boat;memo[n]??={tags:[],text:''};memo[n].text=el.value;saveMemo();if(data){renderFootComparison();renderRaceScenarios()}}));document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{let n=b.dataset.n,c=choices[Number(b.dataset.choice)];memo[n]??={tags:[],text:''};memo[n].tags??=[];memo[n].tags=memo[n].tags.includes(c)?memo[n].tags.filter(x=>x!==c):[...memo[n].tags,c];saveMemo();renderNotes();if(data){renderFootComparison();renderRaceScenarios()}})}
+let chosenOdds=new Set();
+function renderOdds(){
+ const record=data?.datasets['previews/od3']?.record||{};
+ const map=new Map();
+ for(const [key,raw] of Object.entries(record)){
+  const m=key.match(/^3連単_([1-6])-([1-6])-([1-6])$/);
+  if(!m||new Set(m.slice(1)).size!==3)continue;
+  const val=String(raw??'').trim();
+  map.set(m.slice(1).join('-'),val!==''&&Number.isFinite(Number(val))?Number(val):null);
+ }
+ const colors=['','boat1','boat2','boat3','boat4','boat5','boat6'];
+ const card=data?.datasets['programs/race_cards']?.record;
+ let columns='';
+ for(let first=1;first<=6;first++){
+  let rows='';
+  for(let second=1;second<=6;second++){
+   if(second===first)continue;
+   const thirds=[1,2,3,4,5,6].filter(n=>n!==first&&n!==second);
+   thirds.forEach((third,i)=>{
+    const comb=`${first}-${second}-${third}`;
+    const val=map.get(comb),valid=val!==undefined&&val!==null&&val>0;
+    const display=valid?val.toFixed(1):'—';
+    const strong=valid&&val>=1000?' high':'';
+    rows+=`<tr class="odds-row ${i===0?'group-start':''} ${valid?'':'missing'} ${chosenOdds.has(comb)?'selected':''}" data-comb="${comb}" title="${comb} ${valid?display:'未取得'}">${i===0?`<th class="second ${colors[second]}" rowspan="4" scope="rowgroup">${second}</th>`:''}<td class="third ${colors[third]}">${third}</td><td class="price${strong}">${display}</td></tr>`;
+   });
+  }
+  const name=get(boatFields(card,first),'選手名');
+  const label=name==='―'?`${first}号艇`:`${first}.${esc(name)}`;
+  columns+=`<div class="odds-col"><div class="odds-head ${colors[first]}">${label}</div><table class="odds-table"><tbody>${rows}</tbody></table></div>`;
+ }
+ const available=[...map.values()].filter(v=>v!==null&&v>0).length;
+ $('odds').innerHTML=`<p class="odds-summary">${available}/120通りの有効オッズ　｜　選択中 <strong id="oddsSelectedCount">${chosenOdds.size}</strong>点　<button type="button" class="secondary" id="clearOdds">選択解除</button></p><p class="odds-legend">1着を横6列、2着の艇番を縦にまとめ、3着とオッズを表示します。買い目を押すと選択できます。赤字は1000倍以上。「—」は未取得です。</p><div class="odds-wrap"><div class="odds-grid">${columns}</div></div><p class="note" id="selectedOddsText"></p>`;
+ $('odds').querySelectorAll('[data-comb]').forEach(el=>el.onclick=()=>{
+  const comb=el.dataset.comb;
+  if(el.classList.contains('missing'))return;
+  if(chosenOdds.has(comb))chosenOdds.delete(comb);else chosenOdds.add(comb);
+  el.classList.toggle('selected',chosenOdds.has(comb));updateOddsSelection();
+ });
+ $('clearOdds').onclick=()=>{chosenOdds.clear();$('odds').querySelectorAll('.odds-row.selected').forEach(el=>el.classList.remove('selected'));updateOddsSelection()};
+ updateOddsSelection();
+}
+function updateOddsSelection(){
+ const c=$('oddsSelectedCount'),t=$('selectedOddsText');if(!c||!t)return;
+ c.textContent=chosenOdds.size;
+ t.textContent=chosenOdds.size?'選択した買い目：'+[...chosenOdds].join('、'):'買い目をクリックすると選択できます。';
+}
+// V82: Show whether the current-day early runs are actually present and verified.
+// No inferred rank is invented; the official result matching remains in calculateMeetStartRanks().
+// V83: determine an actual same-day earlier run from a registered racer and
+// a distinct earlier race on the same date. Historic meeting-day slots are NOT
+// assumed to represent a same-day early run.
+let v83EarlyCache=new Map();
+async function v83LoadSameDay(){
+ if(!data)return;
+ const target=data.code, date=data.date, token=target;
+ const root=$('v82Freshness');if(!root)return;
+ const [y,m,d]=date.split('-');
+ const venue=String($('venue').value), raceNo=Number(String($('race').value));
+ const card=data.datasets?.['programs/race_cards']?.record;
+ if(!card){root.textContent='当日早見走：出走表を取得できませんでした。';return;}
+ const racers=Array.from({length:6},(_,i)=>({boat:i+1,reg:String(boatFields(card,i+1)['登録番号']||'').trim()}));
+ root.innerHTML='<b>当日早見走・確認中（V83）</b><p class="note">当日の先行レースを登録番号で調べています。過去日の節間履歴とは区別します。</p>';
+ const read=async kind=>{
+  const key=kind+'|'+date;let cached=v83EarlyCache.get(key);
+  if(cached&&Date.now()-cached.at<180000)return cached.value;
+  try{let res=await fetch(`https://boatracecsv.github.io/data/${kind}/${y}/${m}/${d}.csv`,{cache:'no-store'});
+   if(!res.ok)throw Error('HTTP '+res.status);
+   const parsed=parse(await res.text()),val={rows:objects(parsed[0]||[],parsed.slice(1)),error:null};
+   v83EarlyCache.set(key,{at:Date.now(),value:val});return val;
+  }catch(e){return {rows:[],error:String(e.message)}}
+ };
+ const [cards,results]=await Promise.all([read('programs/race_cards'),read('results/realtime')]);
+ if(!data||data.code!==token)return;
+ const oldCards=cards.rows.filter(r=>String(r['レースコード']||'').slice(8,10)===venue && Number(String(r['レースコード']||'').slice(10,12))<raceNo);
+ const resultsByCode=new Map(results.rows.map(r=>[String(r['レースコード']||''),r]));
+ const rows=[],statuses={found:0,unpublished:0,none:0};
+ for(const racer of racers){
+  const matches=oldCards.filter(row=>Array.from({length:6},(_,i)=>String(row[`艇${i+1}_登録番号`]||'').trim()).includes(racer.reg)&&racer.reg);
+  const found=matches.map(row=>{
+   const code=String(row['レースコード']);const priorBoat=Array.from({length:6},(_,i)=>i+1).find(i=>String(row[`艇${i}_登録番号`]||'').trim()===racer.reg);
+   const result=resultsByCode.get(code);
+   const correspondingCourse=result ? Array.from({length:6},(_,i)=>i+1).find(c=>Number(result[`${c}コース_艇番`])===priorBoat) : null;
+   const st=result&&correspondingCourse ? (result[`${correspondingCourse}コース_スタートタイミング`]??'') : '';
+   const finish=result ? (Array.from({length:6},(_,i)=>i+1).find(i=>Number(result[`${i}着_艇番`])===priorBoat)??'') : '';
+   const fields=result?Object.keys(result).filter(k=>k.includes('ST')||k.includes('着順')).length:0;
+   return {race:Number(code.slice(10,12)),st:String(st).trim(),finish:String(finish).trim(),result:!!result,fields};
+  });
+  let status='当日先行走を確認できず', detail='当日の過去レース出走表に登録番号なし';
+  if(matches.length){const complete=found.filter(x=>x.result && x.st && x.finish);
+    if(complete.length){status='確定結果の値を確認';statuses.found++;}
+    else{status='当日先行走あり・結果未確認';statuses.unpublished++;}
+    detail=found.map(x=>`${x.race}R：${x.result?`ST ${x.st||'列未確認'} / 着 ${x.finish||'列未確認'}`:'結果CSV未掲載'}`).join('、');
+  }else statuses.none++;
+  rows.push(`<tr><td>${racer.boat}号艇</td><td>${esc(detail)}</td><td>${esc(status)}</td></tr>`);
+ }
+ const loaded=new Date(data.loadedAt).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'});const merged=data.v84EarlySummary;const mergedText=merged?`<p class="note"><b>今節順位への確定反映：${merged.added}走追加・${merged.duplicates}走重複除外</b>。${esc(merged.notes.join(' / '))}</p>`:'';
+ root.innerHTML=`<b>当日早見走・指数反映（V84）</b><p class="note">取得時刻 ${esc(loaded)}。同じ日・同じ競艇場の現在のレースより前に、同一登録番号で出走表に掲載された走だけを確認します。過去日履歴を当日の走と誤認しません。</p><p class="note">先行走の結果欄確認 ${statuses.found}艇／出走あり・結果未確認 ${statuses.unpublished}艇／先行走未検出 ${statuses.none}艇。出走表CSV：${esc(cards.error||'取得済')}、結果CSV：${esc(results.error||'取得済')}。</p>${mergedText}<details><summary>6艇の当日早見走の診断を表示</summary><div class="scroll"><table><thead><tr><th>艇</th><th>当日の先行レース</th><th>状態</th></tr></thead><tbody>${rows.join('')}</tbody></table></div></details><p class="note">V84：確定STと登録番号・同日先行レースが照合できた走だけ今節順位へ追加します。重複は除外。ST未掲載の走は推測しません。追加結果は下の今節ST診断にも記録します。</p>`;
+}
+// V86: Snapshot only the PRE-deadline values; never infer missing results.
+function v85StartSnapshot(){
+ return buildStartAttack().map(x=>({boat:x.boat, runs:x.n||0, mean:Number.isFinite(x.mean)?x.mean:null, eligible:!!x.eligible, index:x.eligible&&Number.isFinite(x.adjustedScore)?x.adjustedScore:null}));
+}
+function v85Render(){
+ const root=$('v85Delta'); if(!root||!data)return;
+ const diff=data.v85Comparison;
+ if(!diff){root.textContent='早見走の更新前後データは未取得です。';return}
+ const fmt=x=>Number.isFinite(x)?x.toFixed(2):'―';
+ const score=x=>Number.isFinite(x)?x.toFixed(1):'―';
+ const rows=diff.before.map(b=>{
+  const a=diff.after.find(x=>x.boat===b.boat)||b;
+  return `<tr><td>${b.boat}号艇</td><td>${b.runs}走 → ${a.runs}走</td><td>${fmt(b.mean)} → ${fmt(a.mean)}</td><td>${score(b.index)} → ${score(a.index)}</td><td>${a.runs>b.runs?'当日走追加': '追加なし'}</td></tr>`;
+ }).join('');
+ root.innerHTML=`<b>当日早見走・反映前後の比較（V86）</b><p class="note">追加${diff.added}走・重複除外${diff.duplicates}走。指数は全走照合かつ2走以上のみ表示。欠損は推測しません。</p><div class="scroll"><table><thead><tr><th>艇</th><th>照合走数</th><th>平均スタート順位</th><th>補正指数</th><th>判定</th></tr></thead><tbody>${rows}</tbody></table></div><p class="note">これは同一取得内の追加前後の差分です。追加前は当日走の結果を含まない状態で、必ずしも実際の早見走前に保存された予想ではありません。</p>`;
+}
+function v85RenderExhibition(){
+ const root=$('v85Exhibition');if(!root||!data)return;
+ const ts=data.datasets?.['previews/tkz'], o=data.datasets?.['previews/original_exhibition'];
+ const t=ts?.record||null, orig=o?.record||null;
+ const fields=Array.from({length:3},(_,i)=>({name:String(orig?.['計測項目'+(i+1)]||'').normalize('NFKC').replace(/周り足/g,'まわり足').trim(),index:i+1}));
+ const countFor=idx=>Array.from({length:6},(_,i)=>i+1).filter(n=>{const raw=idx?orig?.[`艇${n}_値${idx}`]:t?.[`艇${n}_展示タイム`];const v=numericTime(raw);return v!==null&&v>=0&&v<100}).length;
+ const items=[{label:'展示タイム',count:countFor(0),present:!!t&&Object.keys(t).some(k=>k.endsWith('_展示タイム')),available:ts?.status==='対象レースあり'},...['一周','まわり足','直線'].map(name=>{const match=fields.find(f=>f.name.includes(name));return {label:name,count:match?countFor(match.index):0,present:!!match,available:o?.status==='対象レースあり'}})];
+ const status=x=>x.count===6?'全艇取得':x.count>0?'一部取得':!x.available?'データ未掲載・未取得':!x.present?'CSVに項目なし（提供状況は要確認）':'項目あり・値なし（未公開／取得要確認）';
+ const date=t?.['取得日時']||orig?.['取得日時']||'不明';
+ root.innerHTML=`<b>展示・オリジナル展示の取得状況（V86）</b><p class="note">取得元時刻：${esc(String(date))}／展示CSV：${esc(ts?.status||'未取得')}／オリジナル展示CSV：${esc(o?.status||'未取得')}</p><div class="scroll"><table><thead><tr><th>項目</th><th>取得艇数</th><th>状態</th></tr></thead><tbody>${items.map(x=>`<tr><td>${x.label}</td><td>${x.count}/6</td><td>${status(x)}</td></tr>`).join('')}</tbody></table></div><p class="note">CSVに項目がない場合、その場で非提供なのか公開前なのかは断定できません。欠損を0秒・足の低評価として扱いません。</p>`;
+}
+// V87: Explain copied values and absent measurements without inventing scores.
+function v87Status(){
+ if(!data)return null;
+ const stamps=['previews/tkz','previews/original_exhibition','previews/stt','previews/sui','previews/od3'];
+ const acquisition=Object.fromEntries(stamps.map(k=>[k,{status:data.datasets?.[k]?.status||'未取得',sourceTime:data.datasets?.[k]?.record?.['取得日時']||null}]));
+ const metrics=(data.startAttackMetrics||[]).map(x=>({boat:x.boat,officialIndex:x.eligible?x.adjustedAttackIndex:null,verifiedRuns:x.verifiedRuns,totalRuns:x.totalRuns,meanStartRank:x.meanRank,classification:x.eligible?'正式':x.provisional?'暫定（予想評価対象外）':'未算出'}));
+ const original=data.datasets?.['previews/original_exhibition']?.record||{};
+ const names=[1,2,3].map(i=>({name:String(original['計測項目'+i]||'').normalize('NFKC').replace(/周り足/g,'まわり足').trim(),index:i}));
+ const exhibition={};
+ for(const name of ['一周','まわり足','直線']){
+  const col=names.find(x=>x.name.includes(name));
+  const values=col?Array.from({length:6},(_,i)=>numericTime(original[`艇${i+1}_値${col.index}`])):[];
+  const count=values.filter(x=>x!==null&&x>=0&&x<100).length;
+  exhibition[name]={count,expected:6,status:count===6?'取得済み':count>0?'一部取得':!col?'CSVに項目なし（非提供か未公開かは不明）':'値未取得'};
+ }
+ const tk=data.datasets?.['previews/tkz']?.record||{};
+ const count=Array.from({length:6},(_,i)=>numericTime(tk[`艇${i+1}_展示タイム`])).filter(x=>x!==null&&x>=0&&x<100).length;
+ exhibition['展示タイム']={count,expected:6,status:count===6?'取得済み':count>0?'一部取得':'未取得'};
+ return {checkedAt:data.loadedAt,earlyRunsAdded:data.v84EarlySummary?.added??0,duplicateRunsExcluded:data.v84EarlySummary?.duplicates??0,startRanks:metrics,exhibition,acquisition,missingDataPolicy:'欠損値を0秒・下位順位・減点に置き換えない。取得時点の状況であり、非提供か未公開かは断定しない。',freshnessWarning:'予想前に公式サイトの締切・進入・展示・オッズの最新値を再確認すること。'};
+}
+function v87RenderStatus(){
+ const el=$('v87Ready');if(!el)return;
+ const v=v87Status();if(!v){el.textContent='データ取得後に表示します。';return;}
+ const count=v.startRanks.filter(x=>x.classification==='正式').length;
+ const measures=Object.entries(v.exhibition).map(([name,x])=>`${name} ${x.count}/6（${x.status}）`).join(' ／ ');
+ el.innerHTML=`<b>予想用コピーの取得チェック（V87）</b><p class="note">取得時刻：${esc(new Date(v.checkedAt).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'}))} ／ 今節正式指数 ${count}/6艇 ／ 当日早見追加 ${v.earlyRunsAdded}走・重複除外 ${v.duplicateRunsExcluded}走</p><p class="note">${esc(measures)}</p><p class="note">欠損は減点しません。コピーJSONにもこの取得状況を含めます。締切・進入・オッズは公式の最新情報を確認してください。</p>`;
+}
+// V84: Add confirmed, same-day, earlier starts to current meet ranks without
+// double counting any dated/raced run already present in the verified audit.
+async function v84MergeEarlyStarts(){
+ if(!data)return {added:0, notes:[]};
+ const card=data.datasets?.['programs/race_cards']?.record;
+ if(!card)return {added:0,notes:['出走表なし']};
+ const date=data.date, code=data.code, venue=String($('venue').value), raceNo=Number($('race').value);
+ const [y,m,d]=date.split('-');
+ async function getRows(kind){
+  const key=kind+'|'+date, cache=v83EarlyCache.get(key);
+  if(cache && Date.now()-cache.at<180000)return cache.value;
+  try{
+   const res=await fetch(`https://boatracecsv.github.io/data/${kind}/${y}/${m}/${d}.csv`,{cache:'no-store'});
+   if(!res.ok)throw Error('HTTP '+res.status);
+   const csv=parse(await res.text()),value={rows:objects(csv[0]||[],csv.slice(1)),error:null};
+   v83EarlyCache.set(key,{at:Date.now(),value});return value;
+  }catch(e){return {rows:[],error:String(e.message)}}
+ }
+ const beforeV85=v85StartSnapshot();
+ const [programs,results]=await Promise.all([getRows('programs/race_cards'),getRows('results/realtime')]);
+ if(data?.code!==code)return {added:0,notes:['レース切替のため中止']};
+ const oldProgram=programs.rows.filter(row=>String(row['レースコード']||'').slice(8,10)===venue && Number(String(row['レースコード']||'').slice(10,12))<raceNo);
+ const byCode=new Map(results.rows.map(row=>[String(row['レースコード']||''),row]));
+ const ranks=data.calculatedStartRanks||{}, audit=data.startRankAudit||[];
+ let added=0, seen=0;const notes=[];
+ for(let n=1;n<=6;n++){
+  const reg=String(boatFields(card,n)['登録番号']||'').trim();
+  if(!reg){notes.push(`${n}号艇:登録番号なし`);continue}
+  const matches=oldProgram.filter(row=>Array.from({length:6},(_,i)=>String(row[`艇${i+1}_登録番号`]||'').trim()).includes(reg));
+  if(!matches.length){notes.push(`${n}号艇:先行レースなし`);continue}
+  for(const row of matches){
+   const raceCode=String(row['レースコード']), result=byCode.get(raceCode);
+   const earlierNo=Number(raceCode.slice(10,12));
+   if(audit.some(x=>x.boat===n && x.status==='照合済' && x.date===date && Number(x.race)===earlierNo)){
+    seen++;notes.push(`${n}号艇 ${earlierNo}R:照合済みのため重複除外`);continue;
+   }
+   if(!result){notes.push(`${n}号艇 ${earlierNo}R:結果CSV未掲載`);continue}
+   const oldBoat=Array.from({length:6},(_,i)=>i+1).find(i=>String(row[`艇${i}_登録番号`]||'').trim()===reg);
+   const competitors=[];
+   for(let c=1;c<=6;c++){
+    const boat=Number(result[`${c}コース_艇番`]);
+    const st=numericTime(result[`${c}コース_スタートタイミング`]);
+    if(boat>=1&&boat<=6&&st!==null)competitors.push({boat,st});
+   }
+   const own=competitors.find(x=>x.boat===oldBoat);
+   if(!own||competitors.length<2){notes.push(`${n}号艇 ${earlierNo}R:ST/進入艇番不足`);continue}
+   // Each date+rno+registered racer is a unique run. Do not add repeated data.
+   const rank=1+competitors.filter(x=>x.st<own.st-0.0001).length;
+   if(!ranks[n])ranks[n]={mean:'―',count:0,missing:0,positions:[]};
+   const item=ranks[n];
+   if(!Array.isArray(item.positions))item.positions=[];
+   item.positions.push(rank);item.count=item.positions.length;
+   item.mean=(item.positions.reduce((a,b)=>a+b,0)/item.positions.length).toFixed(2);
+   if(item.missing>0)item.missing--;
+   audit.push({boat:n,name:boatFields(card,n)['選手名']||'',tag:`当日早見${earlierNo}R`,date,race:earlierNo,rank,st:own.st.toFixed(2),all:competitors.slice().sort((a,b)=>a.st-b.st).map(x=>`${x.boat}号艇:${x.st.toFixed(2)}`).join(' / '),status:'照合済',source:'V84・当日結果CSV',url:`https://www.boatrace.jp/owpc/pc/race/raceresult?hd=${date.replaceAll('-','')}&jcd=${venue}&rno=${String(earlierNo).padStart(2,'0')}`});
+   added++;notes.push(`${n}号艇 ${earlierNo}R:本番ST ${own.st.toFixed(2)}・順位${rank}位を追加`);
+  }
+ }
+ data.calculatedStartRanks=ranks;data.startRankAudit=audit;
+ const summary=`V84当日早見:追加${added}走/重複除外${seen}走。${notes.join('、')}。`;
+ data.startRankDiagnostics=(data.startRankDiagnostics||'')+'\n'+summary;
+ data.v84EarlySummary={added,duplicates:seen,notes,programsError:programs.error,resultsError:results.error};
+ data.v85Comparison={before:beforeV85,after:v85StartSnapshot(),added,duplicates:seen};
+ return {added,notes};
+}
+function v82RefreshStatus(){
+ const root=$('v82Freshness');if(!root)return;
+ root.textContent='当日早見走：当日レースの出走表・確定結果を照合中（V83）…';
+ v83LoadSameDay().catch(e=>{if(root)root.textContent='当日早見走の照合エラー：'+e.message});
+}
+
+function render(){compareRender();v85Render();v85RenderExhibition();v87RenderStatus();v82RefreshStatus();const card=data?.datasets['programs/race_cards']?.record;const boatGroups=groupBoatFields(card);$('boats').innerHTML=boatGroups.map(b=>`<div class="boat"><strong>${b.boat}号艇</strong><p>${Object.keys(b.fields).length} 項目</p><details><summary>項目を確認</summary><pre>${esc(JSON.stringify(b.fields,null,2))}</pre></details></div>`).join('');renderNotes();renderFootComparison();renderRaceScenarios();renderMethodScenariosV44();renderWaterConditions();renderOdds();$('debug').textContent=JSON.stringify(data?.datasets,null,2);$('copy').disabled=false;$('download').disabled=false}
+
+// V45: predictions are stored before requesting results; retrospective edits are marked.
+const v45Key=code=>'boatrace_v45_prediction_'+code;
+let v45Outcome=null;
+function v45Stored(){try{return JSON.parse(localStorage.getItem(v45Key(data?.code))||'null')}catch{return null}}
+function v45Refresh(){
+ const log=$('v45log');if(!log)return;
+ const x=data?v45Stored():null;
+ log.textContent=!data?'データ取得後に予想を記録してください。':x?`保存済：${x.picks.join(' / ')}（各${x.stake}円、${x.createdAt}、${x.retrospective?'事後入力・集計対象外':'事前記録'}）。記録後の上書き不可。`:'このレースの予想は未記録です。';
+ $('v45picks').disabled=!!x||!data;$('v45stake').disabled=!!x||!data;$('v45save').disabled=!!x||!data;
+ if(x){$('v45picks').value=x.picks.join(', ');$('v45stake').value=x.stake}
+}
+function v45OutcomeDetails(result,payout){
+ const order=[1,2,3,4,5,6].map(n=>result[`${n}着_艇番`]).filter(x=>/^[1-6]$/.test(String(x)));
+ const first3=order.slice(0,3).join('-');
+ const actualPayout=(payout?.['3連単_払戻金']||'').replace?.(/[,円\s]/g,'')||'';
+ const amount=Number(actualPayout);
+ const code=String(payout?.['3連単_組番']||'').replace(/\s/g,'');
+ const rows=Array.from({length:6},(_,i)=>({course:i+1,boat:result[`${i+1}コース_艇番`]||'―',st:result[`${i+1}コース_スタートタイミング`]||'―'}));
+ const saved=v45Stored();const hit=!!saved&&saved.picks.includes(first3);
+ const invested=saved?saved.picks.length*saved.stake:null;
+ const returns=saved&&hit&&code===first3&&Number.isFinite(amount)&&amount>0?saved.stake*amount/100: saved&&!hit?0:null;
+ return {order,first3,method:result['決まり手']||'―',code,payout:Number.isFinite(amount)&&amount>0?amount:null,rows,saved,hit,invested,returns};
+}
+async function v45Csv(kind){
+ const [y,m,d]=data.date.split('-');const url=`https://boatracecsv.github.io/data/${kind}/${y}/${m}/${d}.csv`;
+ const res=await fetch(url,{cache:'no-store'});if(!res.ok)throw Error(`${kind}: HTTP ${res.status}`);
+ const parsed=parse(await res.text());const line=parsed.slice(1).find(x=>x[0]===data.code);
+ return line?objects(parsed[0],[line])[0]:null;
+}
+function v45RenderOutcome(){const out=$('v45result');if(!v45Outcome){out.innerHTML='';return}
+ const x=v45Outcome;const money=x.returns==null?'算出不可':`${Math.round(x.returns).toLocaleString('ja-JP')}円`;
+ out.innerHTML=`<div class="info" style="margin:10px 0"><b>確定着順：${esc(x.first3||'未確認')}</b>　決まり手：${esc(x.method)}　3連単：${x.payout!=null?esc(x.payout.toLocaleString('ja-JP'))+'円（100円あたり）':'未取得'}<p class="note">${x.saved?`記録した買い目：${esc(x.saved.picks.join(' / '))} ／ ${x.hit?'的中':'不的中'} ／ 投資${x.invested}円 ／ 払戻${money} ／ ${x.saved.retrospective?'事後入力につき成績集計対象外':'予想記録との照合'}`:'事前予想の記録なし。結果の確認のみ。'}</p></div><table><thead><tr><th>進入コース</th><th>艇番</th><th>ST</th></tr></thead><tbody>${x.rows.map(r=>`<tr><td>${r.course}</td><td>${esc(r.boat)}</td><td>${esc(r.st)}</td></tr>`).join('')}</tbody></table><p class="note">本表のSTは確定結果。スタート指数との比較に使えますが、着順の良し悪しの原因まで自動断定しません。</p>`;
+}
+$('v45save').onclick=()=>{
+ if(!data){$('v45status').textContent='先にレースを取得してください。';return}
+ if(v45Stored()){$('v45status').textContent='このレースの予想は保存済みです。上書きはできません。';return}
+ const raw=$('v45picks').value.trim();const picks=[...new Set(raw.split(/[、,，\s]+/).filter(Boolean))];
+ if(!picks.length||picks.some(x=>!/^([1-6])-([1-6])-([1-6])$/.test(x)||new Set(x.split('-')).size!==3)){$('v45status').textContent='買い目は 1-2-3, 1-3-2 の形式で入力してください（同じ艇の重複不可）。';return}
+ const stake=Number($('v45stake').value);if(!Number.isInteger(stake)||stake<100||stake%100){$('v45status').textContent='購入額は100円単位で入力してください。';return}
+ const now=Date.now();const targetDate=new Date(`${data.date}T00:00:00+09:00`).getTime();
+ // Any prediction on a past date is explicitly retrospective. Same-date post-deadline is likewise not pre-race.
+ const rec=raceRec($('venue').value,$('race').value)||data.datasets['programs/title']?.record;
+ const deadline=findDeadline(rec);const mt=deadline.match(/^(\d{1,2}):(\d{2})/);
+ const deadlineMs=mt?targetDate+(Number(mt[1])*60+Number(mt[2]))*60000:null;
+ const retrospective=data.date<todayJapan()||data.date===todayJapan()&&(deadlineMs===null||now>=deadlineMs);
+ const record={code:data.code,picks,stake,createdAt:new Date().toISOString(),retrospective,deadline:deadline||null,model:'V46',snapshot:v46Snapshot()};
+ try{localStorage.setItem(v45Key(data.code),JSON.stringify(record));$('v45status').textContent=retrospective?'予想を事後入力として保存しました。事前予想の成績には含めません。':'事前予想を保存しました。結果取得後も上書きできません。';v45Refresh();v45RenderOutcome();v46Render()}catch(e){$('v45status').textContent='保存できません：'+e.message}
+};
+$('v45check').onclick=async()=>{
+ if(!data){$('v45status').textContent='先に対象レースのデータを取得してください。';return}
+ $('v45check').disabled=true;$('v45status').textContent='確定結果を読み込み中…';
+ try{const [res,pay]=await Promise.allSettled([v45Csv('results/realtime'),v45Csv('results/payouts')]);
+  if(res.status==='rejected')throw res.reason;
+  if(!res.value){v45Outcome=null;$('v45result').textContent='確定結果はまだ公開されていません。';$('v45status').textContent='対象レースの確定結果なし。時間をおいて再取得してください。';return}
+  v45Outcome=v45OutcomeDetails(res.value,pay.status==='fulfilled'?pay.value:null);v45RenderOutcome();v46StoreOutcome();v46Render();$('v45status').textContent=pay.status==='rejected'?'確定着順は取得。払戻CSVは取得失敗。':pay.value?'確定結果と払戻を取得しました。':'確定着順は取得。払戻データは未公開です。';
+ }catch(e){$('v45status').textContent='取得失敗：'+e.message}finally{$('v45check').disabled=false}
+};
+$('v45export').onclick=()=>{
+ if(!data){$('v45status').textContent='先にレースを選んでください。';return}
+ const payload={raceCode:data.code,prediction:v45Stored(),outcome:v45Outcome,generatedAt:new Date().toISOString(),note:'事後入力予想は事前的中率の計算から除外。確定結果の有無と予想入力の先後を区別する。'};
+ const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=`boatrace_v45_review_${data.code}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)
+};
+
+
+// V46: frozen metric snapshots, results and conservative aggregation.
+const v46AuditKey=code=>'boatrace_v46_audit_'+code;
+function v46GetAudit(code){try{return JSON.parse(localStorage.getItem(v46AuditKey(code))||'null')}catch{return null}}
+function v46Snapshot(){
+ const starts=(data?.startAttackMetrics||[]).map(x=>({boat:x.boat,score:x.eligible?x.adjustedAttackIndex:null,eligible:!!x.eligible,provisional:!!x.provisional,provisionalScore:x.provisional?x.provisionalAttackIndex:null,verifiedRuns:x.verifiedRuns,totalRuns:x.totalRuns,coverageRate:x.coverageRate??null,meanRank:x.eligible?x.meanRank:null,historicalSameLaneMeanRank:Number.isFinite(x.historicalSameLaneMeanRank)?x.historicalSameLaneMeanRank:null,currentAttackIndex:x.eligible?x.currentAttackIndex:null,adjustedAttackIndex:x.eligible?x.adjustedAttackIndex:null}));
+ const feet=(data?.footComparisonMetrics||[]).map(x=>({boat:x.boat,measurements:Object.fromEntries(Object.entries(x.measurements||{}).map(([key,v])=>[key,{rank:v.rank??null,time:v.time??null}]))}));
+ const water=data?.waterConditions||null;
+ return {capturedAt:new Date().toISOString(),dataLoadedAt:data?.loadedAt||null,starts,feet,water};
+}
+function v46StoreOutcome(){
+ if(!data||!v45Outcome)return;
+ const x=v45Outcome;
+ const ranking=x.rows.filter(r=>/^[1-6]$/.test(String(r.boat))&&Number.isFinite(Number(r.st))&&String(r.st).trim()!=='―').map(r=>({boat:Number(r.boat),st:Number(r.st)}));
+ ranking.sort((a,b)=>a.st-b.st);
+ // Equal ST earns equal competition rank (1,2,2,4). F/L/non-numeric excluded.
+ ranking.forEach((r,i)=>r.rank=1+ranking.filter(a=>a.st<r.st-0.0000001).length);
+ const result={first3:x.first3,method:x.method,courseRows:x.rows,actualStarts:ranking,finishOrder:x.order,payout:x.payout,checkedAt:new Date().toISOString()};
+ try{
+  // One result per race; refresh result allowed, saved prediction snapshot is never overwritten.
+  localStorage.setItem(v46AuditKey(data.code),JSON.stringify({code:data.code,record:v45Stored(),result}));
+ }catch(e){$('v45status').textContent='検証データの保存に失敗：'+e.message}
+}
+function v46Entries(){const out=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k?.startsWith('boatrace_v46_audit_')){try{const v=JSON.parse(localStorage.getItem(k));if(v?.code)out.push(v)}catch{}}}}catch{}return out.sort((a,b)=>a.code.localeCompare(b.code))}
+function v46MetricRows(record,result){
+ const starts=record?.snapshot?.starts||[],feet=record?.snapshot?.feet||[];
+ if(!starts.length||!result)return [];
+ const rankMap=new Map((result.actualStarts||[]).map(x=>[x.boat,x]));
+ const position=new Map((result.finishOrder||[]).map((boat,i)=>[Number(boat),i+1]));
+ return starts.map(s=>{
+ const boat=Number(s.boat),actual=rankMap.get(boat),fin=position.get(boat);
+ const f=feet.find(x=>Number(x.boat)===boat);
+ const lap=f?.measurements?.['一周']?.rank ?? null;
+ const turn=f?.measurements?.['まわり足']?.rank ?? null;
+ return {boat,score:s.score,eligible:s.eligible,runCoverage:`${s.verifiedRuns??'―'}/${s.totalRuns??'―'}`,st:actual?.st??null,startRank:actual?.rank??null,finish:fin??null,lapRank:lap,turnRank:turn};
+ });
+}
+function v46SummaryStats(entries){
+ let usable=0,topScoreTrials=0,topScoreLeads=0,scoreVsActual=0,scorePairs=0,footFinish=0,footTrials=0,correct=0,bets=0,invested=0,paid=0,payable=0;
+ for(const a of entries){const rec=a.record,res=a.result;if(!rec||rec.retrospective||!res)continue;usable++;
+  const rows=v46MetricRows(rec,res).filter(x=>x.eligible&&typeof x.score==='number'&&x.startRank!=null);
+  if(rows.length>=2){topScoreTrials++;const best=rows.slice().sort((a,b)=>b.score-a.score)[0];if(best.startRank===Math.min(...rows.map(x=>x.startRank)))topScoreLeads++;
+   for(let i=0;i<rows.length;i++)for(let j=i+1;j<rows.length;j++){const a=rows[i],b=rows[j];if(a.score===b.score||a.startRank===b.startRank)continue;scorePairs++;if((a.score-b.score)*(b.startRank-a.startRank)>0)scoreVsActual++}
+  }
+  const feet=v46MetricRows(rec,res);for(const x of feet){if(x.lapRank===1&&x.finish!=null){footTrials++;if(x.finish<=3)footFinish++}}
+  if(rec.picks?.length&&res.first3){bets++;if(rec.picks.includes(res.first3))correct++;invested+=rec.picks.length*rec.stake;if(rec.picks.includes(res.first3)&&res.payout!=null){paid+=res.payout*rec.stake/100;payable++}else if(!rec.picks.includes(res.first3))payable++}
+ }
+ return {usable,topScoreTrials,topScoreLeads,scoreVsActual,scorePairs,footFinish,footTrials,correct,bets,invested,paid,payable};
+}
+function v46Render(){
+ const root=$('v46audit'),sum=$('v46summary');if(!root||!sum)return;
+ const record=data?v45Stored():null;const result=data?(v46GetAudit(data.code)?.result||null):null;
+ const rows=v46MetricRows(record,result);
+ if(!data)root.innerHTML='<p class="note">レース未選択。</p>';
+ else if(!record)root.innerHTML='<p class="note">このレースの予想は未記録。事前指標も保存されていません。</p>';
+ else if(!record.snapshot)root.innerHTML='<p class="note">V45形式の予想記録：事前指標が保存されていないため評価対象外。</p>';
+ else if(!result)root.innerHTML='<p class="note">事前指標は固定保存済み。確定結果取得後に比較できます。</p>';
+ else root.innerHTML=`<p class="note">記録状態：${record.retrospective?'事後入力（事前検証から除外）':'事前記録'}。指数は勝率ではなく、本番ST順位・着順との関連を検証します。</p><table style="min-width:740px"><thead><tr><th>艇</th><th>事前スタート指数</th><th>照合走数</th><th>本番ST</th><th>本番ST順位</th><th>着順</th><th>事前一周順位</th><th>事前まわり足順位</th></tr></thead><tbody>${rows.map(x=>`<tr><td>${x.boat}号艇</td><td>${x.score??'―'}</td><td>${esc(x.runCoverage)}</td><td>${x.st??'―'}</td><td>${x.startRank??'―'}</td><td>${x.finish??'―'}</td><td>${x.lapRank??'―'}</td><td>${x.turnRank??'―'}</td></tr>`).join('')}</tbody></table>`;
+ const st=v46SummaryStats(v46Entries());
+ sum.innerHTML=`<p class="note">事前予想と結果を両方保存したレース：<b>${st.usable}</b>件。後から保存した予想、事前指標のない記録は除外。指標ごとに比較可能な標本のみ集計します。</p><table><tr><th>検証指標</th><th>結果（観測比率）</th></tr><tr><td>スタート指数最高艇が比較対象内でST最上位</td><td>${st.topScoreLeads}/${st.topScoreTrials}件</td></tr><tr><td>スタート指数の大小と実際のST順位が一致した艇ペア</td><td>${st.scoreVsActual}/${st.scorePairs}</td></tr><tr><td>一周タイム順位1位の艇が3着以内</td><td>${st.footFinish}/${st.footTrials}</td></tr><tr><td>買い目の的中レース</td><td>${st.correct}/${st.bets}</td></tr></table><p class="note">比較対象不足のレースは各指標の分母から除く必要があります。すべて標本の記述統計であり、予測確率・期待値ではありません。払戻未取得のレースは回収率を集計しません。</p>`;
+}
+$('v46export').onclick=()=>{const payload={version:'V46',exportedAt:new Date().toISOString(),audits:v46Entries(),warning:'事後入力を予測検証に含めない。事前保存指標のないレースは指標検証に含めない。'};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='boatrace_v46_audits.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+
+
+// V47 stores immutable pre-deadline metric snapshots independently of purchased tickets.
+const v47Prefix='boatrace_v47_snapshot_';
+function v47All(){const out=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k?.startsWith(v47Prefix)){try{const r=JSON.parse(localStorage.getItem(k));if(r?.code)out.push(r)}catch{}}}}catch{}return out.sort((a,b)=>a.code.localeCompare(b.code))}
+function v47Get(code){try{return JSON.parse(localStorage.getItem(v47Prefix+code)||'null')}catch{return null}}
+function v47Clock(date,time){if(!/^\d{4}-\d\d-\d\d$/.test(date))return null;const m=String(time||'').match(/^(\d{1,2}):(\d\d)/);if(!m||+m[1]>23||+m[2]>59)return null;return new Date(`${date}T${m[1].padStart(2,'0')}:${m[2]}:00+09:00`).getTime()}
+function v47Save(){if(!data)return;
+ if(v47Get(data.code)){$('v47status').textContent='保存済みの指標を維持：'+data.code;v47Render();return}
+ const rec=raceRec($('venue').value,$('race').value)||data.datasets['programs/title']?.record;
+ const deadline=findDeadline(rec),ms=v47Clock(data.date,deadline);
+ if(!ms||!Number.isFinite(ms)){$('v47status').textContent='自動保存対象外：締切時刻が確認できません。';v47Render();return}
+ if(Date.now()>=ms){$('v47status').textContent='自動保存対象外：締切済みです。';v47Render();return}
+ const snapshot=v46Snapshot();
+ const valid=(snapshot.starts||[]).filter(x=>x.eligible&&Number.isFinite(x.score));
+ const feet=(snapshot.feet||[]).filter(x=>Object.values(x.measurements||{}).some(m=>m&&Number.isFinite(m.time)&&m.time>0));
+ const card=data.datasets?.['programs/race_cards']?.record;
+ if(!card){$('v47status').textContent='自動保存対象外：出走表がありません。';v47Render();return}
+ // V54: valid race card + verified future deadline are enough for a pre-exhibition baseline. Missing metrics remain missing.
+ const coverage={startBoats:valid.length,footBoats:feet.length,startComparable:valid.length>=2,footComparable:feet.length>=2};
+ const record={version:'V54',stage:'program',code:data.code,date:data.date,venue:data.venue,race:data.race,deadline,deadlineEpoch:ms,capturedAt:new Date().toISOString(),snapshot,coverage,results:null};
+ try{localStorage.setItem(v47Prefix+data.code,JSON.stringify(record));$('v47status').textContent=`締切前に固定保存：${data.code}（第1段階・出走表保存／指数${valid.length}艇・足${feet.length}艇。欠損は維持）`;v47Render()}catch(e){$('v47status').textContent='保存失敗：'+e.message}
+}
+// V54: second immutable pre-deadline snapshot, separate from V47 program-stage storage.
+const v54StagePrefix='boatrace_v54_exhibition_';
+function v54StageGet(code){try{return JSON.parse(localStorage.getItem(v54StagePrefix+code)||'null')}catch{return null}}
+function v54ExhibitionSave(){
+ if(!data||v54StageGet(data.code))return false;
+ const first=v47Get(data.code);
+ if(!first)return false;
+ if(!Number.isFinite(first.deadlineEpoch)||Date.now()>=first.deadlineEpoch)return false;
+ const ds=data.datasets||{};
+ if(!ds['previews/tkz']?.record&&!ds['previews/original_exhibition']?.record)return false;
+ const snap=v46Snapshot();
+ const feet=(snap.feet||[]).filter(x=>Object.values(x.measurements||{}).some(m=>Number.isFinite(m?.time)&&m.time>0));
+ // Exhibition row may be present but blank; never claim a valid measured snapshot then.
+ if(!feet.length)return false;
+ const record={version:'V54',stage:'exhibition',code:data.code,capturedAt:new Date().toISOString(),deadlineEpoch:first.deadlineEpoch,baselineCapturedAt:first.capturedAt,sourceStatus:{tkz:ds['previews/tkz']?.status||'―',original:ds['previews/original_exhibition']?.status||'―'},snapshot:snap,coverage:{footBoats:feet.length,startBoats:(snap.starts||[]).filter(x=>x.eligible&&Number.isFinite(x.score)).length}};
+ try{localStorage.setItem(v54StagePrefix+data.code,JSON.stringify(record));return true}catch(e){v49Log('展示後記録の保存エラー：'+e.message);return false}
+}
+function v54RenderStages(){
+ const root=$('v54stages');if(!root)return;
+ const all=v47All(),second=all.filter(x=>v54StageGet(x.code)).length;
+ root.innerHTML=`<p class="note"><b>V54の2段階保存：</b>出走表段階 ${all.length}件／展示後段階 ${second}件。第1段階は結果取得後も変更しません。展示後段階も保存後は上書きしません。</p><table><tr><th>レース</th><th>第1段階</th><th>第2段階</th><th>展示実測艇数</th></tr>${all.slice(-12).reverse().map(r=>{const ex=v54StageGet(r.code);return `<tr><td>${esc(r.code)}</td><td>${esc(r.capturedAt||'―')}</td><td>${esc(ex?.capturedAt||'未取得')}</td><td>${ex?.coverage?.footBoats??'―'}</td></tr>`}).join('')}</table>`;
+ v60RenderAudit();
+}
+// V60: diagnostic analysis of immutable snapshots. Provisional metrics remain visible but excluded from official scoring.
+function v60Metrics(record){
+ const s=record?.snapshot?.starts||[];
+ const full=s.filter(x=>x.eligible&&Number.isFinite(x.score));
+ const partial=s.filter(x=>x.provisional&&Number.isFinite(x.provisionalScore));
+ const foot=(record?.snapshot?.feet||[]).filter(x=>Object.values(x.measurements||{}).some(y=>Number.isFinite(y?.time)&&y.time>0));
+ return {formal:full.length,partial:partial.length,foot:foot.length};
+}
+function v60ScoreSnapshot(record){
+ const result=record?.results;if(!result)return null;
+ const starts=record.snapshot?.starts||[];
+ const actual=result.actualStarts||[];
+ const candidates=starts.filter(x=>x.eligible&&Number.isFinite(x.score)).map(x=>({boat:Number(x.boat),score:x.score,rank:actual.find(a=>a.boat===Number(x.boat))?.rank})).filter(x=>Number.isFinite(x.rank));
+ let agree=0,pairs=0;
+ for(let i=0;i<candidates.length;i++)for(let j=i+1;j<candidates.length;j++){
+  const a=candidates[i],b=candidates[j];if(a.score===b.score||a.rank===b.rank)continue;
+  pairs++;if((a.score-b.score)*(b.rank-a.rank)>0)agree++;
+ }
+ const top=candidates.length>=2?candidates.slice().sort((a,b)=>b.score-a.score)[0]:null;
+ return {pairs,agree,topComparable:!!top,topHit:!!top&&top.rank===Math.min(...candidates.map(x=>x.rank))};
+}
+function v60RenderAudit(){
+ const root=$('v60audit');if(!root)return;
+ const all=v47All(),eligible=all.filter(x=>x.results),stages=all.map(x=>({r:x,ex:v54StageGet(x.code)}));
+ const summary={baseline:all.length,exhibition:stages.filter(x=>x.ex).length,confirmed:eligible.length,full:0,partial:0,none:0,pairs:0,agreed:0,topTests:0,topHits:0};
+ const lines=stages.map(({r,ex})=>{const m=v60Metrics(r),result=v60ScoreSnapshot(r);if(m.formal>=2)summary.full++;else if(m.partial)summary.partial++;else summary.none++;if(result){summary.pairs+=result.pairs;summary.agreed+=result.agree;if(result.topComparable){summary.topTests++;if(result.topHit)summary.topHits++}}
+ return {code:r.code,baseline:r.capturedAt,stage2:ex?.capturedAt||null,formal:m.formal,provisional:m.partial,foot:m.foot,verified:!!r.results,result:r.results?.first3||null};});
+ root.innerHTML=`<h3>事前保存と本番の検証状況</h3><p class="note">第1段階の保存値だけを正式検証に使用。暫定指数は保持するが成績には含めません。展示後の第2段階は別記録です。結果がないレースを的中・不的中に含めません。</p><table><tr><th>第1段階</th><th>展示後</th><th>結果照合</th><th>正式2艇以上</th><th>暫定あり（正式不足）</th></tr><tr><td>${summary.baseline}</td><td>${summary.exhibition}</td><td>${summary.confirmed}</td><td>${summary.full}</td><td>${summary.partial}</td></tr></table><p class="note">事前スタート指数と本番ST順位の一致：<b>${summary.agreed}/${summary.pairs}ペア</b>。最高指数艇が比較対象のST首位：<b>${summary.topHits}/${summary.topTests}レース</b>。指数同点・ST同順位はペア比較から除外。少数標本であり、勝率や予想確率ではありません。</p><div class="scroll"><table style="min-width:700px"><tr><th>レース</th><th>事前正式</th><th>暫定（対象外）</th><th>足の実測</th><th>展示後</th><th>結果</th></tr>${lines.slice(-25).reverse().map(x=>`<tr><td>${esc(x.code)}</td><td>${x.formal}艇</td><td>${x.provisional}艇</td><td>${x.foot}艇</td><td>${x.stage2?'保存':'―'}</td><td>${esc(x.result||'未照合')}</td></tr>`).join('')}</table></div>`;
+ v61Render();
+ return {summary,lines};
+}
+// V61: four pre-deadline metrics, evaluated on the same boats and races only.
+// Earlier V60 records do not include all four metrics: never reconstruct them from post-race data.
+function v61Comparison(){
+ const names=['今節平均スタート順位','同枠過去10走平均順','V34 今節攻撃力','V35 補正攻撃力'];
+ const keys=['meanRank','historicalSameLaneMeanRank','currentAttackIndex','adjustedAttackIndex'];
+ const results=names.map(name=>({name,correct:0,pairs:0,races:0,topHits:0,topTests:0,boats:0}));
+ let compared=0,notReady=0,allMissing=0,readyWaiting=0,missingHistorical=0;
+ for(const rec of v47All()){
+  const saved=(rec.snapshot?.starts||[]);
+  const comparableBeforeResult=saved.filter(x=>keys.every((key,k)=>Number.isFinite(x[key])&&(k===1||x.eligible))).length>=2;
+  if(!rec.results){notReady++;if(comparableBeforeResult)readyWaiting++;continue}
+  if(!comparableBeforeResult)missingHistorical++;
+  const actual=rec.results.actualStarts||[];
+  const data=(rec.snapshot?.starts||[]).map(x=>({boat:Number(x.boat),rank:actual.find(y=>Number(y.boat)===Number(x.boat))?.rank,raw:x})).filter(x=>Number.isFinite(x.rank));
+  const complete=data.filter(x=>keys.every((key,k)=>Number.isFinite(x.raw[key])&&(k===1||x.raw.eligible)));
+  if(complete.length>=2)compared++;
+  let any=false;
+  results.forEach((out,k)=>{
+   const eligible=data.filter(x=>Number.isFinite(x.raw[keys[k]])&&(k===1||x.raw.eligible)).map(x=>({boat:x.boat,rank:x.rank,value:x.raw[keys[k]]}));
+   if(eligible.length<2)return;
+   any=true;out.boats+=eligible.length;
+   let local=0;
+   for(let i=0;i<eligible.length;i++)for(let j=i+1;j<eligible.length;j++){
+    const a=eligible[i],b=eligible[j];if(a.rank===b.rank||a.value===b.value)continue;
+    out.pairs++;local++;
+    // Low mean rank is better, high attack index is better.
+    const pred=k<2?a.value-b.value:b.value-a.value;
+    if(pred*(a.rank-b.rank)>0)out.correct++;
+   }
+   if(local)out.races++;
+   const best=k<2?Math.min(...eligible.map(x=>x.value)):Math.max(...eligible.map(x=>x.value));
+   const leaders=eligible.filter(x=>x.value===best);
+   if(leaders.length===1){out.topTests++;if(leaders[0].rank===Math.min(...eligible.map(x=>x.rank)))out.topHits++}
+  });
+  if(!any)allMissing++;
+ }
+ return {results,compared,old:allMissing,notReady,readyWaiting,missingHistorical};
+}
+function v61Render(){
+ const el=$('v61audit');if(!el)return;
+ const v=v61Comparison();
+ const fmtPct=(a,b)=>b?(100*a/b).toFixed(1)+'%':'―';
+ const allReady=v.compared;
+ el.innerHTML=`<h3>スタート評価4方式の比較（順位判定修正済み）</h3>
+ <div class="v69summary"><div><span>同じレースで4方式を比較</span><strong>${allReady}件</strong></div><div><span>4方式保存済み・結果待ち</span><strong>${v.readyWaiting}件</strong></div><div><span>結果照合済み・指標不足</span><strong>${v.missingHistorical}件</strong></div></div>
+ <p class="note">先に見るのは「比較レース数」です。順位比較は6艇の着順予想ではなく、本番スタートの先後関係が一致した割合です。</p>
+ <div class="scroll"><table class="v69compare"><thead><tr><th>方式</th><th>順位の先後一致</th><th>ST最上位の的中</th><th>検証レース</th></tr></thead><tbody>${v.results.map(x=>`<tr><td>${esc(x.name)}</td><td><b>${fmtPct(x.correct,x.pairs)}</b><small>${x.correct}/${x.pairs}艇ペア</small></td><td><b>${fmtPct(x.topHits,x.topTests)}</b><small>${x.topHits}/${x.topTests}レース</small></td><td>${x.races}件</td></tr>`).join('')}</tbody></table></div>
+ ${Math.max(...v.results.map(x=>x.races))<20?'<p class="v69warning">現在は検証レースが少ないため、4方式の優劣や配点変更は判断できません。</p>':''}
+ <details><summary>集計条件・注意点を確認</summary><p class="note">方式ごとに比較できた艇とレースが異なるため、率の単純比較はできません。指数の同点、本番ST同順位の艇ペアは対象外です。艇ペアは独立した試行ではありません。ST最上位的中は、その方式で比較可能な艇のうち指数単独トップを対象にし、6艇すべてのトップとは限りません。過去の結果を用いて事前指標を再計算しません。</p><p class="note">結果未照合：${v.notReady}件。実データが増えたら、同じレース・同じ艇を対象に4方式を比較します。</p></details>`;
+ if(typeof v70Render==='function')v70Render();
+}
+function v60Export(){const payload={version:'V61',exportedAt:new Date().toISOString(),records:v47All(),exhibitionSnapshots:v47All().map(r=>v54StageGet(r.code)).filter(Boolean),statistics:v60RenderAudit()?.summary||null,v61Comparison:v61Comparison(),notes:'第1・第2段階は固定スナップショット。V61以降の4指標のみ同条件比較。過去結果から事前指数を復元しない。'};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='boatrace_v61_verification.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('v60export').onclick=v60Export;
+async function v47CsvFor(code,kind){const date=`${code.slice(0,4)}-${code.slice(4,6)}-${code.slice(6,8)}`;const[y,m,d]=date.split('-');const r=await fetch(`https://boatracecsv.github.io/data/${kind}/${y}/${m}/${d}.csv`,{cache:'no-store'});if(!r.ok)throw Error(kind+' HTTP '+r.status);const lines=parse(await r.text());const row=lines.slice(1).find(x=>x[0]===code);return row?objects(lines[0],[row])[0]:null}
+async function v47Check(){
+ const button=$('v47checkNow');if(button.disabled)return;button.disabled=true;
+ const keys=['meanRank','historicalSameLaneMeanRank','currentAttackIndex','adjustedAttackIndex'];
+ const ready=x=>(x.snapshot?.starts||[]).filter(s=>keys.every((key,k)=>Number.isFinite(s[key])&&(k===1||s.eligible))).length>=2;
+ const pending=v47All().filter(x=>!x.results&&Number.isFinite(x.deadlineEpoch)&&Date.now()>x.deadlineEpoch+120000);
+ // Prioritize saved four-way comparisons, then earliest deadlines; never change pre-race snapshots.
+ pending.sort((a,b)=>Number(ready(b))-Number(ready(a))||a.deadlineEpoch-b.deadlineEpoch);
+ const chosen=pending.slice(0,25), grouped=new Map();
+ for(const item of chosen){const day=item.code.slice(0,8);if(!grouped.has(day))grouped.set(day,[]);grouped.get(day).push(item)}
+ let found=0,errors=0,missing=0,invalid=0,readyFound=0;const notes=[];
+ const checked=new Date().toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'});
+ try{
+  for(const [day,items] of grouped){
+   const url=`https://boatracecsv.github.io/data/results/realtime/${day.slice(0,4)}/${day.slice(4,6)}/${day.slice(6,8)}.csv`;
+   let rows;
+   try{
+    const res=await fetch(url,{cache:'no-store'});
+    if(!res.ok)throw Error('HTTP '+res.status);
+    rows=parse(await res.text());
+    if(!rows.length||!rows[0].includes('レースコード'))throw Error('CSVヘッダー確認不可');
+   }catch(e){errors+=items.length;items.forEach(item=>notes.push(`${item.code}: 結果CSV取得失敗 ${e.message} ／ ${url}`));continue}
+   const header=rows[0],codeCol=header.indexOf('レースコード');
+   const lookup=new Map(rows.slice(1).filter(r=>/^\d{12}$/.test(r[codeCol])).map(r=>[r[codeCol],r]));
+   for(const item of items){
+    try{
+     const raw=lookup.get(item.code);
+     if(!raw){missing++;notes.push(`${item.code}: CSV正常取得・対象レース未掲載（掲載${lookup.size}レース）${ready(item)?'［4方式比較待ち］':''}`);continue}
+     const result=objects(header,[raw])[0];
+     const order=[1,2,3,4,5,6].map(n=>result[`${n}着_艇番`]).filter(x=>/^[1-6]$/.test(String(x))).map(Number);
+     if(order.length<3){invalid++;notes.push(`${item.code}: 対象行あり・確定着順不足（${order.length}艇）`);continue}
+     const starts=Array.from({length:6},(_,i)=>({boat:result[`${i+1}コース_艇番`],st:result[`${i+1}コース_スタートタイミング`]}));
+     const actual=starts.filter(r=>/^[1-6]$/.test(String(r.boat))&&/^[-+]?\.?\d+(?:\.\d+)?$/.test(String(r.st))).map(r=>({boat:Number(r.boat),st:Number(r.st)}));
+     actual.forEach(x=>x.rank=1+actual.filter(y=>y.st<x.st-1e-7).length);
+     item.results={order,first3:order.slice(0,3).join('-'),method:result['決まり手']||null,actualStarts:actual,courseRows:starts.filter(x=>/^[1-6]$/.test(String(x.boat))).map((x,i)=>({course:i+1,boat:Number(x.boat),st:x.st})),checkedAt:new Date().toISOString()};
+     localStorage.setItem(v47Prefix+item.code,JSON.stringify(item));found++;if(ready(item))readyFound++;
+     notes.push(`${item.code}: 確定 ${item.results.first3}${ready(item)?'［4方式比較対象］':''}`);
+    }catch(e){errors++;notes.push(`${item.code}: 処理エラー ${e.message}`)}
+   }
+  }
+  $('v47status').textContent=`最終確認 ${checked}（JST）／未照合${pending.length}件・今回確認${chosen.length}件・新規確定${found}件（4方式${readyFound}件）・CSV未掲載${missing}件・結果不完全${invalid}件・取得エラー${errors}件。`;
+  $('v48diagnostic').textContent=notes.length?notes.join('\n'):'照合対象なし。保存時刻・締切時刻を確認してください。';
+ }finally{button.disabled=false;v47Render();v60RenderAudit()}
+}
+function v47Render(){const rows=v47All(),done=rows.filter(x=>x.results);let trials=0,hits=0,pairs=0,agreements=0,lapTrials=0,lapHits=0;
+ for(const rec of done){const starts=rec.snapshot?.starts||[],actual=rec.results.actualStarts||[];const pairsData=starts.filter(x=>x.eligible&&typeof x.score==='number').map(x=>({score:x.score,rank:actual.find(a=>a.boat===+x.boat)?.rank})).filter(x=>x.rank!=null);
+ if(pairsData.length>=2){trials++;const best=pairsData.slice().sort((a,b)=>b.score-a.score)[0];if(best.rank===Math.min(...pairsData.map(x=>x.rank)))hits++;for(let i=0;i<pairsData.length;i++)for(let j=i+1;j<pairsData.length;j++){const a=pairsData[i],b=pairsData[j];if(a.score===b.score||a.rank===b.rank)continue;pairs++;if((a.score-b.score)*(b.rank-a.rank)>0)agreements++}}
+ const finish=new Map((rec.results.order||[]).map((boat,i)=>[Number(boat),i+1]));
+ for(const foot of rec.snapshot?.feet||[]){const rank=foot.measurements?.['一周']?.rank;const place=finish.get(Number(foot.boat));if(rank===1&&place!=null){lapTrials++;if(place<=3)lapHits++}}
+ }
+ $('v47summary').innerHTML=`<p class="note">事前指標の保存：${rows.length}件 ／ 確定結果の照合：${done.length}件。最新の保存分は下表に表示。</p><table><thead><tr><th>レースコード</th><th>事前保存</th><th>スタート指数</th><th>足の実測</th><th>締切(JST)</th><th>結果</th></tr></thead><tbody>${rows.slice(-20).reverse().map(x=>`<tr><td>${esc(x.code)}</td><td>${esc(x.capturedAt||'')}</td><td>${x.coverage?.startBoats??(x.snapshot?.starts||[]).filter(z=>z.eligible&&Number.isFinite(z.score)).length}艇</td><td>${x.coverage?.footBoats??(x.snapshot?.feet||[]).filter(z=>Object.values(z.measurements||{}).some(m=>Number.isFinite(m?.time)&&m.time>0)).length}艇</td><td>${esc(x.deadline||'―')}</td><td>${esc(x.results?.first3||'未確定')}</td></tr>`).join('')}</tbody></table><p class="note">スタート指数最高艇がST最上位：${hits}/${trials}レース。艇同士の指数順位と実際のST順位の一致：${agreements}/${pairs}ペア（同順位を除外）。一周実測1位の3着以内：${lapHits}/${lapTrials}艇。各指標は比較できた記録だけを母数にします。記述統計であり予測確率ではありません。</p>`;
+}
+$('v47checkNow').onclick=v47Check;
+$('v47export').onclick=()=>{const payload={version:'V47',exportedAt:new Date().toISOString(),records:v47All()};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='boatrace_v47_backtest.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+$('v47watch').onchange=()=>{if($('v47watch').checked)v47Check()};
+setInterval(()=>{if($('v47watch').checked&&!document.hidden)v47Check()},300000);
+
+// V49: Bounded, foreground-only nationwide pre-deadline snapshot collection.
+let v49Busy=false, v49Stop=false;
+function v49Log(message){const el=$('v49status');el.textContent=`${new Date().toLocaleTimeString('ja-JP',{timeZone:'Asia/Tokyo'})} ${message}\n`+el.textContent.slice(0,3500)}
+function v50Diagnostic(){
+ const ds=data?.datasets||{},card=ds['programs/race_cards'],title=ds['programs/title'];
+ const statuses=['programs/title','programs/race_cards','programs/waku10','previews/tkz','previews/original_exhibition'].map(k=>`${k.split('/').pop()}:${ds[k]?.status||'未実行'}`).join(' / ');
+ if(!card?.record)return '出走表なし：'+(card?.status||'対象レースなし')+'／'+statuses;
+ if(!title?.record)return '開催情報なし：'+(title?.status||'対象レースなし')+'／'+statuses;
+ const stats=data?.startAttackMetrics||[],valid=stats.filter(x=>x.eligible&&Number.isFinite(x.adjustedAttackIndex));
+ const feet=data?.footComparisonMetrics||[];
+ const measured=feet.filter(x=>Object.values(x.measurements||{}).some(m=>Number.isFinite(m?.time)&&m.time>0));
+ const meet=String(title.record['日次']||'不明');
+ const cover=stats.map(x=>`${x.boat}号艇 ${x.verifiedRuns??0}/${x.totalRuns??0}走${x.eligible?' 評価可':''}`).join('、');
+ const failures=Object.entries(ds).filter(([k,v])=>String(v.status||'').startsWith('取得失敗')).map(([k,v])=>`${k}: ${v.status}`);
+ const exhibitionPublished=!!ds['previews/tkz']?.record||!!ds['previews/original_exhibition']?.record;
+ let reason=`指数${valid.length}艇／実測足${measured.length}艇`;
+ if(!exhibitionPublished)reason+='／展示・オリジナル展示が未掲載（公開待ちの可能性）';
+ if(stats.length&&!valid.length)reason+='／スタート指数の採用条件（2走以上、今節全走照合）を満たす艇なし';
+ if(failures.length)reason+='／通信・取得失敗 '+failures.join(' | ');
+ return `開催${meet}／${reason}／CSV状況: ${statuses}／照合状況: ${cover||'算出なし'}。`;
+}
+// V55: Keep a non-destructive diagnostic of each batch computation.
+const v55RunDiagnostics=[];
+function v56MeetStage(raw){const s=String(raw||'');if(/初日|１日目|1日目/.test(s))return '初日';if(/最終日|優勝戦日/.test(s))return '最終日';if(/(?:２|2|３|3|４|4|５|5|６|6|７|7)日目/.test(s))return '途中日';return '日次不明';}
+function v56PriorByBoat(boat){const rec=data?.datasets?.['programs/waku10']?.record;const f=boatFields(rec,boat);const raw=get(f,'枠番別平均スタート順');const n=numericTime(raw);return n!==null&&n>=1&&n<=6?n:null;}
+function v55Record(){
+ if(!data)return;
+ const stats=data.startAttackMetrics||[];
+ const ranks=data.calculatedStartRanks||{};
+ const title=data.datasets?.['programs/title']?.record||{};
+ const boats=Array.from({length:6},(_,i)=>{
+  const n=i+1, x=stats.find(q=>Number(q.boat)===n)||{}, r=ranks[n]||{};
+  const count=Number(r.count||0), missing=Number(r.missing||0), total=Number(x.totalRuns??count+missing);
+  const prior=v56PriorByBoat(n);
+  let reason='評価可';
+  if(total===0)reason='今節出走履歴なし（初日は正常・それ以外はデータ確認）';
+  else if(count===0)reason='順位照合なし（開催日・確定結果・STを診断）';
+  else if(count<2)reason='順位照合は1走のみ';
+  else if(count<total)reason=`照合不足 ${count}/${total}走`;
+  else if(!x.eligible)reason='指数判定条件未達（要詳細調査）';
+  return {boat:n,verified:count,expected:total,missing,eligible:!!x.eligible,score:x.eligible&&Number.isFinite(x.adjustedAttackIndex)?x.adjustedAttackIndex:null,provisionalScore:x.provisional&&Number.isFinite(x.provisionalAttackIndex)?x.provisionalAttackIndex:null,coverage:total?count/total:null,prior,reason};
+ });
+ const rec={code:data.code,venue:data.venue,race:data.race,meetDay:String(title['日次']||''),stage:v56MeetStage(title['日次']),at:new Date().toISOString(),boats,rankDetails:data.startRankDiagnostics||'',datasetStatuses:Object.fromEntries(Object.entries(data.datasets||{}).map(([k,v])=>[k,v.status]))};
+ v55RunDiagnostics.push(rec);v55Render();
+}
+function v55Render(){
+ const target=$('v55table');if(!target)return;
+ const all=v55RunDiagnostics.slice(-6).reverse();
+ target.innerHTML=all.length?all.map(r=>{
+  const count=r.boats.filter(b=>b.eligible&&b.score!==null).length;
+  const finalGap=r.stage==='最終日'&&count===0;
+  const stageNote=r.stage==='初日'?'今節データが0走でも正常。過去10走は参考資料にとどめます。':finalGap?'最終日で今節指数0艇：日次・確定結果CSV・選手照合・出走表の収録状態を調査してください。':r.stage==='途中日'&&count===0?'途中日で指数0艇：照合済み走数と結果CSVを確認してください。':'今節全走指数は全走照合のみ有効。2走以上の一部照合は暫定指数として別表示します。';
+  return `<details style="margin:8px 0" ${r===all[0]?'open':''}><summary><b>${esc(r.code)} (${esc(r.meetDay)})</b>・${esc(r.stage)}・今節指数有効${count}/6艇${finalGap?' ⚠最終日要調査':''}</summary><p class="note">${esc(stageNote)}</p><table><thead><tr><th>艇</th><th>照合済/今節</th><th>正式指数</th><th>暫定指数</th><th>照合率</th><th>同枠過去10走平均順位（参考）</th><th>判定</th></tr></thead><tbody>${r.boats.map(b=>`<tr><td>${b.boat}</td><td>${b.verified}/${b.expected}</td><td>${b.score===null?'―':b.score.toFixed(1)}</td><td>${b.provisionalScore===null?'―':b.provisionalScore.toFixed(1)}</td><td>${b.coverage===null?'―':(b.coverage*100).toFixed(1)+'%'}</td><td>${b.prior===null?'―':b.prior.toFixed(2)}</td><td>${esc(b.reason)}</td></tr>`).join('')}</tbody></table><p class="note">未照合の走を補完しません。暫定指数は部分標本の値であり正式指数と直接同列に順位付けせず、自動予想・事前検証集計にも算入しません。「―」の指数を過去10走で代用しません。初日は過去10走の平均スタート順を別指標として確認できますが、今節の1位回数・2位以内率・安定性は算出しません。</p><details><summary>過去結果の照合理由・CSV取得状態</summary><pre>${esc(r.rankDetails)}\n${esc(JSON.stringify(r.datasetStatuses,null,2))}</pre></details></details>`;
+ }).join(''):'一括取得後に診断を表示します。';
+}
+function v55Export(){const blob=new Blob([JSON.stringify({version:'V59',diagnostics:v55RunDiagnostics},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='boatrace_v59_diagnostics.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('v55export').onclick=v55Export;
+async function v49Collect(){
+ if(v49Busy){v49Log('前回の一括処理が続いています。');return}
+ if($('day').value!==todayJapan()){v49Log('本日（JST）以外の日付は記録しません。');return}
+ v49Busy=true;v49Stop=false;$('v49scan').disabled=true;
+ try{
+  if(!scheduleRows||scheduleDate!==$('day').value){await loadSchedule()}
+  if(!scheduleRows||scheduleDate!==$('day').value){v49Log('開催一覧が取得できません。');return}
+  const now=Date.now(), candidates=[];
+  for(const [code,record] of scheduleRows){
+    const tm=findDeadline(record),deadline=v47Clock($('day').value,tm);
+    if(!deadline)continue;
+    if(v47Get(code)&&v54StageGet(code))continue;
+    const remain=(deadline-now)/60000;
+    if(remain>=3&&remain<=30)candidates.push({code,deadline,tm});
+  }
+  candidates.sort((a,b)=>a.deadline-b.deadline);
+  // V56: retain baseline snapshots independently of the later exhibition snapshot.
+  // Prioritize races awaiting their second-stage snapshot, then nearest deadlines.
+  const chosen=candidates.filter(x=>!v47Get(x.code)||!v54StageGet(x.code)).slice(0,6);
+  if(!chosen.length){v49Log('対象候補はすべて2段階保存済み、または締切対象外です。');return}
+  v49Log(`対象${candidates.length}件から${chosen.length}件を確認。展示未掲載でも出走表段階を先に保存します。`);
+  let success=0, failed=0;
+  for(const item of chosen){
+    if(v49Stop){v49Log('停止しました。');break}
+    if(Date.now()+120000>=item.deadline){v49Log(`${item.code}: 締切が近いため見送り`);continue}
+    $('venue').value=item.code.slice(8,10);$('race').value=item.code.slice(10,12);
+    navRender();
+    try{
+      await $('load').onclick();
+      v55Record();
+      if(v47Get(item.code)){success++;v49Log(`${item.code}: 第1段階あり・第2段階${v54StageGet(item.code)?'あり':'展示待ち'}／${v50Diagnostic()}`)}
+      else {failed++;v49Log(`${item.code}: ${$('v47status').textContent} ／ ${v50Diagnostic()}`)}
+    }catch(e){failed++;v49Log(`${item.code}: ${e.message}`)}
+  }
+  v49Log(`一括処理終了：保存${success}件、未保存${failed}件。欠損は欠損のまま保存、既存記録は維持。`);
+  v47Render();v54RenderStages();
+ }finally{v49Busy=false;$('v49scan').disabled=false}
+}
+$('v49scan').onclick=v49Collect;
+$('v49stop').onclick=()=>{v49Stop=true;$('v49watch').checked=false;v49Log('次のレース取得から停止します。')};
+setInterval(()=>{if($('v49watch').checked&&!document.hidden&&!v49Busy)v49Collect()},300000);
+$('load').onclick=async()=>{let date=$('day').value;if(!date){$('status').textContent='日付を選んでください';return}let [y,m,d]=date.split('-'),code=y+m+d+$('venue').value+$('race').value;$('status').textContent='取得中…';$('load').disabled=true;chosenOdds.clear();data={date,venue:$('venue').selectedOptions[0].text,race:$('race').selectedOptions[0].text,code,loadedAt:new Date().toISOString(),datasets:{}};restoreMemo();navRender();let success=0;for(const type of types){let url=`https://boatracecsv.github.io/data/${type}/${y}/${m}/${d}.csv`;try{let res=await fetch(url,{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);let lines=parse(await res.text());let header=lines[0]||[];let match=lines.slice(1).find(r=>r[0]===code);data.datasets[type]={status:match?'対象レースあり':'対象レースなし',columns:header.length,record:match?objects(header,[match])[0]:null,header};if(match)success++}catch(e){data.datasets[type]={status:'取得失敗: '+e.message,url}}}v45Outcome=null;$('v45result').innerHTML='';$('v45status').textContent='結果は未取得。';v45Refresh();v46Render();$('status').textContent='今節スタート順位を照合中…';try{const rankResult=await calculateMeetStartRanks();data.calculatedStartRanks=rankResult.ranks;data.startRankAudit=rankResult.audit||[];data.startRankDiagnostics=rankResult.note; await v84MergeEarlyStarts()}catch(e){data.startRankDiagnostics=(data.startRankDiagnostics||'')+' V84先行走照合エラー：'+e.message} $('status').textContent=`取得完了：${success}/${types.length}種類で対象レースあり。展示・オッズの対象行がない場合は公開待ち、取得失敗、レースコード不一致などの可能性があります。詳細は画面下の『取得詳細』で確認できます。`; render();if($('v47auto').checked||v49Busy)v47Save();else v47Render();v54ExhibitionSave();v54RenderStages();$('load').disabled=false};
+v47Render();v54RenderStages();v60RenderAudit();
+function exportData(){return {date:data.date,venue:data.venue,race:data.race,code:data.code,loadedAt:data.loadedAt,source:'BoatraceCSV',datasets:Object.fromEntries(Object.entries(data.datasets).map(([k,v])=>[k,{status:v.status,record:compact(v.record)}])),calculatedStartRanks:data.calculatedStartRanks||{},startRankAudit:data.startRankAudit||[],startAttackMetrics:data.startAttackMetrics||[],footComparisonMetrics:data.footComparisonMetrics||[],raceScenarioMetrics:data.raceScenarioMetrics||[],methodScenarioChecklist:data.methodScenarioChecklist||null,v45Prediction:v45Stored(),v45Outcome:v45Outcome,v46Audit:v46GetAudit(data.code),v47Presnapshot:v47Get(data.code),v54ExhibitionSnapshot:v54StageGet(data.code),waterConditions:data.waterConditions||null,startRankDiagnostics:data.startRankDiagnostics||'',v84EarlySummary:data.v84EarlySummary||null,v85Comparison:data.v85Comparison||null,v87CopyStatus:v87Status(),observations:memo,selectedOdds:[...chosenOdds],warning:'取得できないデータは欠損。オッズは取得時点の公開スナップショット。艇別列の厳密な解釈はヘッダー仕様確認後に行う。'}}
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(JSON.stringify(exportData()));$('copystatus').textContent='コピーしました。ChatGPTに貼り付けてください。'}catch(e){$('copystatus').textContent='コピーできません。JSON保存を使ってください。'}};$('download').onclick=()=>{const blob=new Blob([JSON.stringify(exportData(),null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=`boatrace_${data.code}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
+restoreMemo();navRender();renderNotes();loadSchedule();
+
+// V13: Candidate discovery is a completeness-first research aid, not a betting prediction.
+$('scanCandidates').onclick=async()=>{
+ const btn=$('scanCandidates'),status=$('candidateStatus'),out=$('candidateResults');
+ const day=$('day').value;if(!day)return;
+ const [y,m,d]=day.split('-');btn.disabled=true;out.textContent='';status.textContent='全国の公開データを確認中…';
+ try{
+  const kinds=['programs/title','programs/race_cards','previews/stt','previews/od3'];
+  const sets={};
+  const results=await Promise.all(kinds.map(async kind=>{
+   const response=await fetch(`https://boatracecsv.github.io/data/${kind}/${y}/${m}/${d}.csv`,{cache:'no-store'});
+   if(!response.ok)throw new Error(`${kind}: HTTP ${response.status}`);
+   const rows=parse(await response.text());const head=rows[0]||[];
+   return [kind,new Map(rows.slice(1).filter(row=>/^\d{12}$/.test(row[0])).map(row=>[row[0],objects(head,[row])[0]]))];
+  }));
+  results.forEach(([kind,map])=>sets[kind]=map);
+  let candidates=[];let missingDeadline=0;
+  for(const [code,title] of sets['programs/title']){
+   if(!code.startsWith(y+m+d))continue;
+   const venueCode=code.slice(8,10),raceNo=code.slice(10,12);
+   const vi=Number(venueCode)-1;if(vi<0||vi>=24)continue;
+   const deadline=findDeadline(title);
+   if(day===todayJapan()){
+    if(!deadline){missingDeadline++;continue}
+    const a=deadline.match(/^(\d{1,2}):(\d{2})/);
+    if(!a||Number(a[1])*60+Number(a[2])<=currentJapanMinutes())continue;
+   }
+   const card=sets['programs/race_cards'].get(code),st=sets['previews/stt'].get(code),od=sets['previews/od3'].get(code);
+   const oddsCount=od?Object.entries(od).filter(([k,v])=>/^3連単_[1-6]-[1-6]-[1-6]$/.test(k)&&Number(v)>0).length:0;
+   const stValues=st?Object.entries(st).filter(([k,v])=>/スタート展示/.test(k)&&/艇[1-6]/.test(k)&&Number.isFinite(Number(v))&&String(v).trim()!=='').map(([,v])=>Number(v)):[];
+   const coverage=(card?1:0)+(stValues.length>=6?1:0)+(oddsCount===120?1:0);
+   const spread=stValues.length>=6?Math.max(...stValues)-Math.min(...stValues):null;
+   candidates.push({code,venueCode,raceNo,venue:venues[vi],deadline,coverage,oddsCount,stCount:stValues.length,spread});
+  }
+  candidates.sort((a,b)=>b.coverage-a.coverage||(b.spread??-1)-(a.spread??-1)||a.code.localeCompare(b.code));
+  const top=candidates.slice(0,15);
+  status.textContent=`${candidates.length}レースを比較。上位${top.length}件を表示。${day===todayJapan()?`締切時刻未確認の${missingDeadline}レースは候補から除外。`:''} 展示ST差は展開の注目材料であり、有利不利を直接表すものではありません。`;
+  if(!top.length){out.textContent='条件に合うレースがありません。日付や公開状況をご確認ください。';return}
+  out.innerHTML='<table class="comparison"><thead><tr><th>場・レース</th><th>締切</th><th>データ</th><th>展示ST差</th><th>オッズ</th><th>操作</th></tr></thead><tbody>'+top.map(c=>`<tr><td>${esc(c.venue)} ${Number(c.raceNo)}R</td><td>${esc(c.deadline||'未取得')}</td><td>${c.coverage}/3</td><td>${c.spread===null?'―':c.spread.toFixed(2)}</td><td>${c.oddsCount}/120</td><td><button class="candidatePick" data-v="${c.venueCode}" data-r="${c.raceNo}">選択</button></td></tr>`).join('')+'</tbody></table>';
+  out.querySelectorAll('.candidatePick').forEach(b=>b.onclick=()=>{$('venue').value=b.dataset.v;$('race').value=b.dataset.r;restoreMemo();clearView();navRender();$('load').scrollIntoView({behavior:'smooth',block:'center'})});
+ }catch(err){status.textContent=`取得に失敗しました：${err.message}`;out.textContent='既存のレース個別取得は引き続き利用できます。'}finally{btn.disabled=false}
+};
+</script><script id="v62-controller">
+(function(){
+ const ss=[...document.querySelectorAll('section[data-v62-tab]')];
+ const header=document.querySelector('h1');if(!header||!ss.some(x=>x.dataset.v62Tab==='forecast')||!ss.some(x=>x.dataset.v62Tab==='review')||!ss.some(x=>x.dataset.v62Tab==='settings')){return;}
+ header.textContent='競艇予想データ V92'; document.title='競艇予想データ V92';
+ const nav=document.createElement('nav');nav.id='v62Nav';nav.setAttribute('aria-label','画面切り替え');
+ nav.innerHTML='<div class="v62tabs"><button type="button" data-mode="forecast">予想</button><button type="button" data-mode="review">検証</button><button type="button" data-mode="settings">設定・診断</button></div><p id="v62Hint"></p>';
+ header.after(nav);
+ const intro=document.createElement('div');intro.id='v62Intro';nav.after(intro);
+ const explanations={forecast:'競艇場とレースを選んで「データ取得」。6艇比較・展示・展開・オッズ・ChatGPT用コピーを表示します。',review:'事前記録、確定結果との照合、4方式の比較はここで確認します。',settings:'全国24場の公式特性一覧と詳しい診断項目を管理します。'};
+ const intros={forecast:'① 場・レースを選択 → ② データ取得 → ③ 6艇の比較と展開を確認 → ④ ChatGPT用データをコピー',review:'まず「保存済みレースの結果を照合」。比較件数・予想検証は下の集計で確認できます。',settings:'場別特性の確認用画面です。CSV取得に問題があるときは、予想画面の「取得詳細」も参照してください。'};
+ function show(mode){if(!explanations[mode])return;document.body.dataset.v62Mode=mode;for(const b of nav.querySelectorAll('button')){const active=b.dataset.mode===mode;b.setAttribute('aria-selected',String(active));b.setAttribute('aria-pressed',String(active));}document.getElementById('v62Hint').textContent=explanations[mode];intro.textContent=intros[mode];window.scrollTo({top:0,behavior:'instant'});}
+ nav.addEventListener('click',e=>{const b=e.target.closest('button[data-mode]');if(b)show(b.dataset.mode)});
+ // Keep existing controls and element IDs untouched; only relocate report nodes to the review section.
+ const review=document.getElementById('validationV46');
+ const audit=document.getElementById('v60audit');const compare=document.getElementById('v61audit');const exportBtn=document.getElementById('v60export');
+ if(review && audit && compare){const heading=document.createElement('h2');heading.textContent='事前保存・結果照合と4方式比較';review.prepend(heading);review.insertBefore(audit,heading.nextSibling);review.insertBefore(compare,audit.nextSibling);if(exportBtn)review.insertBefore(exportBtn,compare.nextSibling);}
+ const log=document.getElementById('v49status');if(log){const wrap=document.createElement('details');wrap.className='v62details';const sum=document.createElement('summary');sum.textContent='一括取得の詳細ログを開く';log.parentElement.insertBefore(wrap,log);wrap.append(sum,log);}
+ const diag=document.getElementById('v55table');if(diag){const wrap=document.createElement('details');wrap.className='v62details';const sum=document.createElement('summary');sum.textContent='今節指数の取得・照合診断を開く';diag.parentElement.insertBefore(wrap,diag);wrap.append(sum,diag);}
+ show('forecast');
+})();
+</script><script id="v63-controller">
+(function(){
+ const review=document.getElementById('automationV47');if(!review)return;
+ document.title='競艇予想データ V92';const heading=document.querySelector('h1');if(heading)heading.textContent='競艇予想データ V92';
+ const root=document.createElement('section');root.id='v63Dashboard';root.setAttribute('data-v62-tab','review');
+ root.innerHTML='<h2>検証ダッシュボード</h2><p class="v63note">事前に記録したデータの状況をまとめています。数字は的中率・勝率ではありません。</p><div class="v63metrics"><div class="v63metric"><div class="v63lab">事前保存</div><div class="v63val" id="v63base">―</div></div><div class="v63metric"><div class="v63lab">確定結果照合</div><div class="v63val" id="v63confirmed">―</div></div><div class="v63metric"><div class="v63lab">正式指数2艇以上</div><div class="v63val" id="v63full">―</div></div><div class="v63metric"><div class="v63lab">4方式比較可能</div><div class="v63val" id="v63compared">―</div></div></div><p class="v63note" id="v63state">集計を待っています。</p><button id="v63toggle" type="button" aria-expanded="false">詳細な検証表を表示</button>';
+ review.parentNode.insertBefore(root,review);
+ const toggle=document.getElementById('v63toggle');toggle.addEventListener('click',()=>{const show=document.body.classList.toggle('v63-expanded');toggle.textContent=show?'詳細な検証表を閉じる':'詳細な検証表を表示';toggle.setAttribute('aria-expanded',String(show));});
+ const audit=document.getElementById('v60audit'),comparison=document.getElementById('v61audit');
+ function update(){
+  const t=audit?.querySelector('table');const v=t?.querySelectorAll('tr:nth-child(2) td');
+  if(v&&v.length>=4){document.getElementById('v63base').textContent=v[0].textContent.trim();document.getElementById('v63confirmed').textContent=v[2].textContent.trim();document.getElementById('v63full').textContent=v[3].textContent.trim();}
+  const info=comparison?.textContent||'';const match=info.match(/4方式すべてが揃う比較\s*(\d+)レース/);if(match)document.getElementById('v63compared').textContent=match[1];
+  const b=Number(document.getElementById('v63base').textContent),c=Number(document.getElementById('v63confirmed').textContent),n=Number(document.getElementById('v63compared').textContent);
+  const waiting=(info.match(/4方式が事前保存され結果待ち\s*(\d+)レース/)||[])[1];
+  const lacking=(info.match(/確定済みで4方式の指標不足\s*(\d+)レース/)||[])[1];
+  document.getElementById('v63state').textContent=Number.isFinite(b)&&Number.isFinite(c)&&Number.isFinite(n)?`未照合 ${Math.max(0,b-c)}件 ／ 4方式の比較待ち ${waiting??'―'}件 ／ 確定済み・4方式不足 ${lacking??'―'}件。比較待ちには結果が取得された後に自動で反映されます。`:'取得または集計前です。「保存済みレースの結果を照合」を押すと更新されます。';
+ }
+ if(audit)new MutationObserver(update).observe(audit,{childList:true,subtree:true});
+ if(comparison)new MutationObserver(update).observe(comparison,{childList:true,subtree:true});
+ update();
+})();
+
+(function(){
+ const get=id=>document.getElementById(id);
+ const fields=['v67first','v67second','v67third'];
+ for(const id of fields){for(let i=1;i<=6;i++)get(id).add(new Option(i+'号艇',String(i)));}
+ fields.forEach((id,i)=>get(id).value=String(i+1));
+ get('v67st').innerHTML=Array.from({length:6},(_,i)=>`<label>${i+1}号艇 ST <input id="v67st${i+1}" inputmode="decimal" type="text" style="width:79px" placeholder="0.12" autocomplete="off"></label>`).join('');
+ const msg=t=>get('v67status').textContent=t;
+ function records(){return v47All().filter(r=>!r.results).sort((a,b)=>a.code.localeCompare(b.code));}
+ function refresh(){const code=get('v67code'),old=code.value,all=records();code.replaceChildren();all.forEach(r=>code.add(new Option(`${r.venue||r.code.slice(8,10)} ${r.race||r.code.slice(10)} [${r.code}]`,r.code)));if(all.some(r=>r.code===old))code.value=old;msg(`${all.length}レース未照合。公式サイトで確定したレースだけ入力してください。`);}
+ function officialURL(code){if(!/^\d{12}$/.test(code))return null;const date=code.slice(0,8),j=Number(code.slice(8,10)),r=Number(code.slice(10,12));if(j<1||j>24||r<1||r>12)return null;return `https://www.boatrace.jp/owpc/pc/race/raceresult?rno=${r}&jcd=${String(j).padStart(2,'0')}&hd=${date}`;}
+ get('v67refresh').onclick=refresh;
+ get('v67official').onclick=()=>{const url=officialURL(get('v67code').value);if(url)window.open(url,'_blank','noopener');else msg('レースコードが不正です。');};
+ get('v67save').onclick=()=>{
+  const code=get('v67code').value,rec=v47Get(code);if(!rec){msg('未照合の保存済みレースを選んでください。');return;}
+  if(rec.results){msg('確定結果が既にあります。上書きしません。');return;}
+  const order=fields.map(id=>Number(get(id).value));if(new Set(order).size!==3){msg('1〜3着には異なる艇番を入力してください。');return;}
+  const sts=Array.from({length:6},(_,i)=>get(`v67st${i+1}`).value.trim());
+  if(sts.some(v=>!/^[-+]?(?:\d+(?:\.\d+)?|\.\d+)$/.test(v))){msg('本番STを6艇すべて入力してください。欠測があるときは保存せず、自動取得を待ってください。');return;}
+  const actual=sts.map((v,i)=>({boat:i+1,st:Number(v)}));
+  if(actual.some(x=>!Number.isFinite(x.st)||x.st<-.99||x.st>.99)){msg('STの数値範囲を確認してください。');return;}
+  actual.forEach(x=>x.rank=1+actual.filter(y=>y.st<x.st-1e-7).length);
+  const url=officialURL(code);
+  if(!confirm(`${code} / ${order.join('-')} を公式結果で確認しましたか？\n事前評価は固定のまま、結果だけ登録します。`))return;
+  rec.results={order,first3:order.join('-'),method:get('v67method').value||null,actualStarts:actual,checkedAt:new Date().toISOString(),source:'manual_verified_official',officialUrl:url};
+  try{localStorage.setItem(v47Prefix+code,JSON.stringify(rec));v47Render();v60RenderAudit();v61Render();refresh();msg(`${code} ${order.join('-')} を公式照合（手動）として記録しました。事前指標は変更していません。`)}catch(e){msg('保存失敗: '+e.message)}
+ };
+ get('v67backup').onclick=()=>{const payload={version:'V67',exportedAt:new Date().toISOString(),records:v47All()};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='boatrace_v67_backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+ refresh();
+})();
+</script><script id="v70-analysis">
+// V70: All metrics and finish comparisons use immutable pre-deadline snapshots.
+function v70Render(){
+ const root=document.getElementById('v70finish');if(!root)return;
+ const keys=['meanRank','historicalSameLaneMeanRank','currentAttackIndex','adjustedAttackIndex'];
+ const names=['今節平均スタート順位','同枠過去10走平均順位','V34 今節攻撃力','V35 補正攻撃力'];
+ const rows=keys.map((_,i)=>({name:names[i],allSix:0,top3:0,first:0,partial:0}));
+ let equalRaces=0,excluded=0,missingResult=0;
+ for(const rec of v47All()){
+  if(!rec.results){missingResult++;continue}
+  const finish=(rec.results.first3||'').split('-').map(Number).filter(x=>x>=1&&x<=6);
+  if(finish.length!==3||new Set(finish).size!==3){excluded++;continue}
+  const starts=rec.snapshot?.starts||[];
+  const allHave=keys.every((k,j)=>Array.from({length:6},(_,i)=>starts.find(x=>Number(x.boat)===i+1)).every(x=>x&&Number.isFinite(x[k])&&(j===1||x.eligible)));
+  if(allHave)equalRaces++;
+  rows.forEach((out,j)=>{
+   const avail=starts.filter(x=>Number.isFinite(x[keys[j]])&&(j===1||x.eligible));
+   if(avail.length!==6||new Set(avail.map(x=>Number(x.boat))).size!==6){if(avail.length>=2)out.partial++;return}
+   const ordered=avail.slice().sort((a,b)=>j<2?a[keys[j]]-b[keys[j]]:b[keys[j]]-a[keys[j]]);
+   if(ordered[0][keys[j]]===ordered[1][keys[j]])return; // tied top is not a unique prediction
+   out.allSix++;
+   const pick=Number(ordered[0].boat);
+   if(finish.includes(pick))out.top3++;
+   if(pick===finish[0])out.first++;
+  });
+ }
+ const fmt=(a,b)=>b?`${(100*a/b).toFixed(1)}% (${a}/${b})`:'―';
+ root.innerHTML=`<h3>スタート評価と着順の関係（V70）</h3>
+ <p class="note">各方式が事前に6艇すべての数値を保存し、単独トップを選べるレースだけを集計します。ここは<strong>スタート順位ではなく実際の着順</strong>の検証です。</p>
+ <div class="scroll"><table><thead><tr><th>評価方式</th><th>指数トップ艇が3着以内</th><th>指数トップ艇が1着</th><th>検証レース</th></tr></thead><tbody>
+ ${rows.map(x=>`<tr><td>${esc(x.name)}</td><td>${fmt(x.top3,x.allSix)}</td><td>${fmt(x.first,x.allSix)}</td><td>${x.allSix}件</td></tr>`).join('')}</tbody></table></div>
+ <p class="note">4方式とも6艇の事前指標が揃った確定レース：${equalRaces}件／確定結果なし：${missingResult}件／着順不足：${excluded}件。比較母数が違う場合、方式間の単純な優劣は判定できません。これは払戻・期待値・買い目の的中率ではありません。</p>
+ <details><summary>集計条件</summary><p class="note">結果は保存済みの3連単着順（上位3艇）から取得。事前スナップショットに存在しない値は後付けしません。トップが同点の場合は除外。枠と実進入が異なる場合も艇番で照合します。指標ごとの対象母数を必ず確認してください。1着率や3着内率は記述統計で、予測確率ではありません。</p></details>`;
+}
+(function(){
+ const base=document.getElementById('v61audit');if(!base)return;
+ const box=document.createElement('div');box.id='v70finish';box.style.marginTop='18px';base.insertAdjacentElement('afterend',box);
+ v70Render();
+})();
+</script>
+<script id="v71-lanes">
+// V71: Separate frame (boat number) and *verified* actual entry course.
+function v71Render(){
+ const root=document.getElementById('v71-lanes');if(!root)return;
+ const list=typeof v47All==='function'?v47All():[];
+ const keys=['meanRank','historicalSameLaneMeanRank','currentAttackIndex','adjustedAttackIndex'];
+ const names=['今節平均スタート順位','同枠過去10走平均順位','V34 今節攻撃力','V35 補正攻撃力'];
+ const totals=keys.map(()=>({races:0,actualCourseRaces:0,first:0,top3:0,st:0,stN:0,frame:Array.from({length:6},()=>({n:0,top3:0})),course:Array.from({length:6},()=>({n:0,top3:0})),changed:0,normal:0}));
+ const courseInfo=r=>{
+  const rows=r?.results?.courseRows;
+  if(!Array.isArray(rows)||rows.length!==6)return null;
+  const mapped=rows.map((x,i)=>({boat:Number(x.boat),course:Number(x.course)}));
+  if(new Set(mapped.map(x=>x.boat)).size!==6||new Set(mapped.map(x=>x.course)).size!==6||mapped.some(x=>x.boat<1||x.boat>6||x.course<1||x.course>6))return null;
+  return new Map(mapped.map(x=>[x.boat,x.course]));
+ };
+ for(const rec of list){
+  const result=rec.results;if(!result)continue;
+  const finish=(result.first3||'').split('-').map(Number);
+  if(finish.length!==3||new Set(finish).size!==3||finish.some(x=>x<1||x>6))continue;
+  const starts=rec.snapshot?.starts||[];
+  const cm=courseInfo(rec);
+  keys.forEach((key,j)=>{
+   const avail=starts.filter(x=>Number.isFinite(x[key])&&(j===1||x.eligible)&&Number(x.boat)>=1&&Number(x.boat)<=6);
+   if(avail.length!==6||new Set(avail.map(x=>Number(x.boat))).size!==6)return;
+   const ordered=avail.slice().sort((a,b)=>j<2?a[key]-b[key]:b[key]-a[key]);
+   if(ordered[0][key]===ordered[1][key])return;
+   const t=totals[j],boat=Number(ordered[0].boat);t.races++;
+   if(boat===finish[0])t.first++;
+   if(finish.includes(boat))t.top3++;
+   t.frame[boat-1].n++;if(finish.includes(boat))t.frame[boat-1].top3++;
+   const validActual=(result.actualStarts||[]).filter(x=>Number(x.boat)>=1&&Number(x.boat)<=6&&Number.isFinite(Number(x.rank)));
+   if(validActual.length===6&&new Set(validActual.map(x=>Number(x.boat))).size===6){
+    const best=Math.min(...validActual.map(x=>Number(x.rank)));
+    t.stN++;if(validActual.some(x=>Number(x.boat)===boat&&Number(x.rank)===best))t.st++;
+   }
+   if(cm){t.actualCourseRaces++;let changed=false;for(const [b,c] of cm)if(b!==c)changed=true;
+    if(changed)t.changed++;else t.normal++;
+    const c=cm.get(boat);t.course[c-1].n++;if(finish.includes(boat))t.course[c-1].top3++;
+   }
+  });
+ }
+ const pct=(a,n)=>n?`${(100*a/n).toFixed(1)}% (${a}/${n})`:'―';
+ let rows=totals.map((x,i)=>`<tr><td>${esc(names[i])}</td><td>${x.races}件</td><td>${pct(x.st,x.stN)}</td><td>${pct(x.top3,x.races)}</td><td>${x.actualCourseRaces}件</td><td>${x.changed}件</td></tr>`).join('');
+ let breakdown=totals.map((x,i)=>`<details><summary>${esc(names[i])}：枠別・進入別内訳</summary><div class="scroll"><table><thead><tr><th>位置</th><th>枠番でのトップ選出→3着内</th><th>実進入でのトップ選出→3着内</th></tr></thead><tbody>${Array.from({length:6},(_,n)=>`<tr><td>${n+1}</td><td>${pct(x.frame[n].top3,x.frame[n].n)}</td><td>${pct(x.course[n].top3,x.course[n].n)}</td></tr>`).join('')}</tbody></table></div></details>`).join('');
+ root.innerHTML=`<h3>枠番と実進入を分けた検証（V71）</h3><p class="note">事前に6艇分の指数があり、単独トップを選べる確定レースのみ対象。枠番は艇番を使用し、<b>実進入は結果に1〜6コースと艇番の対応が記録されたレースだけ</b>集計します。進入未記録を枠なりと推定しません。</p><div class="scroll"><table><thead><tr><th>方式</th><th>比較レース</th><th>ST最上位</th><th>3着以内</th><th>実進入判明</th><th>進入変化</th></tr></thead><tbody>${rows}</tbody></table></div><p class="note">ST最上位は同着タイムの順位1位を含みます。着順への寄与とスタート予測力は別物です。枠・コース別は標本が少なく、優劣・的中確率の推定には使用できません。</p>${breakdown}<p class="note">CSVの確定結果に進入順があれば今後の自動照合から保存します。過去の結果には後付けしません。手動入力のSTは艇番順であり進入順を意味しません。</p>`;
+}
+(function(){
+ const base=document.getElementById('v70finish');if(!base)return;
+ const div=document.createElement('div');div.id='v71-lanes';div.style.marginTop='18px';base.insertAdjacentElement('afterend',div);
+ const original=window.v47Render;
+ if(typeof original==='function')window.v47Render=function(...args){const ret=original.apply(this,args);v71Render();return ret};
+ v71Render();
+})();
+</script>
+
+<script id="v72-course-enrichment">
+// V73: per-day CSV diagnostics and strict result-only course enrichment.
+(function(){
+ const host=document.getElementById('v71-lanes');if(!host)return;
+ const ui=document.createElement('div');ui.className='info';ui.style.marginTop='16px';
+ ui.innerHTML='<h3>進入コースの取得診断（V76）</h3><p class="note">CSVの取得・対象レースの有無・列名・艇番対応・保存結果を段階別に記録します。6艇が一致すれば正式な実進入を保存します。5艇の場合はCSV進入・本番STの艇番とST値・確定着順の5艇が一致した場合だけ、別項目の5艇確認記録として保存します。6艇レースの進入記録へは混入させず、欠場等の理由は断定しません。事前指標・着順・本番STは変更しません。</p><div class="row"><button type="button" id="v73check">進入不明レースを診断・再照合（最大30件）</button><button type="button" class="secondary" id="v73export">診断結果をJSON保存</button></div><p id="v73summary" class="note"></p><pre id="v73log" style="max-height:320px;white-space:pre-wrap">未実行</pre>';
+ // Keep diagnostics outside the dynamically re-rendered v71-lanes content.
+ host.insertAdjacentElement('afterend',ui);
+ const button=ui.querySelector('#v73check'),summary=ui.querySelector('#v73summary'),log=ui.querySelector('#v73log');
+ let diagnostics=[];
+ const validate=rows=>{
+  if(!Array.isArray(rows)||rows.length!==6)return null;
+  const a=rows.map(r=>({course:Number(r.course),boat:Number(r.boat),st:r.st??null}));
+  if(a.some(r=>!Number.isInteger(r.course)||r.course<1||r.course>6||!Number.isInteger(r.boat)||r.boat<1||r.boat>6))return null;
+  if(new Set(a.map(r=>r.course)).size!==6||new Set(a.map(r=>r.boat)).size!==6)return null;
+  return a.sort((x,y)=>x.course-y.course);
+ };
+ const validatePartial5=(rows,record)=>{
+  if(!Array.isArray(rows)||rows.length!==5)return null;
+  const a=rows.map(r=>({course:Number(r.course),boat:Number(r.boat),st:r.st??null})).sort((x,y)=>x.course-y.course);
+  if(a.some(r=>!Number.isInteger(r.course)||r.course<1||r.course>6||!Number.isInteger(r.boat)||r.boat<1||r.boat>6))return null;
+  if(new Set(a.map(r=>r.boat)).size!==5||new Set(a.map(r=>r.course)).size!==5)return null;
+  const starts=record?.results?.actualStarts||[];
+  if(starts.length!==5||new Set(starts.map(x=>Number(x.boat))).size!==5)return null;
+  if(a.some(x=>!starts.some(y=>Number(y.boat)===x.boat)))return null;
+  const order=record?.results?.order||[];
+  if(order.length!==5||new Set(order.map(Number)).size!==5||order.some(x=>!a.some(y=>y.boat===Number(x))))return null;
+  // Do not accept blank ST or rounded/ambiguous per-boat ST matches.
+  for(const x of a){
+   const raw=String(x.st??'').trim().replace(/^\./,'0.');
+   const n=Number(raw);
+   const found=starts.find(y=>Number(y.boat)===x.boat);
+   if(!raw||!Number.isFinite(n)||!Number.isFinite(Number(found.st))||Math.abs(n-Number(found.st))>0.0005)return null;
+  }
+  return a;
+ };
+ const isKnown=r=>validate(r.results.courseRows)||validatePartial5(r.results.courseRowsPartial5,r);
+ const missing=()=>v47All().filter(r=>r.results&&!isKnown(r));
+ const refresh=()=>{const all=v47All().filter(r=>r.results);const six=all.filter(r=>validate(r.results.courseRows)).length;const five=all.filter(r=>!validate(r.results.courseRows)&&validatePartial5(r.results.courseRowsPartial5,r)).length;summary.textContent=`確定結果 ${all.length}件／6艇進入確認 ${six}件／5艇進入確認（別集計） ${five}件／進入不明 ${missing().length}件`;};
+ function normalize(x){return String(x??'').replace(/^\uFEFF/,'').replace(/[\s\u3000]/g,'').trim()}
+ function findCol(headers,aliases){return headers.findIndex(h=>aliases.some(a=>normalize(a)===normalize(h)))}
+ button.addEventListener('click',async()=>{
+  if(button.disabled)return;button.disabled=true;diagnostics=[];log.textContent='CSVを確認中…';
+  const candidates=missing().slice(0,30),byDay=new Map();
+  for(const r of candidates){const day=String(r.code).slice(0,8);if(!byDay.has(day))byDay.set(day,[]);byDay.get(day).push(r)}
+  let saved=0,savedFive=0,notFound=0,noColumns=0,incomplete=0,network=0,partial=0;
+  try{
+   for(const [day,items] of byDay){
+    const url=`https://boatracecsv.github.io/data/results/realtime/${day.slice(0,4)}/${day.slice(4,6)}/${day.slice(6,8)}.csv`;
+    const d={date:day,url,records:items.map(r=>r.code),http:null,csvRows:0,headers:[],raceCodeColumn:null,courseColumns:[],status:'',details:[]}; diagnostics.push(d);
+    let rows,headers,codeCol;
+    try{
+     const resp=await fetch(url,{cache:'no-store'});d.http=resp.status;
+     if(!resp.ok)throw Error(`HTTP ${resp.status}`);
+     rows=parse(await resp.text());headers=rows[0]||[];d.csvRows=Math.max(0,rows.length-1);d.headers=headers;
+     codeCol=findCol(headers,['レースコード']);d.raceCodeColumn=codeCol>=0?headers[codeCol]:null;
+     if(codeCol<0){d.status='レースコード列なし';noColumns+=items.length;continue}
+    }catch(e){d.status=`取得失敗: ${e.message}`;network+=items.length;continue}
+    const columns=Array.from({length:6},(_,i)=>{
+      const course=i+1;
+      const bi=findCol(headers,[`${course}コース_艇番`,`${course}コース艇番`]);
+      const si=findCol(headers,[`${course}コース_スタートタイミング`,`${course}コース_ST`,`${course}コース_スタート`]);
+      return {course,boatIndex:bi,stIndex:si,boatColumn:bi>=0?headers[bi]:null,stColumn:si>=0?headers[si]:null};
+    });d.courseColumns=columns;
+    if(columns.some(c=>c.boatIndex<0)){
+     d.status='進入艇番列なし（CSVの列名を確認）';noColumns+=items.length;continue;
+    }
+    const lookup=new Map(rows.slice(1).filter(r=>r[codeCol]).map(r=>[String(r[codeCol]).trim(),r]));
+    d.status='取得・列確認済み';
+    for(const record of items){
+      const detail={code:record.code,status:'',courseOrder:null};d.details.push(detail);
+      const row=lookup.get(String(record.code));if(!row){notFound++;detail.status='CSV内にレースなし';continue}
+      const mapping=validate(columns.map(c=>({course:c.course,boat:row[c.boatIndex],st:c.stIndex>=0?row[c.stIndex]:null})));
+      if(!mapping){
+       incomplete++;detail.status='艇番対応不完全（6艇の進入順は未確定）';
+       const cells=columns.map(c=>({course:c.course,boatRaw:row[c.boatIndex]??'',stRaw:c.stIndex>=0?(row[c.stIndex]??''):null}));
+       detail.courseCells=cells;
+       const known=cells.filter(c=>/^[1-6]$/.test(String(c.boatRaw).trim())).map(c=>({course:c.course,boat:Number(String(c.boatRaw).trim())}));
+       const counts=known.reduce((a,c)=>(a[c.boat]=(a[c.boat]||0)+1,a),{});
+       detail.verifiedPartial=known.filter(c=>counts[c.boat]===1);
+       detail.missingBoats=[1,2,3,4,5,6].filter(n=>!counts[n]);
+       detail.duplicates=Object.keys(counts).filter(k=>counts[k]>1);
+       detail.emptyCourses=cells.filter(c=>!String(c.boatRaw).trim()).map(c=>c.course);
+       detail.invalidCells=cells.filter(c=>String(c.boatRaw).trim()&&!/^[1-6]$/.test(String(c.boatRaw).trim()));
+       detail.expectedStartBoats=(record.results.actualStarts||[]).map(x=>Number(x.boat)).filter(n=>n>=1&&n<=6);
+       detail.expectedStartMissing=detail.missingBoats.filter(n=>detail.expectedStartBoats.includes(n));
+       if(detail.verifiedPartial.length>=1)partial++;
+       // Five-runner races require independent agreement of course row, actual ST and all five finish positions.
+       const proposed=known.filter(c=>counts[c.boat]===1).map(c=>({course:c.course,boat:c.boat,st:cells[c.course-1].stRaw}));
+       const five=validatePartial5(proposed,record);
+       detail.fiveRunnerVerification=five?'進入・本番ST・5艇の着順が一致':'未確定（5艇の一致条件を満たさない）';
+       if(five){
+        const key=v47Prefix+record.code;let current;
+        try{current=JSON.parse(localStorage.getItem(key)||'null')}catch{}
+        if(current?.results&&validatePartial5(five,current)){
+         current.results.courseRowsPartial5=five;
+         current.results.courseRowsPartial5Source='results/realtime CSV; 5-runner only; actual ST and order verified';
+         current.results.courseRowsPartial5CheckedAt=new Date().toISOString();
+         try{localStorage.setItem(key,JSON.stringify(current));savedFive++;detail.status='5艇進入を別項目に保存（6艇正式集計から除外）'}
+         catch(e){detail.status='5艇記録の保存失敗: '+e.message}
+        } else detail.status='5艇の照合対象として保存済み結果が不一致';
+       }
+       continue;
+      }
+      detail.courseOrder=mapping.map(x=>x.boat).join('-');
+      const key=v47Prefix+record.code;let current;
+      try{current=JSON.parse(localStorage.getItem(key)||'null')}catch{}
+      if(!current?.results){detail.status='保存済み結果なし';continue}
+      if(validate(current.results.courseRows)){detail.status='登録済み';continue}
+      current.results.courseRows=mapping;
+      current.results.courseRowsSource='results/realtime CSV';
+      current.results.courseRowsCheckedAt=new Date().toISOString();
+      try{localStorage.setItem(key,JSON.stringify(current));saved++;detail.status='進入保存成功'}
+      catch(e){detail.status=`保存失敗: ${e.message}`}
+    }
+   }
+   const lines=[`対象${candidates.length}件／6艇保存${saved}件／5艇別保存${savedFive}件／CSV未掲載${notFound}件／列不足${noColumns}件／艇番不完全${incomplete}件（部分確認${partial}件）／取得失敗${network}件`];
+   for(const d of diagnostics){lines.push(`\n${d.date}：${d.status}／HTTP ${d.http??'―'}／CSV ${d.csvRows}行／レースコード列 ${d.raceCodeColumn||'なし'}`);
+    lines.push('進入艇番列 '+d.courseColumns.map(c=>`${c.course}:${c.boatColumn||'なし'}`).join(' '));
+    for(const z of d.details){
+     lines.push(`${z.code}: ${z.status}${z.courseOrder?'／進入 '+z.courseOrder:''}`);
+     if(z.courseCells){
+      lines.push('  CSVのコース別艇番: '+z.courseCells.map(c=>`${c.course}コース=${String(c.boatRaw).trim()||'空欄'}${c.stRaw!=null?' (ST '+(String(c.stRaw).trim()||'空欄')+')':''}`).join(' / '));
+      lines.push('  一意に判明: '+(z.verifiedPartial.map(c=>`${c.boat}号艇→${c.course}コース`).join('、')||'なし'));
+      lines.push('  未登場の艇番: '+(z.missingBoats.join('、')||'なし')+'／空欄コース: '+(z.emptyCourses.join('、')||'なし')+'／重複艇番: '+(z.duplicates.join('、')||'なし'));
+      if(z.invalidCells.length)lines.push('  異常値: '+z.invalidCells.map(c=>`${c.course}コース=${c.boatRaw}`).join('、'));
+      if(z.expectedStartMissing.length)lines.push('  本番ST側には登場するが進入CSVにない艇番: '+z.expectedStartMissing.join('、'));
+      if(z.fiveRunnerVerification)lines.push('  5艇照合: '+z.fiveRunnerVerification);
+      lines.push('  ※部分照合は診断のみ。欠場・失格・転覆等の原因は別途公式結果で確認');
+     }
+    }
+    if(d.status.includes('列なし'))lines.push(`実際の列名（先頭30）：${d.headers.slice(0,30).join(' / ')}`);
+   }
+   log.textContent=lines.join('\n');refresh();if(typeof v71Render==='function')v71Render();
+  }catch(e){log.textContent='診断停止: '+e.message}finally{button.disabled=false}
+ });
+ ui.querySelector('#v73export').addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify({version:'V76',exportedAt:new Date().toISOString(),diagnostics},null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='boatrace_v76_course_diagnostic.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ });
+ refresh();
+})();
+</script>
+<script id="v77-integrated">
+// V77 retrospective descriptive checks; no prediction probabilities or post-result feature reconstruction.
+(function(){
+ const target=document.getElementById('v71-lanes');if(!target)return;
+ const panel=document.createElement('section');panel.id='v77-integrated';panel.style.marginTop='24px';
+ target.insertAdjacentElement('afterend',panel);
+ function render(){
+  let records=typeof v47All==='function'?v47All():[];
+  const make=()=>({n:0,stn:0,st:0,top3:0,win:0,innerN:0,inner3:0,outerN:0,outer3:0});
+  const stats={start:make(),show:make(),lap:make(),turn:make(),straight:make()};
+  let confirmed=0, resultsMissing=0, invalidCourses=0, missingStage=0, incompleteSt=0, allValid=0, altered=0;
+  const items=[];
+  const groups=[['start','事前スタート攻撃力','score',true],['show','展示タイム','展示タイム',false],['lap','一周','一周',false],['turn','まわり足','まわり足',false],['straight','直線','直線',false]];
+  for(const rec of records){
+   const res=rec.results;
+   if(!res){resultsMissing++;continue}
+   const cr=res.courseRows;
+   if(!Array.isArray(cr)||cr.length!==6){invalidCourses++;continue}
+   const courseMap=new Map();const courses=new Set();
+   for(const x of cr){const b=Number(x.boat),c=Number(x.course);if(b>=1&&b<=6&&c>=1&&c<=6){courseMap.set(b,c);courses.add(c)}}
+   if(courseMap.size!==6||courses.size!==6){invalidCourses++;continue}
+   const first3=(res.first3||'').split('-').map(Number);
+   if(first3.length!==3||new Set(first3).size!==3||first3.some(n=>n<1||n>6)){invalidCourses++;continue}
+   confirmed++;if([...courseMap].some(([b,c])=>b!==c))altered++;
+   const actual=Array.isArray(res.actualStarts)?res.actualStarts:[];
+   const actualMap=new Map(actual.map(x=>[Number(x.boat),Number(x.rank)]));
+   const stOK=actualMap.size===6&&[...actualMap.values()].every(v=>Number.isFinite(v)&&v>=1&&v<=6);
+   if(!stOK)incompleteSt++;
+   const ex=typeof v54StageGet==='function'?v54StageGet(rec.code):null;
+   if(!ex)missingStage++;
+   const out=[];
+   for(const [key,label,metric,isStart] of groups){
+    const snap=isStart?rec.snapshot:ex?.snapshot;
+    if(!snap)continue;
+    const available=isStart?(snap.starts||[]).filter(x=>x?.eligible&&Number.isFinite(x.score)):(snap.feet||[]).filter(x=>Number.isFinite(x?.measurements?.[metric]?.time)&&x.measurements[metric].time>0);
+    if(available.length!==6||new Set(available.map(x=>Number(x.boat))).size!==6)continue;
+    const value=x=>isStart?x.score:x.measurements[metric].time;
+    available.sort((a,b)=>isStart?value(b)-value(a):value(a)-value(b));
+    if(value(available[0])===value(available[1]))continue;
+    const boat=Number(available[0].boat), course=courseMap.get(boat),s=stats[key];
+    s.n++;if(first3.includes(boat))s.top3++;if(first3[0]===boat)s.win++;
+    if(course<=3){s.innerN++;if(first3.includes(boat))s.inner3++}else{s.outerN++;if(first3.includes(boat))s.outer3++}
+    if(stOK){s.stn++;const best=Math.min(...actualMap.values());if(actualMap.get(boat)===best)s.st++}
+    out.push(label+':'+boat+'号艇');
+   }
+   if(out.length>=2)allValid++;
+   if(items.length<12)items.push({code:rec.code,entry:[...courseMap.entries()].sort((a,b)=>a[1]-b[1]).map(x=>x[0]).join('-'),notes:out.join('／')||'事前評価不足'});
+  }
+  const ratio=(a,b)=>b?`${(100*a/b).toFixed(1)}% (${a}/${b})`:'―';
+  panel.innerHTML=`<h3>実進入・スタート・足・着順の統合検証（V77）</h3>
+  <p class="note">6艇の実進入を確認した確定レースだけが対象。スタートは第1段階、足は締切前に固定保存した第2段階のデータのみを使用します。指数や足の1位が単独のときだけ集計します。</p>
+  <p class="note">進入6艇確認 ${confirmed}件／進入変更 ${altered}件／足の第2段階記録なし ${missingStage}件／本番ST不足 ${incompleteSt}件／結果なし ${resultsMissing}件／進入・着順の不足 ${invalidCourses}件</p>
+  <div class="scroll"><table><thead><tr><th>単独トップ指標</th><th>検証レース</th><th>本番ST最上位</th><th>3着以内</th><th>1着</th><th>内側進入(1〜3)の3着内</th><th>外側進入(4〜6)の3着内</th></tr></thead><tbody>${groups.map(([key,label])=>{const x=stats[key];return `<tr><td>${label}</td><td>${x.n}件</td><td>${ratio(x.st,x.stn)}</td><td>${ratio(x.top3,x.n)}</td><td>${ratio(x.win,x.n)}</td><td>${ratio(x.inner3,x.innerN)}</td><td>${ratio(x.outer3,x.outerN)}</td></tr>`}).join('')}</tbody></table></div>
+  <p class="note">この表は各指標の「最上位1艇」の実績を別々に数えたものです。比較レースが同じとは限らず、相関や勝率の推定値ではありません。展示ST、後付け指数、5艇進入記録は含めません。</p>
+  <details><summary>対象レースの進入と評価項目（最大12件）</summary><div class="scroll"><table><thead><tr><th>レースコード</th><th>実進入（1〜6コース順の艇番）</th><th>単独トップ評価</th></tr></thead><tbody>${items.map(x=>`<tr><td>${x.code}</td><td>${x.entry}</td><td>${x.notes}</td></tr>`).join('')}</tbody></table></div></details>`;
+ }
+ const prior=window.v47Render;
+ if(typeof prior==='function')window.v47Render=function(...args){const val=prior.apply(this,args);render();return val};
+ const diag=document.getElementById('v73check');if(diag)diag.addEventListener('click',()=>setTimeout(render,1500));
+ render();
+})();
+</script>
+<script id="v78-course-adjusted">
+// V78: descriptive, same-course benchmarks from strictly pre-race snapshots.
+(function(){
+ const anchor=document.getElementById('v77-integrated');if(!anchor)return;
+ const panel=document.createElement('section');panel.id='v78-course-adjusted';panel.style.marginTop='24px';anchor.insertAdjacentElement('afterend',panel);
+ const validCourse=(res)=>{
+  if(!Array.isArray(res?.courseRows)||res.courseRows.length!==6)return null;
+  const map=new Map(), courses=new Set();
+  for(const row of res.courseRows){const b=Number(row.boat),c=Number(row.course);if(!Number.isInteger(b)||!Number.isInteger(c)||b<1||b>6||c<1||c>6||map.has(b)||courses.has(c))return null;map.set(b,c);courses.add(c)}
+  return map.size===6?map:null;
+ };
+ const frac=(a,n)=>n?`${(a/n*100).toFixed(1)}% (${a}/${n})`:'―';
+ function render(){
+  const recs=typeof v47All==='function'?v47All():[];
+  const base=Array.from({length:6},()=>({n:0,w:0,p:0,stN:0,st:0}));
+  const tops=Array.from({length:6},()=>({n:0,w:0,p:0,stN:0,st:0}));
+  const participants=[];let goodRaces=0, completeRaces=0, adjustedN=0, adjWin=0,adjTop3=0,expectedWin=0,expectedTop3=0;
+  for(const r of recs){
+   const res=r.results, course=validCourse(res);if(!course)continue;
+   const finish=String(res.first3||'').split('-').map(Number);
+   if(finish.length!==3||new Set(finish).size!==3||finish.some(n=>!course.has(n)))continue;
+   goodRaces++;
+   const s=(r.snapshot?.starts||[]).filter(x=>x?.eligible===true&&Number.isFinite(Number(x.score))&&x.score!=null&&course.has(Number(x.boat)));
+   if(s.length!==6||new Set(s.map(x=>Number(x.boat))).size!==6)continue;
+   completeRaces++;
+   const rankMap=new Map((res.actualStarts||[]).map(x=>[Number(x.boat),Number(x.rank)]));
+   const stOK=rankMap.size===6&&Array.from(course.keys()).every(b=>Number.isInteger(rankMap.get(b))&&rankMap.get(b)>=1&&rankMap.get(b)<=6);
+   const best=stOK?Math.min(...rankMap.values()):null;
+   const max=Math.max(...s.map(x=>Number(x.score)));
+   const leaders=s.filter(x=>Number(x.score)===max);
+   for(const [boat,c] of course){
+    const z=base[c-1];z.n++;if(finish[0]===boat)z.w++;if(finish.includes(boat))z.p++;
+    if(stOK){z.stN++;if(rankMap.get(boat)===best)z.st++}
+   }
+   if(leaders.length!==1)continue;
+   const b=Number(leaders[0].boat), c=course.get(b), t=tops[c-1];
+   t.n++;if(finish[0]===b)t.w++;if(finish.includes(b))t.p++;
+   if(stOK){t.stN++;if(rankMap.get(b)===best)t.st++}
+   participants.push({code:r.code,boat:b,course:c,win:finish[0]===b,top3:finish.includes(b),st:stOK?rankMap.get(b)===best:null});
+  }
+  // Compare index-top boats with non-top runners IN THE SAME COURSE, across the same eligible races.
+  const non=base.map((b,i)=>({n:b.n-tops[i].n,w:b.w-tops[i].w,p:b.p-tops[i].p,stN:b.stN-tops[i].stN,st:b.st-tops[i].st}));
+  for(let i=0;i<6;i++){const n=non[i],t=tops[i];if(n.n>0){adjustedN+=t.n;adjWin+=t.w;adjTop3+=t.p;expectedWin+=t.n*n.w/n.n;expectedTop3+=t.n*n.p/n.n}}
+  const mkRow=(label,indices)=>{
+   const t=indices.reduce((a,i)=>({n:a.n+tops[i].n,w:a.w+tops[i].w,p:a.p+tops[i].p,stN:a.stN+tops[i].stN,st:a.st+tops[i].st}),{n:0,w:0,p:0,stN:0,st:0});
+   const o=indices.reduce((a,i)=>({n:a.n+non[i].n,w:a.w+non[i].w,p:a.p+non[i].p}),{n:0,w:0,p:0});
+   return `<tr><td>${label}</td><td>${t.n}</td><td>${frac(t.w,t.n)}</td><td>${frac(o.w,o.n)}</td><td>${frac(t.p,t.n)}</td><td>${frac(o.p,o.n)}</td><td>${frac(t.st,t.stN)}</td></tr>`;
+  };
+  panel.innerHTML=`<h3>コースの有利さを分けたスタート指数検証（V78）</h3>
+   <p class="note">同じ6艇立て・実進入確認済み・事前に6艇分の正式指数が保存されたレースから、指数単独トップ艇と、<b>同じ進入コースの指数トップ以外の艇</b>を比較します。枠番と実進入は区別します。</p>
+   <p class="note">進入・着順確認 ${goodRaces}レース／6艇正式指数あり ${completeRaces}レース／単独トップ ${participants.length}レース</p>
+   <div class="scroll"><table><thead><tr><th>実進入</th><th>トップ該当</th><th>トップ1着</th><th>同コース・他艇1着</th><th>トップ3着内</th><th>同コース・他艇3着内</th><th>トップST最上位</th></tr></thead><tbody>
+   ${mkRow('内側 1〜3',[0,1,2])}${mkRow('外側 4〜6',[3,4,5])}${Array.from({length:6},(_,i)=>mkRow(`${i+1}コース`,[i])).join('')}</tbody></table></div>
+   <p class="note">※「同コース・他艇」は同じ検証対象レース群の別レースに出走した艇。レース相手や選手能力は統制できておらず、因果効果・勝率予測ではありません。比較対象0件なら―と表示します。</p>
+   <p class="note">同コースの他艇を基準にトップ艇のコース構成で換算：比較可能 ${adjustedN}件／1着 実測${adjWin}・参考期待件数${expectedWin.toFixed(1)}／3着内 実測${adjTop3}・参考期待件数${expectedTop3.toFixed(1)}。<b>標本が少ない間は配点変更に使用しないでください。</b></p>
+   <details><summary>比較対象レースと単独トップ艇を見る</summary><div class="scroll"><table><thead><tr><th>レース</th><th>トップ艇</th><th>実進入</th><th>1着</th><th>3着内</th><th>本番STトップ</th></tr></thead><tbody>${participants.slice(0,80).map(x=>`<tr><td>${x.code}</td><td>${x.boat}号艇</td><td>${x.course}コース</td><td>${x.win?'○':'×'}</td><td>${x.top3?'○':'×'}</td><td>${x.st===null?'未取得':x.st?'○':'×'}</td></tr>`).join('')}</tbody></table></div></details>`;
+ }
+ const prior=window.v47Render;
+ if(typeof prior==='function')window.v47Render=function(...args){const v=prior.apply(this,args);render();return v};
+ document.getElementById('v73check')?.addEventListener('click',()=>setTimeout(render,1600));
+ render();
+})();
+</script>
+<script id="v79-score-bands">
+// V79: fixed, predeclared score bands; observational analysis, no model recalibration.
+(function(){
+ const anchor=document.getElementById('v78-course-adjusted');if(!anchor)return;
+ const panel=document.createElement('section'); panel.id='v79-score-bands';panel.style.marginTop='24px';anchor.insertAdjacentElement('afterend',panel);
+ const bands=[{name:'50未満',test:x=>x<50},{name:'50〜69.9',test:x=>x>=50&&x<70},{name:'70以上',test:x=>x>=70}];
+ const rate=(a,n)=>n?`${(100*a/n).toFixed(1)}% (${a}/${n})`:'―';
+ function courseMap(result){
+  if(!Array.isArray(result?.courseRows)||result.courseRows.length!==6)return null;
+  const map=new Map(),seen=new Set();
+  for(const r of result.courseRows){const b=Number(r.boat),c=Number(r.course);if(!Number.isInteger(b)||b<1||b>6||!Number.isInteger(c)||c<1||c>6||map.has(b)||seen.has(c))return null;map.set(b,c);seen.add(c)}
+  return map.size===6?map:null;
+ }
+ const blank=()=>({n:0,win:0,top3:0,stN:0,stTop:0});
+ function render(){
+  const rows=Array.from({length:6},()=>bands.map(blank));const aggregate=bands.map(blank);
+  let eligibleRaces=0,boats=0,missingStRaces=0;
+  const recs=typeof v47All==='function'?v47All():[];
+  for(const r of recs){
+   const result=r.results,course=courseMap(result);if(!course)continue;
+   const finish=String(result.first3||'').split('-').map(Number);
+   if(finish.length!==3||new Set(finish).size!==3||finish.some(b=>!course.has(b)))continue;
+   const start=r.snapshot?.starts||[];
+   if(start.length!==6||new Set(start.map(x=>Number(x.boat))).size!==6||start.some(x=>x.eligible!==true||x.score==null||!Number.isFinite(Number(x.score))))continue;
+   eligibleRaces++;
+   const st=new Map((result.actualStarts||[]).map(x=>[Number(x.boat),Number(x.rank)]));
+   const stValid=st.size===6&&[1,2,3,4,5,6].every(b=>Number.isInteger(st.get(b))&&st.get(b)>=1&&st.get(b)<=6);
+   if(!stValid)missingStRaces++;
+   const best=stValid?Math.min(...st.values()):null;
+   for(const x of start){
+    const boat=Number(x.boat),c=course.get(boat),score=Number(x.score);
+    if(!c)continue;
+    const bi=bands.findIndex(z=>z.test(score));if(bi<0)continue;
+    for(const dest of [rows[c-1][bi],aggregate[bi]]){dest.n++;if(finish[0]===boat)dest.win++;if(finish.includes(boat))dest.top3++;if(stValid){dest.stN++;if(st.get(boat)===best)dest.stTop++}}
+    boats++;
+   }
+  }
+  const tr=(label,x)=>`<tr><td>${label}</td><td>${x.n}</td><td>${rate(x.win,x.n)}</td><td>${rate(x.top3,x.n)}</td><td>${rate(x.stTop,x.stN)}</td><td>${x.n<20?'少数（参考）':'集計中'}</td></tr>`;
+  panel.innerHTML=`<h3>全艇の指数帯・実進入別成績（V79）</h3>
+   <p class="note">スタート攻撃力指数を事前に固定した3区分（50未満／50〜69.9／70以上）で集計。単独トップ以外の艇も含めます。6艇立て・実進入6艇確認済み・締切前の正式指数6艇分・確定上位3艇がそろうレースのみ使用します。</p>
+   <p class="note">対象${eligibleRaces}レース／指数付き${boats}艇／本番ST比較不可${missingStRaces}レース。1レースの6艇は独立な標本ではありません。</p>
+   <div class="scroll"><table><thead><tr><th>指数帯</th><th>艇数</th><th>1着率</th><th>3着内率</th><th>ST最上位率</th><th>注意</th></tr></thead><tbody>${aggregate.map((x,i)=>tr(bands[i].name,x)).join('')}</tbody></table></div>
+   <details><summary>1〜6コース別・指数帯別の詳細（18区分）</summary><div class="scroll"><table><thead><tr><th>実進入・指数帯</th><th>艇数</th><th>1着率</th><th>3着内率</th><th>ST最上位率</th><th>注意</th></tr></thead><tbody>${rows.flatMap((z,c)=>z.map((x,i)=>tr(`${c+1}コース・${bands[i].name}`,x))).join('')}</tbody></table></div></details>
+   <p class="note">同一コースの指数帯間を比較するための記述統計です。サンプルの偏り、選手の実力差、相手関係、レース日・水面条件は調整していません。母数20艇未満は参考表示。閾値は今回固定し、結果を見て後から変更しません。確率・期待値・買い目の推奨値ではありません。</p>`;
+ }
+ const previous=window.v47Render;
+ if(typeof previous==='function')window.v47Render=function(...args){const result=previous.apply(this,args);render();return result};
+ document.getElementById('v73check')?.addEventListener('click',()=>setTimeout(render,1700));
+ render();
+})();
+</script>
+<script id="v80-within-course-pairs">
+// V80: rank association within entry course, across different races; no score cutoffs.
+(function(){
+ const anchor=document.getElementById('v79-score-bands');if(!anchor)return;
+ const panel=document.createElement('section');panel.id='v80-within-course-pairs';panel.style.marginTop='24px';anchor.insertAdjacentElement('afterend',panel);
+ const pct=(x,n)=>n?`${(100*x/n).toFixed(1)}% (${x}/${n})`:'―';
+ function validCourse(res){
+  if(!Array.isArray(res?.courseRows)||res.courseRows.length!==6)return null;
+  const m=new Map(),seen=new Set();
+  for(const x of res.courseRows){const b=Number(x.boat),c=Number(x.course);if(!Number.isInteger(b)||b<1||b>6||!Number.isInteger(c)||c<1||c>6||m.has(b)||seen.has(c))return null;m.set(b,c);seen.add(c)}
+  return m.size===6?m:null;
+ }
+ function stats(){return {n:0,stPairs:0,stAgree:0,stOppose:0,stTie:0,winPairs:0,winAgree:0,winOppose:0,top3Pairs:0,top3Agree:0,top3Oppose:0}}
+ function render(){
+  const grouped=Array.from({length:6},()=>[]);let races=0,excluded=0;
+  for(const rec of (typeof v47All==='function'?v47All():[])){
+   const res=rec.results||{},cmap=validCourse(res);if(!cmap){excluded++;continue}
+   const finish=String(res.first3||'').split('-').map(Number);
+   if(finish.length!==3||new Set(finish).size!==3||finish.some(b=>!cmap.has(b))){excluded++;continue}
+   const starts=rec.snapshot?.starts||[];
+   if(starts.length!==6||new Set(starts.map(x=>Number(x.boat))).size!==6||starts.some(x=>x.eligible!==true||x.score==null||!Number.isFinite(Number(x.score)))){excluded++;continue}
+   const stRows=Array.isArray(res.actualStarts)?res.actualStarts:[];
+   const stMap=new Map(stRows.filter(x=>x.st!=null&&Number.isFinite(Number(x.st))).map(x=>[Number(x.boat),Number(x.st)]));
+   races++;
+   for(const v of starts){const boat=Number(v.boat),course=cmap.get(boat);grouped[course-1].push({code:rec.code,score:Number(v.score),st:stMap.has(boat)?stMap.get(boat):null,win:finish[0]===boat,top3:finish.includes(boat)})}
+  }
+  const aggregates=grouped.map(boats=>{
+   const a=stats();a.n=boats.length;
+   for(let i=0;i<boats.length;i++)for(let j=i+1;j<boats.length;j++){
+    const x=boats[i],y=boats[j];if(x.code===y.code||x.score===y.score)continue;
+    const high=x.score>y.score?x:y,low=x.score>y.score?y:x;
+    if(high.st!==null&&low.st!==null){
+     if(high.st===low.st)a.stTie++;
+     else{a.stPairs++;if(high.st<low.st)a.stAgree++;else a.stOppose++}
+    }
+    if(high.win!==low.win){a.winPairs++;if(high.win)a.winAgree++;else a.winOppose++}
+    if(high.top3!==low.top3){a.top3Pairs++;if(high.top3)a.top3Agree++;else a.top3Oppose++}
+   }
+   return a;
+  });
+  const all=aggregates.reduce((a,b)=>{for(const k of Object.keys(a))a[k]+=b[k];return a},stats());
+  const row=(label,a)=>`<tr><td>${label}</td><td>${a.n}艇</td><td>${pct(a.stAgree,a.stPairs)}</td><td>${pct(a.winAgree,a.winPairs)}</td><td>${pct(a.top3Agree,a.top3Pairs)}</td></tr>`;
+  panel.innerHTML=`<h3>同一コース内の指数と実績の関係（V80）</h3>
+   <p class="note">指数の50・70などの境界は使わず、<b>同じ実進入コースに出た別レースの2艇</b>を比較します。指数が高い方が本番STで速かったか、1着・3着内に入ったかを確認します。各ペアで指数同点は除外します。</p>
+   <p class="note">対象${races}レース／事前指数付き${all.n}艇／条件不足で除外${excluded}記録。着順の比較は高低の結果が異なるペアのみを分母にします。</p>
+   <div class="scroll"><table><thead><tr><th>実進入コース</th><th>対象艇</th><th>高指数艇のST先行</th><th>高指数艇が1着</th><th>高指数艇が3着内</th></tr></thead><tbody>${row('全コース（同コース内で比較）',all)}${aggregates.map((a,i)=>row(`${i+1}コース`,a)).join('')}</tbody></table></div>
+   <p class="note">ST先行はタイムが小さい方を「先行」とし、同タイムは分母から除外（同タイム${all.stTie}ペア）。1着・3着内は片方のみ該当するペアを対象とし、両方同じ結果の組は除外します。比較ペアは互いに独立ではありません。</p>
+   <details><summary>集計条件・注意点</summary><p class="note">締切前に正式指数6艇分を保存し、結果の上位3艇および実進入6艇が確認されたレースのみ使用します。STの数値がない艇はST比較からのみ除外。異なるレースを同一コースで比較しているため、風・水面・競走相手・選手能力・モーターや場の違いは調整できません。集計されたペア数を独立の試行件数として信頼区間等を計算することはできません。配点や買い目の自動変更はしません。</p></details>`;
+ }
+ const prior=window.v47Render;
+ if(typeof prior==='function')window.v47Render=function(...args){const v=prior.apply(this,args);render();return v};
+ document.getElementById('v73check')?.addEventListener('click',()=>setTimeout(render,1800));
+ render();
+})();
+</script>
+<script>
+(()=>{
+ const $=id=>document.getElementById(id), q=$('v81Quick');if(!q)return;
+ const forecast=()=>{let b=document.querySelector('#v62Nav button[data-mode="forecast"]');if(b)b.click();else if(document.body.dataset.v62Mode!=='forecast'){document.querySelector('#v62Nav button')?.click();}};
+ const jump=(el)=>{if(el)el.scrollIntoView({behavior:'smooth',block:'center'});};
+ $('v81Select').addEventListener('click',()=>{forecast();jump($('venue'));});
+ $('v81Load').addEventListener('click',()=>{forecast();if(!$('load'))return;$('load').click();jump($('status'));});
+ $('v81Compare').addEventListener('click',()=>{forecast();jump($('comparison')||$('compare')||document.querySelector('.comparison')||$('copy'));});
+ $('v81Copy').addEventListener('click',()=>{forecast();if(!$('copy')?.disabled){$('copy').click();jump($('copystatus'));}});
+ const update=()=>{const ready=!!$('copy')&&!$('copy').disabled; $('v81Copy').disabled=!ready;const status=$('status')?.textContent?.trim()||'';const selected=[$('venue')?.selectedOptions?.[0]?.textContent,$('race')?.selectedOptions?.[0]?.textContent].filter(Boolean).join(' / ');$('v81Progress').textContent=ready?'取得済み：6艇と展示・オッズを確認してから「予想用コピー」を押してください。':(status||('選択中：'+selected));};
+ const watcher=new MutationObserver(update); ['copy','status'].forEach(id=>{const el=$(id);if(el)watcher.observe(el,{attributes:true,childList:true,characterData:true,subtree:true})});
+ ['venue','race','day'].forEach(id=>$(id)?.addEventListener('change',update));update();
+})();
+</script>
+<style id="v88-mobile-style">
+#v88Mobile{display:none;background:#fff;border:1px solid #d3deea;border-radius:12px;padding:12px;margin:12px 0}
+#v88Mobile h3{margin:0 0 5px;font-size:16px}
+#v88Mobile .v88-top{font-size:12px;color:#52657a;margin-bottom:8px}
+#v88Mobile .v88-item{display:grid;grid-template-columns:35px minmax(0,1fr) 67px 65px;gap:5px;align-items:center;border-top:1px solid #e3e9ef;padding:9px 0;font-size:12px}
+#v88Mobile .v88-num{border-radius:5px;padding:7px 0;text-align:center;font-weight:bold}
+#v88Mobile .v88-name{font-weight:700;overflow-wrap:anywhere}
+#v88Mobile .v88-sub{font-size:10px;color:#66778b;margin-top:3px}
+#v88Mobile .v88-value{text-align:right;font-variant-numeric:tabular-nums}
+#v88Mobile .v88-value strong{display:block;font-size:15px}
+#v88Mobile .v88-label{font-size:10px;color:#65758a}
+#v88Mobile .v88-foot{font-size:11px;color:#53647a;margin-top:9px}
+#v88ShowTable{background:#e7eef8;color:#173e69;padding:11px;width:100%;margin-top:10px}
+@media(max-width:600px){
+  #v88Mobile{display:block}
+  body:not(.v88-table-open) #compare{display:none}
+  #v81Quick{position:relative;top:auto;z-index:1;padding:9px;margin:7px 0}
+  #v81Quick .v81actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+  #v81Quick .v81actions button{width:100%;padding:12px 2px;font-size:12px;min-height:44px}
+  #v81Compare{display:none!important}
+  #v81Guide{display:none}
+  #v81Progress{max-height:34px;overflow:hidden;font-size:11px}
+  .venues{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .venueBtn{min-height:66px}
+  .odds-wrap{scrollbar-width:thin}
+  section[data-v62-tab="forecast"]{overflow-wrap:anywhere}
+  #v62Nav{padding-top:3px;padding-bottom:4px}
+  #v62Nav button{min-height:43px}
+  #compare{scroll-margin-top:65px}
+  .comparison th,.comparison td{font-size:11px}
+  #v85Delta,#v82Freshness,#startAttack,#footComparison,#raceScenarios,#methodScenarios,#waterConditions,#rankAudit{font-size:12px}
+}
+</style>
+<script id="v88-mobile-script">
+(()=>{
+ const by=id=>document.getElementById(id);
+ const compare=by('compare');if(!compare)return;
+ const mobile=document.createElement('div');mobile.id='v88Mobile';
+ mobile.innerHTML='<h3>6艇のかんたん比較</h3><div class="v88-top">データを取得すると主要指標を表示します</div><div id="v88Rows">レースを選んで「データ取得」を押してください。</div><div class="v88-foot">今節平均順位は小さいほど先行傾向。指数は参考値で、欠損は減点しません。</div><button type="button" id="v88ShowTable" aria-expanded="false">全項目の比較表を開く ▾</button>';
+ compare.parentNode.insertBefore(mobile,compare);
+ const toggle=by('v88ShowTable');toggle.addEventListener('click',()=>{
+  const open=document.body.classList.toggle('v88-table-open');toggle.textContent=open?'全項目の比較表を閉じる ▴':'全項目の比較表を開く ▾';toggle.setAttribute('aria-expanded',String(open));
+ });
+ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function update(){
+  const d=typeof data!=='undefined'?data:null;
+  const starts=d?.startAttackMetrics||[];
+  const feet=d?.footComparisonMetrics||[];
+  const records=d?.datasets?.['programs/race_cards']?.record||{};
+  if(!d||starts.length!==6){by('v88Rows').textContent='レースを選んで「データ取得」を押してください。';return}
+  const map=Object.fromEntries(feet.map(f=>[f.boat,f]));
+  const colors=['boat1','boat2','boat3','boat4','boat5','boat6'];
+  by('v88Rows').innerHTML=starts.map((s,i)=>{
+   const n=s.boat||i+1;const f=map[n];
+   const best=Object.entries(f?.measurements||{}).filter(([k,v])=>Number.isFinite(v.rank)&&v.rank<=2).map(([k,v])=>`${k}${v.rank}位`).join(' / ')||'上位計測なし';
+   const idx=s.eligible&&Number.isFinite(s.adjustedAttackIndex)?s.adjustedAttackIndex.toFixed(1):'―';
+   const rank=Number.isFinite(s.meanRank)?Number(s.meanRank).toFixed(2):'―';
+   const name=s.name||records[`艇${n}_選手名`]||`${n}号艇`;
+   const coverage=`${s.verifiedRuns??0}/${s.totalRuns??0}走`;
+   return `<div class="v88-item"><span class="v88-num ${colors[n-1]||''}">${n}</span><div><div class="v88-name">${esc(name)}</div><div class="v88-sub">${esc(best)}</div></div><div class="v88-value"><span class="v88-label">平均順位</span><strong>${esc(rank)}</strong><span class="v88-label">${esc(coverage)}</span></div><div class="v88-value"><span class="v88-label">補正指数</span><strong>${esc(idx)}</strong><span class="v88-label">${s.eligible?'正式':'未算出'}</span></div></div>`;
+  }).join('');
+  mobile.querySelector('.v88-top').textContent=`${esc(d.venue||'')} ${esc(d.race||'')} ／ データ取得：${new Date(d.loadedAt).toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'})}`;
+ }
+ const source=by('v87Ready');if(source)new MutationObserver(update).observe(source,{childList:true,subtree:true,characterData:true});
+ ['venue','race','day'].forEach(id=>by(id)?.addEventListener('change',()=>setTimeout(update,0)));
+ update();
+})();
+</script>
+
+</html>
 <!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>競艇予想データ V94・色付き場一覧のみ</title><style>body{font:15px system-ui,sans-serif;background:#f1f4f8;color:#182536;max-width:1150px;margin:15px auto;padding:0 12px}section{background:white;padding:16px;margin:12px 0;border-radius:12px}h1{font-size:22px}h2{font-size:18px}button,input,select,textarea{font:inherit;padding:9px;border-radius:6px;border:1px solid #ccd3dd}button{background:#1658a6;color:white;border:0;cursor:pointer}button:disabled{opacity:.5}textarea{width:96%;min-height:65px}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}.boat{padding:10px;border:1px solid #ddd;border-radius:8px}.boat strong{font-size:18px}.boat:nth-child(1){border-top:7px solid #c7c7c7}.boat:nth-child(2){border-top:7px solid #292929}.boat:nth-child(3){border-top:7px solid #d44}.boat:nth-child(4){border-top:7px solid #2878c8}.boat:nth-child(5){border-top:7px solid #d8bb1b}.boat:nth-child(6){border-top:7px solid #3eab69}small,.muted{color:#687586}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:280px;overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}td,th{border-bottom:1px solid #ddd;padding:6px;text-align:left}#status{font-weight:600}details{margin-top:12px} .ok{color:#137341}.warn{color:#ae6400} .scroll{overflow-x:auto}.comparison{min-width:880px}.comparison th{background:#edf2f9;white-space:nowrap}.comparison td{white-space:nowrap}.comparison td:first-child{font-weight:bold}.boat1{background:#e5e5e5;color:#222}.boat2{background:#292929;color:#fff}.boat3{background:#d94343;color:#fff}.boat4{background:#2878c8;color:#fff}.boat5{background:#e1c322;color:#222}.boat6{background:#319b60;color:#fff}.num{display:inline-block;padding:4px 9px;border-radius:5px}.tiny{font-size:11px}.pill{background:#edf3ff;padding:3px 6px;border-radius:5px}.note{font-size:12px;color:#5a6b7d} .venues{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:7px}.venueBtn{background:#e9eef6;color:#1c324a;border:1px solid #cbd5e1;text-align:left}.venueBtn.active{background:#1558a6;color:white}.races{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.raceBtn{background:#eaf0f8;color:#193b63}.raceBtn.active{background:#1558a6;color:white}.sticky{position:sticky;top:0;z-index:2;background:#f1f4f8;padding:6px 0}.info{background:#f3f7fd;border-left:4px solid #3974b8;padding:10px}.grid-note{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.chips{display:flex;flex-wrap:wrap;gap:5px}.chips button{font-size:12px;padding:6px;background:#e9eff7;color:#1c324a}.chips button.chosen{background:#225da0;color:white}@media(max-width:600px){.races{grid-template-columns:repeat(4,minmax(0,1fr))}section{padding:12px}}  .nexttime{display:block;font-size:12px;font-weight:700;margin-top:5px}.nexttime.unknown{font-size:10px;font-weight:400}.vstat{display:block;font-size:10px;opacity:.85;margin-top:3px}.venueBtn.has{border-color:#23744c;background:#e7f7ee}.venueBtn.none{opacity:.55}.venueBtn.active{background:#1558a6;color:#fff;opacity:1}.raceBtn.has{box-shadow:inset 0 -3px #299f64}.raceBtn.none{opacity:.5}.deadline{font-size:10px;display:block;margin-top:3px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.secondary{background:#e9eef6;color:#193b63}.warnbox{background:#fff8e8;padding:10px;border-radius:8px;border-left:3px solid #d9a044}  .venueBtn{min-height:77px;display:flex;flex-direction:column;justify-content:center;gap:2px}.venueBtn .nexttime{font-size:12px;line-height:1.3;margin-top:2px}.venueBtn .nexttime.unknown{font-size:10px}.venueBtn .vstat{margin-top:1px}.venueBtn.urgent{border:2px solid #dc463f;background:#fff0ed;color:#84251f}.venueBtn.soon{border:2px solid #e8a329;background:#fff5dd;color:#704800}.venueBtn.active.urgent,.venueBtn.active.soon{background:#1558a6;color:white}.venueBtn .remaining{font-weight:700;font-size:11px} .odds-wrap{overflow-x:auto;max-width:100%;padding-bottom:8px}.odds-grid{display:grid;grid-template-columns:repeat(6,minmax(112px,1fr));gap:5px;min-width:700px}.odds-col{border:1px solid #cdd3da;background:white}.odds-head{font-weight:800;text-align:center;padding:8px 2px;color:#172331}.odds-entry{display:grid;grid-template-columns:20px 20px minmax(0,1fr);height:27px;align-items:center;border-bottom:1px solid #e0e3e8;font-size:12px;font-variant-numeric:tabular-nums}.odds-entry.group-start{border-top:3px solid #aab3c0}.odds-entry .pos{height:100%;display:flex;align-items:center;justify-content:center;font-weight:700}.odds-entry .val{text-align:right;padding:0 5px;white-space:nowrap;font-weight:650}.odds-entry .val.high{color:#cb1c27}.odds-entry.selected{outline:2px solid #e69e12;outline-offset:-2px;background:#fff7d9}.odds-entry:not(.missing){cursor:pointer}.odds-entry.missing{opacity:.6}.odds-summary{font-size:13px;margin:8px 0}.odds-legend{font-size:12px;color:#576576;margin:6px 0 12px}@media(max-width:700px){.odds-grid{min-width:750px}.odds-entry{font-size:12px}} </style><style>
 .odds-grid{grid-template-columns:repeat(6,minmax(140px,1fr));gap:4px;min-width:880px}
 .odds-col{border:1px solid #cbd1d9}
