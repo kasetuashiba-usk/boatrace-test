@@ -106,7 +106,7 @@ body[data-v62-mode="settings"] section[data-v62-tab]:not([data-v62-tab="settings
 #v81Progress{font-size:12px;color:#37506b;margin-top:7px}
 #v81Guide{font-size:12px;color:#617084;margin:4px 0 8px}
 @media(max-width:600px){#v81Quick button{flex:1 1 43%}}
-</style><h1>競艇予想データ V98・高密度コピー</h1><p id="v95-marker" style="font-size:12px;color:#53627a">スマホ版 V98｜短縮コピー＋完全版JSON</p><div id="v81Quick" role="region" aria-label="予想クイック操作"><strong>予想のかんたん操作</strong><div id="v81Guide">① レースを選択　② データ取得　③ 6艇を確認　④ ChatGPTへコピー</div><div class="v81actions"><button type="button" id="v81Select">① レース選択</button><button type="button" id="v81Load">② データ取得</button><button type="button" id="v81Compare" class="secondary">③ 6艇比較へ</button><button type="button" id="v81Copy" disabled>④ 予想用コピー</button></div><div id="v81Progress" aria-live="polite">レースを選び、データ取得してください。</div></div><section class="legacy-venue-section" data-v62-tab="forecast"><h2>全国24場から選択</h2><p class="note">場・レースを選ぶと下の選択欄に反映されます。開催の有無はデータ取得後に判定します。次の締切はCSVに時刻がある場合のみ表示し、残り時間は日本時間で計算します。</p><div class="toolbar"><button id="schedule">開催一覧を取得・更新</button><label><input type="checkbox" id="autoRefresh"> 5分ごとに一覧更新</label></div><p class="note" id="scheduleStatus">開催一覧は未取得です。下の「開催一覧を取得・更新」を押してください。</p><p class="note">スマホでは下の場名をタップしてください。選択できない場合は「競艇場」のプルダウンでも変更できます。</p><div id="venueGrid" class="venues"></div><h3>レース</h3><div id="raceGrid" class="races"></div><p class="note" id="raceInfo">一覧を取得すると、レースごとのデータ有無が分かります。</p></section><section data-v62-tab="settings"><div id="venueAtlasV42"></div></section><section data-v62-tab="forecast"><div class="row"><label>日付 <input type="date" id="day"></label><label>競艇場 <select id="venue"></select></label><label>レース <select id="race"></select></label><button id="load">データ取得</button></div><p id="status">日付・場・レースを選択してください。</p><small>公開CSVを直接読み込みます。データの鮮度は取得元の更新状況によります。未取得項目は推測しません。</small></section><section data-v62-tab="forecast"><h2>全国の注目レース候補</h2><p class="note">出走表・展示ST・3連単オッズの公開状況を一括確認し、分析しやすいレースを上位表示します。順位は的中率や期待値を意味しません。締切時刻が未取得のレースは購入可能と判定しません。</p><button id="scanCandidates">全国の候補を探す</button><p id="candidateStatus" class="note">未実行</p><div id="candidateResults" class="scroll"></div></section><section data-v62-tab="forecast"><div class="info"><b>データの鮮度について</b>：CSVの公開時点の情報です。直前の展示・オッズは更新遅延の可能性があります。次の締切時刻・残り時間は公開CSVに認識できる列がある場合のみ表示します。時刻がない場合は公式サイトで確認してください。</div><h2>6艇比較表</h2><p class="note">「―」はデータなし。タイムの1位は赤、2位は黄色（同タイムは同順位）。小さい数値を上位とします。今節平均STは出走表にある今節STの単純平均です（F・Lなど数値以外は除外）。今節ST幅は最大と最小の差で、小さいほどばらつきが少ないことを示します。今節成績は「節01走1_ST」等の実際の列名から抽出します。今節平均スタート順位は、過去の確定結果CSVで各走の6艇のSTを比較して算出します。取得できない走は推測せず対象外とし、件数を表示します。追加の「同枠過去10走 平均スタート順」は今節の順位ではなく、今回と同じ枠番での過去成績です。両者を混同しないでください。</p><p class="note">スマホでは表を左右にスワイプできます。艇番と選手名は左側に固定されます。</p><div class="scroll" id="compare">データ取得後に表示します</div><div id="v82Freshness" class="info" style="margin-top:12px">当日早見走の照合状況はデータ取得後に表示します。</div><div id="v85Delta" class="info" style="margin-top:12px">更新前後の比較は取得後に表示します。</div><div id="startSummary" class="info" style="margin-top:12px">データ取得後にスタート比較を表示します。</div><div id="startAttack" class="scroll" style="margin-top:12px"></div><p class="note">V58方針：全走照合済みの正式指数と部分照合の暫定指数を分け、暫定値は予想・自動検証の採点には使いません。同枠過去10走は別指標です。最終日なのに指数0艇の場合は診断欄で要調査と表示します。</p><div id="footComparison" class="scroll" style="margin-top:18px"></div><div id="v85Exhibition" class="info" style="margin-top:12px">展示取得状況はデータ取得後に表示します。</div><div id="v87Ready" class="info" style="margin-top:12px">コピー用データの取得状況はデータ取得後に表示します。</div><div id="raceScenarios" class="scroll" style="margin-top:18px"></div><div id="methodScenarios" style="margin-top:18px"></div><div id="waterConditions" style="margin-top:18px"></div><div id="rankAudit" class="scroll" style="margin-top:12px"></div><details style="margin-top:12px"><summary>今節STの取得診断（必要な場合のみ開く）</summary><div id="runDiagnostics" class="note"></div></details></section><section id="automationV47" data-v62-tab="review"><h2>自動保存・結果照合</h2><p class="note">ブラウザを開いている間だけ動作します。確認済みの締切前に読み込んだレースの評価を固定保存します。締切時刻不明、過去レース、出走表や比較可能な事前指標がすべて未取得の場合は自動記録しません。欠損した指標は欠損のまま固定します。予想買い目がなくても指標を検証できます。</p><div class="row"><label><input type="checkbox" id="v47auto" checked> データ取得時に事前指標を自動保存</label><label><input type="checkbox" id="v47watch"> 保存済みレースの結果を5分ごとに確認</label><button id="v47checkNow" class="secondary">比較待ち優先で結果を照合</button><button id="v47export" class="secondary">自動検証データをJSON保存</button></div><p class="note" id="v47status">未実行</p><div class="note" id="v48diagnostic" style="white-space:pre-wrap;margin:7px 0"></div><div id="v47summary" class="scroll"></div><div id="v54stages" class="scroll"></div><div id="v60audit" class="scroll" style="margin-top:14px"></div><div id="v61audit" class="scroll" style="margin-top:18px"></div><button id="v60export" class="secondary" type="button">V60検証記録をJSON保存</button></section><section id="v67manual" data-v62-tab="review"><h2>CSV未掲載レースの公式結果照合</h2><p class="note">自動照合で未掲載の場合のみ使用。公式ページで着順・艇番ごとの本番STを確認して入力します。結果だけを保存し、締切前に保存した評価は変更しません。ブラウザから公式サイトを自動取得する機能ではありません。</p><div class="row"><label>未照合レース <select id="v67code"></select></label><button class="secondary" id="v67official">公式結果を開く</button><button class="secondary" id="v67refresh">未照合一覧を更新</button></div><div class="row"><label>1着 <select id="v67first"></select></label><label>2着 <select id="v67second"></select></label><label>3着 <select id="v67third"></select></label><label>決まり手 <select id="v67method"><option value="">未入力</option><option>逃げ</option><option>差し</option><option>まくり</option><option>まくり差し</option><option>抜き</option><option>恵まれ</option></select></label></div><p class="note">本番ST（実際の進入コース順ではなく、艇番ごとに入力）。例：0.12。Fの場合は -0.02 のように数値を入力。欠測があれば比較に使わず、保存しません。</p><div class="row" id="v67st"></div><div class="row"><button id="v67save">公式結果を確認して保存</button><button class="secondary" id="v67backup">現在の記録をJSONでバックアップ</button></div><p class="note" id="v67status">未照合レースを選択してください。</p></section><section id="batchV49" data-v62-tab="review"><h2>全国レースの自動記録</h2><p class="note">締切前の出走表を第1段階で固定保存し、展示情報が取得できたら第2段階を別に固定保存します。展示CSVの未掲載を保存停止条件にしません。締切まで3〜30分の候補を最大6件ずつ確認します。締切時刻と出走表が確認できるレースは、取得した指標が欠損していても第1段階として保存します。初日や順位照合不足でも実測指標だけ記録できます。比較対象2艇未満の指標は集計対象外です。保存済みは上書きしません。通信状況によって時間がかかります。ブラウザを開いている間だけ動作します。</p><div class="row"><button id="v49scan">最大6レースを一括記録</button><label><input id="v49watch" type="checkbox"> 5分ごとに新しい候補を確認</label><button id="v49stop" class="secondary">連続記録を停止</button></div><p class="note">日付は今日（日本時間）だけ対象。実行中は対象レースに画面が切り替わります。通信中に画面を閉じると未処理の候補は保存されません。</p><pre id="v49status" style="max-height:170px">未実行</pre><details open style="margin-top:12px"><summary><b>V60：全走指数・暫定指数の照合診断</b></summary><p class="note">初日・途中日・最終日を区別し、今節順位と同枠過去10走の平均スタート順を別々に表示します。『最終日』の数値なし日次は、出走履歴を探索候補として利用します。今節の指数を過去成績で推測しません。最終日で0艇なら要調査として強調します。</p><div id="v55table" class="scroll">一括取得後に表示します。</div><button id="v55export" class="secondary" type="button">診断データをJSON保存</button></details></section><section id="verificationV45" data-v62-tab="review"><h2>予想と確定結果の検証（V45）</h2><p class="note">予想を先に記録し、確定結果と払戻を別途取得して照合します。過去レースに後から入力した予想は「事後入力」として表示し、事前予想の実績には含めません。検証記録はこのブラウザに保存します。</p><div class="row"><label>3連単の予想買い目 <input id="v45picks" placeholder="例：1-2-6, 1-6-2" style="min-width:265px"></label><label>1点の購入額（円） <input id="v45stake" type="number" min="100" step="100" value="100" style="width:95px"></label><button id="v45save">予想を記録</button></div><p class="note" id="v45log">レースを選んでデータ取得後、予想を記録してください。</p><div class="row"><button id="v45check">確定結果・払戻を取得して検証</button><button id="v45export" class="secondary">検証記録をJSON保存</button></div><p id="v45status" class="note">未取得。確定結果は手動で読み込みます。</p><div class="scroll" id="v45result"></div></section><section id="validationV46" data-v62-tab="review"><h2>予想時点と本番の指標検証（V46）</h2><p class="note">予想記録と同時にスタート指数・実測足順位を保存し、確定結果と比較します。事後入力は事前予測成績に含めません。過去版V45の保存記録に指標がない場合は欠損扱いです。</p><div id="v46audit" class="scroll">レース取得後に表示します。</div><h3>このブラウザの事前予想検証集計</h3><div id="v46summary" class="scroll">予想記録はまだありません。</div><button id="v46export" class="secondary">全検証データをJSON保存</button></section><section data-v62-tab="forecast"><h2>6艇の情報</h2><div class="grid" id="boats"><p class="muted">未取得</p></div></section><section data-v62-tab="forecast"><h2>展示の目視情報を追加</h2><p class="note">よく使う評価を押すか、自由入力してください。艇ごとの内容はブラウザに保存されます。</p><p class="muted">艇ごとにメモを保存できます（このブラウザ内の一時保存。ページを閉じると消えます）。</p><div class="grid" id="notes"></div></section><section data-v62-tab="forecast"><h2>3連単オッズ（選手名付き・6列表示）</h2><div id="odds" class="muted">未取得</div></section><section data-v62-tab="forecast"><button id="copy" disabled>ChatGPT予想用・短縮コピー（V98）</button> <button id="download" disabled>JSONを保存</button><p id="copystatus"></p><details><summary>取得詳細・項目名を表示</summary><pre id="debug"></pre></details></section><script>
+</style><h1>競艇予想データ V102・即コピー版</h1><p id="v95-marker" style="font-size:12px;color:#53627a">スマホ版 V102｜直前情報の再確認対応</p><div id="v81Quick" role="region" aria-label="予想クイック操作"><strong>予想のかんたん操作</strong><div id="v81Guide">① レースを選択　② データ取得　③ 6艇を確認　④ ChatGPTへコピー</div><div class="v81actions"><button type="button" id="v81Select">① レース選択</button><button type="button" id="v81Load">② データ取得</button><button type="button" id="v81Compare" class="secondary">③ 6艇比較へ</button><button type="button" id="v81Copy" disabled>④ 予想用コピー</button></div><div id="v81Progress" aria-live="polite">レースを選び、データ取得してください。</div></div><section class="legacy-venue-section" data-v62-tab="forecast"><h2>全国24場から選択</h2><p class="note">場をタップすると12レースを選べます。開催の有無はデータ取得後に判定します。次の締切はCSVに時刻がある場合のみ表示し、残り時間は日本時間で計算します。</p><div class="toolbar"><button id="schedule">開催一覧を取得・更新</button><label><input type="checkbox" id="autoRefresh"> 5分ごとに一覧更新</label></div><p class="note" id="scheduleStatus">開催一覧は未取得です。下の「開催一覧を取得・更新」を押してください。</p><p class="note">場をタップ → レースをタップ → 「データ取得」を押してください。</p><div id="venueGrid" class="venues"></div><h3>レース</h3><div id="raceGrid" class="races"></div><p class="note" id="raceInfo">一覧を取得すると、レースごとのデータ有無が分かります。</p></section><section data-v62-tab="settings"><div id="venueAtlasV42"></div></section><section data-v62-tab="forecast"><div class="row"><label>日付 <input type="date" id="day"></label><label>競艇場 <select id="venue"></select></label><label>レース <select id="race"></select></label><button id="load">データ取得</button></div><p id="status">日付・場・レースを選択してください。</p><small>公開CSVを直接読み込みます。データの鮮度は取得元の更新状況によります。未取得項目は推測しません。</small></section><section data-v62-tab="forecast" id="v100PreviewPanel"><h2>直前情報の更新（V100）</h2><p class="note">出走表や今節順位を取り直さず、展示・水面気象・3連単オッズの5種類だけを再確認します。取得元のCSVが未公開なら値は増えません。自動確認は画面を開いている間、選択レースの締切までです。</p><div class="row"><button id="v100Refresh" type="button">展示・風・オッズを再取得</button><label><input type="checkbox" id="v100Auto"> 30秒ごとに自動確認</label><a id="v100Official" href="#" style="display:none" aria-hidden="true" tabindex="-1"></a></div><p class="note" id="v100State">先にレースを選び「データ取得」してください。</p><p class="note">取得元CSVの公開待ちでは値は増えません。公式サイトからの自動取得は未実装です。</p></section><section data-v62-tab="forecast"><h2>全国の注目レース候補</h2><p class="note">出走表・展示ST・3連単オッズの公開状況を一括確認し、分析しやすいレースを上位表示します。順位は的中率や期待値を意味しません。締切時刻が未取得のレースは購入可能と判定しません。</p><button id="scanCandidates">全国の候補を探す</button><p id="candidateStatus" class="note">未実行</p><div id="candidateResults" class="scroll"></div></section><section data-v62-tab="forecast"><div class="info"><b>データの鮮度について</b>：CSVの公開時点の情報です。直前の展示・オッズは更新遅延の可能性があります。次の締切時刻・残り時間は公開CSVに認識できる列がある場合のみ表示します。時刻がない場合は公式サイトで確認してください。</div><h2>6艇比較表</h2><p class="note">「―」はデータなし。タイムの1位は赤、2位は黄色（同タイムは同順位）。小さい数値を上位とします。今節平均STは出走表にある今節STの単純平均です（F・Lなど数値以外は除外）。今節ST幅は最大と最小の差で、小さいほどばらつきが少ないことを示します。今節成績は「節01走1_ST」等の実際の列名から抽出します。今節平均スタート順位は、過去の確定結果CSVで各走の6艇のSTを比較して算出します。取得できない走は推測せず対象外とし、件数を表示します。追加の「同枠過去10走 平均スタート順」は今節の順位ではなく、今回と同じ枠番での過去成績です。両者を混同しないでください。</p><p class="note">スマホでは表を左右にスワイプできます。艇番と選手名は左側に固定されます。</p><div class="scroll" id="compare">データ取得後に表示します</div><div id="v82Freshness" class="info" style="margin-top:12px">当日早見走の照合状況はデータ取得後に表示します。</div><div id="v85Delta" class="info" style="margin-top:12px">更新前後の比較は取得後に表示します。</div><div id="startSummary" class="info" style="margin-top:12px">データ取得後にスタート比較を表示します。</div><div id="startAttack" class="scroll" style="margin-top:12px"></div><p class="note">V58方針：全走照合済みの正式指数と部分照合の暫定指数を分け、暫定値は予想・自動検証の採点には使いません。同枠過去10走は別指標です。最終日なのに指数0艇の場合は診断欄で要調査と表示します。</p><div id="footComparison" class="scroll" style="margin-top:18px"></div><div id="v85Exhibition" class="info" style="margin-top:12px">展示取得状況はデータ取得後に表示します。</div><div id="v87Ready" class="info" style="margin-top:12px">コピー用データの取得状況はデータ取得後に表示します。</div><div id="raceScenarios" class="scroll" style="margin-top:18px"></div><div id="methodScenarios" style="margin-top:18px"></div><div id="waterConditions" style="margin-top:18px"></div><div id="rankAudit" class="scroll" style="margin-top:12px"></div><details style="margin-top:12px"><summary>今節STの取得診断（必要な場合のみ開く）</summary><div id="runDiagnostics" class="note"></div></details></section><section id="automationV47" data-v62-tab="review"><h2>自動保存・結果照合</h2><p class="note">ブラウザを開いている間だけ動作します。確認済みの締切前に読み込んだレースの評価を固定保存します。締切時刻不明、過去レース、出走表や比較可能な事前指標がすべて未取得の場合は自動記録しません。欠損した指標は欠損のまま固定します。予想買い目がなくても指標を検証できます。</p><div class="row"><label><input type="checkbox" id="v47auto" checked> データ取得時に事前指標を自動保存</label><label><input type="checkbox" id="v47watch"> 保存済みレースの結果を5分ごとに確認</label><button id="v47checkNow" class="secondary">比較待ち優先で結果を照合</button><button id="v47export" class="secondary">自動検証データをJSON保存</button></div><p class="note" id="v47status">未実行</p><div class="note" id="v48diagnostic" style="white-space:pre-wrap;margin:7px 0"></div><div id="v47summary" class="scroll"></div><div id="v54stages" class="scroll"></div><div id="v60audit" class="scroll" style="margin-top:14px"></div><div id="v61audit" class="scroll" style="margin-top:18px"></div><button id="v60export" class="secondary" type="button">V60検証記録をJSON保存</button></section><section id="v67manual" data-v62-tab="review"><h2>CSV未掲載レースの公式結果照合</h2><p class="note">自動照合で未掲載の場合のみ使用。公式ページで着順・艇番ごとの本番STを確認して入力します。結果だけを保存し、締切前に保存した評価は変更しません。ブラウザから公式サイトを自動取得する機能ではありません。</p><div class="row"><label>未照合レース <select id="v67code"></select></label><button class="secondary" id="v67official">公式結果を開く</button><button class="secondary" id="v67refresh">未照合一覧を更新</button></div><div class="row"><label>1着 <select id="v67first"></select></label><label>2着 <select id="v67second"></select></label><label>3着 <select id="v67third"></select></label><label>決まり手 <select id="v67method"><option value="">未入力</option><option>逃げ</option><option>差し</option><option>まくり</option><option>まくり差し</option><option>抜き</option><option>恵まれ</option></select></label></div><p class="note">本番ST（実際の進入コース順ではなく、艇番ごとに入力）。例：0.12。Fの場合は -0.02 のように数値を入力。欠測があれば比較に使わず、保存しません。</p><div class="row" id="v67st"></div><div class="row"><button id="v67save">公式結果を確認して保存</button><button class="secondary" id="v67backup">現在の記録をJSONでバックアップ</button></div><p class="note" id="v67status">未照合レースを選択してください。</p></section><section id="batchV49" data-v62-tab="review"><h2>全国レースの自動記録</h2><p class="note">締切前の出走表を第1段階で固定保存し、展示情報が取得できたら第2段階を別に固定保存します。展示CSVの未掲載を保存停止条件にしません。締切まで3〜30分の候補を最大6件ずつ確認します。締切時刻と出走表が確認できるレースは、取得した指標が欠損していても第1段階として保存します。初日や順位照合不足でも実測指標だけ記録できます。比較対象2艇未満の指標は集計対象外です。保存済みは上書きしません。通信状況によって時間がかかります。ブラウザを開いている間だけ動作します。</p><div class="row"><button id="v49scan">最大6レースを一括記録</button><label><input id="v49watch" type="checkbox"> 5分ごとに新しい候補を確認</label><button id="v49stop" class="secondary">連続記録を停止</button></div><p class="note">日付は今日（日本時間）だけ対象。実行中は対象レースに画面が切り替わります。通信中に画面を閉じると未処理の候補は保存されません。</p><pre id="v49status" style="max-height:170px">未実行</pre><details open style="margin-top:12px"><summary><b>V60：全走指数・暫定指数の照合診断</b></summary><p class="note">初日・途中日・最終日を区別し、今節順位と同枠過去10走の平均スタート順を別々に表示します。『最終日』の数値なし日次は、出走履歴を探索候補として利用します。今節の指数を過去成績で推測しません。最終日で0艇なら要調査として強調します。</p><div id="v55table" class="scroll">一括取得後に表示します。</div><button id="v55export" class="secondary" type="button">診断データをJSON保存</button></details></section><section id="verificationV45" data-v62-tab="review"><h2>予想と確定結果の検証（V45）</h2><p class="note">予想を先に記録し、確定結果と払戻を別途取得して照合します。過去レースに後から入力した予想は「事後入力」として表示し、事前予想の実績には含めません。検証記録はこのブラウザに保存します。</p><div class="row"><label>3連単の予想買い目 <input id="v45picks" placeholder="例：1-2-6, 1-6-2" style="min-width:265px"></label><label>1点の購入額（円） <input id="v45stake" type="number" min="100" step="100" value="100" style="width:95px"></label><button id="v45save">予想を記録</button></div><p class="note" id="v45log">レースを選んでデータ取得後、予想を記録してください。</p><div class="row"><button id="v45check">確定結果・払戻を取得して検証</button><button id="v45export" class="secondary">検証記録をJSON保存</button></div><p id="v45status" class="note">未取得。確定結果は手動で読み込みます。</p><div class="scroll" id="v45result"></div></section><section id="validationV46" data-v62-tab="review"><h2>予想時点と本番の指標検証（V46）</h2><p class="note">予想記録と同時にスタート指数・実測足順位を保存し、確定結果と比較します。事後入力は事前予測成績に含めません。過去版V45の保存記録に指標がない場合は欠損扱いです。</p><div id="v46audit" class="scroll">レース取得後に表示します。</div><h3>このブラウザの事前予想検証集計</h3><div id="v46summary" class="scroll">予想記録はまだありません。</div><button id="v46export" class="secondary">全検証データをJSON保存</button></section><section data-v62-tab="forecast"><h2>6艇の情報</h2><div class="grid" id="boats"><p class="muted">未取得</p></div></section><section data-v62-tab="forecast"><h2>展示の目視情報を追加</h2><p class="note">よく使う評価を押すか、自由入力してください。艇ごとの内容はブラウザに保存されます。</p><p class="muted">艇ごとにメモを保存できます（このブラウザ内の一時保存。ページを閉じると消えます）。</p><div class="grid" id="notes"></div></section><section data-v62-tab="forecast"><h2>3連単オッズ（選手名付き・6列表示）</h2><div id="odds" class="muted">未取得</div></section><section data-v62-tab="forecast"><button id="copy" disabled>ChatGPT予想用・短縮コピー（V98）</button> <button id="download" disabled>JSONを保存</button><p id="copystatus"></p><details><summary>取得詳細・項目名を表示</summary><pre id="debug"></pre></details></section><script>
 const $=id=>document.getElementById(id);const venues=['桐生','戸田','江戸川','平和島','多摩川','浜名湖','蒲郡','常滑','津','三国','びわこ','住之江','尼崎','鳴門','丸亀','児島','宮島','徳山','下関','若松','芦屋','福岡','唐津','大村'];venues.forEach((v,i)=>$('venue').add(new Option(`${String(i+1).padStart(2,'0')} ${v}`,String(i+1).padStart(2,'0'))));$('venue').value='13';for(let i=1;i<=12;i++)$('race').add(new Option(i+'R',String(i).padStart(2,'0')));$('race').value='10';$('day').value=new Date(Date.now()+9*3600000).toISOString().slice(0,10);
 const types=['programs/title','programs/race_cards','programs/waku10','programs/motor_stats','previews/tkz','previews/stt','previews/sui','previews/original_exhibition','previews/od3'];let data=null;let memo={};const choices=['直線が伸びる','ターンで暴れる','出足が良い','回り足が良い','ターンで流れる','起こしが悪い','展示より良い','展示より悪い'];const noteKey=()=>`boatrace_notes_${$('day').value}_${$('venue').value}_${$('race').value}`;function saveMemo(){try{localStorage.setItem(noteKey(),JSON.stringify(memo))}catch(e){}}function restoreMemo(){try{memo=JSON.parse(localStorage.getItem(noteKey())||'{}')}catch(e){memo={}}}let scheduleRows=null,scheduleHeader=[],scheduleDate='',scheduleTimer=null;const codeOf=(v,r)=>`${$('day').value.replaceAll('-','')}${v}${r}`;function findDeadline(rec){if(!rec)return '';for(const [k,v] of Object.entries(rec)){if(/(締切|投票締切|発売締切|deadline|close.?time)/i.test(k)&&v&&/^([01]?\d|2[0-3]):?[0-5]\d(?::[0-5]\d)?$/.test(String(v).trim())){let z=String(v).trim();return z.includes(':')?z:z.padStart(4,'0').replace(/^(..)(..)$/, '$1:$2')}}return ''}function raceRec(v,r){if(scheduleDate!==$('day').value||!scheduleRows)return null;return scheduleRows.get(codeOf(v,r))||null}async function loadSchedule(){let date=$('day').value;if(!date)return;let [y,m,d]=date.split('-');$('schedule').disabled=true;$('scheduleStatus').textContent='開催データを確認しています…';try{let url=`https://boatracecsv.github.io/data/programs/title/${y}/${m}/${d}.csv`;let res=await fetch(url,{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);let lines=parse(await res.text());scheduleHeader=lines[0]||[];scheduleRows=new Map();for(let row of lines.slice(1)){let code=row[0];if(/^\d{12}$/.test(code)&&code.startsWith(y+m+d)){scheduleRows.set(code,objects(scheduleHeader,[row])[0])}}scheduleDate=date;let active=venues.filter((_,i)=>Array.from({length:12},(_,j)=>raceRec(String(i+1).padStart(2,'0'),String(j+1).padStart(2,'0'))).some(Boolean)).length;$('scheduleStatus').textContent=`${date}：${active}場・${scheduleRows.size}レースの行を確認（取得：${new Date().toLocaleTimeString('ja-JP')}）。CSVにない場は未確認または非開催です。`;navRender()}catch(e){scheduleRows=null;scheduleDate='';$('scheduleStatus').textContent=`開催一覧の取得失敗：${e.message}。レース個別のデータ取得は引き続き使えます。`;navRender()}finally{$('schedule').disabled=false}}function currentJapanMinutes(){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());return Number(parts.find(x=>x.type==='hour').value)*60+Number(parts.find(x=>x.type==='minute').value)}
 function todayJapan(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replace(/\//g,'-')}
@@ -1340,11 +1340,70 @@ $('scanCandidates').onclick=async()=>{
   out.querySelectorAll('.candidatePick').forEach(b=>b.onclick=()=>{$('venue').value=b.dataset.v;$('race').value=b.dataset.r;restoreMemo();clearView();navRender();$('load').scrollIntoView({behavior:'smooth',block:'center'})});
  }catch(err){status.textContent=`取得に失敗しました：${err.message}`;out.textContent='既存のレース個別取得は引き続き利用できます。'}finally{btn.disabled=false}
 };
+</script><script id="v100-preview">
+(function(){
+ const $v=id=>document.getElementById(id);
+ const kinds=['previews/tkz','previews/stt','previews/sui','previews/original_exhibition','previews/od3'];
+ const label={'previews/tkz':'展示タイム','previews/stt':'展示進入・ST','previews/sui':'風・波・気象','previews/original_exhibition':'一周・回り足・直線','previews/od3':'3連単オッズ'};
+ let busy=false,activeCode='';
+ function remaining(){
+  if(!data?.code)return null;
+  const raw=data.datasets?.['programs/title']?.record||{};
+  const s=findDeadline(raw);if(!s)return null;
+  const v=s.split(':').map(Number); const date=data.date;
+  const at=new Date(date+'T'+String(v[0]).padStart(2,'0')+':'+String(v[1]).padStart(2,'0')+':00+09:00');
+  return Math.floor((at-Date.now())/1000);
+ }
+ function updateLink(){
+  const dt=$v('day').value.replace(/-/g,''),venue=$v('venue').value,race=parseInt($v('race').value,10);
+  const a=$v('v100Official');a.href=`https://www.boatrace.jp/owpc/pc/race/beforeinfo?hd=${encodeURIComponent(dt)}&jcd=${encodeURIComponent(venue)}&rno=${race}`;
+ }
+ function state(msg){
+  const count=kinds.filter(k=>Boolean(data?.datasets?.[k]?.record)).length;
+  const rest=remaining(); const when=rest===null?'締切時刻未確認':rest<=0?'締切済み':`締切まで約${Math.ceil(rest/60)}分`;
+  $v('v100State').textContent=`${msg}｜直前情報 ${count}/5種類｜${when}。`;
+ }
+ async function refresh(){
+  updateLink();if(!data?.code){state('先にデータ取得してください');return}
+  if(busy)return;
+  const myData=data,myCode=data.code,myDate=data.date,parts=myDate.split('-');
+  busy=true;$v('v100Refresh').disabled=true;state('再確認中');
+  try{
+   const results=await Promise.all(kinds.map(async kind=>{
+    const url=`https://boatracecsv.github.io/data/${kind}/${parts[0]}/${parts[1]}/${parts[2]}.csv`;
+    try{const res=await fetch(url,{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);
+     const csv=parse(await res.text()),header=csv[0]||[],line=csv.slice(1).find(x=>x[0]===myCode);
+     return [kind,{status:line?'対象レースあり':'対象レースなし',columns:header.length,record:line?objects(header,[line])[0]:null,header}];
+    }catch(e){return [kind,{status:'取得失敗: '+e.message}]}
+   }));
+   if(data!==myData||data.code!==myCode){state('別レースに切り替わったため反映しません');return}
+   for(const [kind,result] of results){if(result.record||!data.datasets[kind]?.record)data.datasets[kind]=result}
+   data.loadedAt=new Date().toISOString();
+   render();v54ExhibitionSave();v54RenderStages();
+   const fresh=results.filter(x=>x[1].record).length;
+   state(`更新確認 ${new Date().toLocaleTimeString('ja-JP',{timeZone:'Asia/Tokyo'})}／今回${fresh}/5種類に対象行あり`);
+   if(fresh===5)$v('v100Auto').checked=false;
+  }catch(e){state('再取得エラー '+e.message)}
+  finally{busy=false;$v('v100Refresh').disabled=false}
+ }
+ $v('v100Refresh').addEventListener('click',refresh);
+ $v('v100Auto').addEventListener('change',()=>{updateLink();if(!data?.code){$v('v100Auto').checked=false;state('先にデータ取得してください')}});
+ $v('load').addEventListener('click',()=>{activeCode='';updateLink();state('データ取得中。完了後に再取得できます')});
+ $v('venue').addEventListener('change',()=>{$v('v100Auto').checked=false;updateLink()});
+ $v('race').addEventListener('change',()=>{$v('v100Auto').checked=false;updateLink()});
+ $v('day').addEventListener('change',()=>{$v('v100Auto').checked=false;updateLink()});
+ setInterval(()=>{
+  if(!$v('v100Auto').checked||busy||document.hidden||$v('load').disabled)return;
+  const r=remaining();if(r===null||r<=0){$v('v100Auto').checked=false;state(r===null?'締切が未確認なので自動確認を停止':'締切時刻を過ぎたため自動確認を停止');return}
+  refresh();
+ },30000);
+ updateLink();
+})();
 </script><script id="v62-controller">
 (function(){
  const ss=[...document.querySelectorAll('section[data-v62-tab]')];
  const header=document.querySelector('h1');if(!header||!ss.some(x=>x.dataset.v62Tab==='forecast')||!ss.some(x=>x.dataset.v62Tab==='review')||!ss.some(x=>x.dataset.v62Tab==='settings')){return;}
- header.textContent='競艇予想データ V92'; document.title='競艇予想データ V92';
+ header.textContent='競艇予想データ V101'; document.title='競艇予想データ V101';
  const nav=document.createElement('nav');nav.id='v62Nav';nav.setAttribute('aria-label','画面切り替え');
  nav.innerHTML='<div class="v62tabs"><button type="button" data-mode="forecast">予想</button><button type="button" data-mode="review">検証</button><button type="button" data-mode="settings">設定・診断</button></div><p id="v62Hint"></p>';
  header.after(nav);
@@ -1364,7 +1423,7 @@ $('scanCandidates').onclick=async()=>{
 </script><script id="v63-controller">
 (function(){
  const review=document.getElementById('automationV47');if(!review)return;
- document.title='競艇予想データ V92';const heading=document.querySelector('h1');if(heading)heading.textContent='競艇予想データ V92';
+ document.title='競艇予想データ V101';const heading=document.querySelector('h1');if(heading)heading.textContent='競艇予想データ V101';
  const root=document.createElement('section');root.id='v63Dashboard';root.setAttribute('data-v62-tab','review');
  root.innerHTML='<h2>検証ダッシュボード</h2><p class="v63note">事前に記録したデータの状況をまとめています。数字は的中率・勝率ではありません。</p><div class="v63metrics"><div class="v63metric"><div class="v63lab">事前保存</div><div class="v63val" id="v63base">―</div></div><div class="v63metric"><div class="v63lab">確定結果照合</div><div class="v63val" id="v63confirmed">―</div></div><div class="v63metric"><div class="v63lab">正式指数2艇以上</div><div class="v63val" id="v63full">―</div></div><div class="v63metric"><div class="v63lab">4方式比較可能</div><div class="v63val" id="v63compared">―</div></div></div><p class="v63note" id="v63state">集計を待っています。</p><button id="v63toggle" type="button" aria-expanded="false">詳細な検証表を表示</button>';
  review.parentNode.insertBefore(root,review);
@@ -1887,7 +1946,7 @@ function v71Render(){
  const $=id=>document.getElementById(id), q=$('v81Quick');if(!q)return;
  const forecast=()=>{let b=document.querySelector('#v62Nav button[data-mode="forecast"]');if(b)b.click();else if(document.body.dataset.v62Mode!=='forecast'){document.querySelector('#v62Nav button')?.click();}};
  const jump=(el)=>{if(el)el.scrollIntoView({behavior:'smooth',block:'center'});};
- $('v81Select').addEventListener('click',()=>{forecast();jump($('venue'));});
+ $('v81Select').addEventListener('click',()=>{forecast();jump($('venueGrid'));});
  $('v81Load').addEventListener('click',()=>{forecast();if(!$('load'))return;$('load').click();jump($('status'));});
  $('v81Compare').addEventListener('click',()=>{forecast();jump($('comparison')||$('compare')||document.querySelector('.comparison')||$('copy'));});
  $('v81Copy').addEventListener('click',()=>{forecast();if(!$('copy')?.disabled){$('copy').click();jump($('copystatus'));}});
@@ -1975,8 +2034,89 @@ window.addEventListener('load',()=>{
   try{if(typeof navRender==='function')navRender()}catch(e){if(status)status.textContent='一覧の初期化エラー：'+e.message}
  }
  const marker=$('v95-marker');
- if(marker)marker.textContent='スマホ版 V99｜全国24場 '+grid.querySelectorAll('button[data-v]').length+'件を確認';
+ if(marker)marker.textContent='スマホ版 V102｜全国24場 '+grid.querySelectorAll('button[data-v]').length+'件を確認';
  if(!grid.querySelector('button[data-v]')&&status)status.textContent='場一覧が初期化できません。GitHubのindex.htmlが完全に置換されたか確認してください。';
 });
+</script>
+
+<style id="v101-style">
+/* Internal selectors remain in the DOM so the legacy prediction and validation code works. */
+#v101HiddenSelectors{display:none!important}
+#v62Nav{position:relative!important;top:auto!important;z-index:1!important; margin:22px 0 12px!important}
+#v62Intro{display:none!important}
+.legacy-venue-section{margin-top:7px}
+#raceGrid{scroll-margin-top:10px}
+#v81Quick{margin-top:8px}
+#v101Chosen{font-weight:750;color:#183f65;margin:7px 0 0}
+#v101Instructions{font-size:13px;margin:8px 0;color:#52657a}
+</style>
+<script id="v101-layout">
+(function(){
+ const by=id=>document.getElementById(id);
+ const grid=by('venueGrid'),raceGrid=by('raceGrid'),quick=by('v81Quick'),nav=by('v62Nav');
+ const venueSection=grid?.closest('section'), heading=document.querySelector('h1');
+ if(!grid||!raceGrid||!venueSection||!heading)return;
+ // Make the nationwide venue grid the first main content below the version marker.
+ const marker=by('v95-marker');
+ (marker||heading).after(venueSection);
+ if(quick)venueSection.after(quick);
+ // Preserve select inputs as nonvisual internal state; never remove their IDs.
+ const day=by('day'),venue=by('venue'),race=by('race'),load=by('load');
+ const selectors=day?.closest('section');
+ if(selectors){selectors.id='v101HiddenSelectors';}
+ // Keep settings / verification reachable at the bottom rather than in a sticky top bar.
+ if(nav)document.body.appendChild(nav);
+ const intro=by('v62Intro');if(intro)intro.remove();
+ // The original official-link node stays hidden: V100 refresh logic still updates its href.
+ const chosen=document.createElement('div');chosen.id='v101Chosen';raceGrid.after(chosen);
+ const update=()=>{
+   const vn=venue?.selectedOptions?.[0]?.textContent||'未選択';
+   const rn=race?.selectedOptions?.[0]?.textContent||'未選択';
+   chosen.textContent='選択中：'+vn+' / '+rn;
+ };
+ // Clicking a venue opens the race choices in the same page (and auto focuses them).
+ grid.addEventListener('click',e=>{
+   if(!e.target.closest('button[data-v]'))return;
+   update();setTimeout(()=>raceGrid.scrollIntoView({behavior:'smooth',block:'start'}),30);
+ });
+ raceGrid.addEventListener('click',e=>{
+   if(!e.target.closest('button[data-r]'))return;
+   update();
+   if(by('v102Actions'))setTimeout(()=>by('v102Actions').scrollIntoView({behavior:'smooth',block:'nearest'}),60);
+ });
+ update();
+ // Quick acquisition controls keep using the existing #load handler.
+ if(by('v81Select'))by('v81Select').textContent='① 場・レースを選ぶ';
+ if(by('v81Load'))by('v81Load').textContent='② データ取得';
+ // Previous controller scrolls the hidden select after clicking the quick-select button; override its destination with a public grid.
+ if(by('v81Select'))by('v81Select').addEventListener('click',()=>setTimeout(()=>venueSection.scrollIntoView({behavior:'smooth',block:'start'}),100));
+ // Prevent a review tab switch from leaving a sticky menu pinned over the race list.
+})();
+</script>
+
+<style id="v102-style">
+#v102Actions{display:flex;gap:9px;align-items:stretch;margin:12px 0 8px;flex-wrap:wrap}
+#v102Actions button{flex:1 1 135px;min-height:49px;font-weight:750;font-size:16px;cursor:pointer}
+#v102Actions button:disabled{opacity:.45;cursor:not-allowed}
+#v102CopyState{width:100%;font-size:12px;color:#52657a}
+/* one clear workflow at the venue/race grid, avoiding the duplicate quick menu */
+#v81Quick{display:none!important}
+#v101HiddenSelectors{display:none!important}
+</style>
+<script id="v102-actions">
+(function(){
+ const by=id=>document.getElementById(id),raceGrid=by('raceGrid'),chosen=by('v101Chosen'),copy=by('copy'),load=by('load');
+ if(!raceGrid||!copy||!load)return;
+ const bar=document.createElement('div');bar.id='v102Actions';
+ bar.innerHTML='<button type="button" id="v102Load">データ取得</button><button type="button" id="v102Copy" disabled>予想用コピー</button><span id="v102CopyState" role="status">レースを選び、データ取得してください。</span>';
+ (chosen||raceGrid).after(bar);
+ const sync=()=>{const enabled=!copy.disabled;by('v102Copy').disabled=!enabled;by('v102CopyState').textContent=enabled?'取得完了。コピーしてChatGPTへ貼り付けできます。':'データ取得後にコピーできます。'};
+ by('v102Load').addEventListener('click',()=>{by('v102Copy').disabled=true;by('v102CopyState').textContent='取得中…';load.click();});
+ by('v102Copy').addEventListener('click',()=>{if(copy.disabled)return;copy.click();by('v102CopyState').textContent='コピー処理を実行しました。下のメッセージで結果をご確認ください。';});
+ new MutationObserver(sync).observe(copy,{attributes:true,attributeFilter:['disabled']});
+ raceGrid.addEventListener('click',e=>{if(e.target.closest('button[data-r]'))setTimeout(sync,50)});
+ by('venueGrid')?.addEventListener('click',e=>{if(e.target.closest('button[data-v]'))setTimeout(sync,50)});
+ sync();
+})();
 </script>
 </html>
